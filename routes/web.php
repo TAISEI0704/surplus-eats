@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SellerAuthController;
+use App\Models\Models\Seller;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +27,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+//
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/seller-register', [SellerAuthController::class, 'showRegistrationForm'])->name('seller.register');
+    Route::post('/seller-register', [SellerAuthController::class, 'register'])->name('seller.register.post');
+    Route::get('/seller-login', [SellerAuthController::class, 'showLoginForm'])->name('seller.login');
+    Route::post('/seller-login', [SellerAuthController::class, 'login'])->name('seller.login.post');
+    Route::post('/seller-logout', [SellerAuthController::class, 'logout'])->name('seller.logout');
 });

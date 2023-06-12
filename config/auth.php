@@ -65,10 +65,23 @@ return [
             'model' => App\Models\User::class,
         ],
 
+        // 'sellers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Seller::class,
+        // ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+    ],
+
+    'multi-auth' => [
+        'sellers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Seller::class,
+            'table' => 'sellers',
+        ],
     ],
 
     /*
