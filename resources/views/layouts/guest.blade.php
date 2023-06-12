@@ -14,7 +14,7 @@
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
         <script src="{{ mix('js/app.js') }}"></script>
 
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
