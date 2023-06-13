@@ -25,11 +25,12 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('\Surplus\timeline');
+        // return view('dashboard');
     })->name('dashboard');
 });
 
-//
+
 Route::group(['middleware' => 'web'], function () {
     Route::get('/seller-dashboard', function () {
         return view('seller-dashboard');
@@ -40,3 +41,4 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/seller-login', [SellerAuthController::class, 'login'])->name('seller.login.post');
     Route::post('/seller-logout', [SellerAuthController::class, 'logout'])->name('seller.logout');
 });
+
