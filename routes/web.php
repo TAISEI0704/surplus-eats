@@ -31,3 +31,7 @@ Route::middleware([
 Route::get('/detail', function () {
     return view('\Surplus\detail');
 });
+
+Route::get('/cart', function () {
+    return view('\Surplus\cart');
+});
