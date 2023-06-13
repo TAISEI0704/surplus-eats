@@ -34,12 +34,14 @@ Route::middleware([
 
 Route::group(['middleware' => 'web'], function () {
     Route::get('/seller-dashboard', function () {
-        return view('seller-dashboard');
+        return view('seller\dashboard');
     })->name('seller.dashboard');
     Route::get('/seller-register', [SellerAuthController::class, 'showRegistrationForm'])->name('seller.register');
     Route::post('/seller-register', [SellerAuthController::class, 'register'])->name('seller.register.post');
     Route::get('/seller-login', [SellerAuthController::class, 'showLoginForm'])->name('seller.login');
     Route::post('/seller-login', [SellerAuthController::class, 'login'])->name('seller.login.post');
     Route::post('/seller-logout', [SellerAuthController::class, 'logout'])->name('seller.logout');
+
+    Route::get('/profile/seller', [SellerAuthController::class, 'showProfile'])->name('seller.profile.show');
 });
 
