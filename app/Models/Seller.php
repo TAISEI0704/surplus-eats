@@ -11,7 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-class Seller extends Model
+class Seller extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;

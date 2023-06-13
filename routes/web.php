@@ -31,6 +31,9 @@ Route::middleware([
 
 //
 Route::group(['middleware' => 'web'], function () {
+    Route::get('/seller-dashboard', function () {
+        return view('seller-dashboard');
+    })->name('seller.dashboard');
     Route::get('/seller-register', [SellerAuthController::class, 'showRegistrationForm'])->name('seller.register');
     Route::post('/seller-register', [SellerAuthController::class, 'register'])->name('seller.register.post');
     Route::get('/seller-login', [SellerAuthController::class, 'showLoginForm'])->name('seller.login');

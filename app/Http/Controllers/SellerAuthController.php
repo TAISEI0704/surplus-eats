@@ -29,15 +29,18 @@ class SellerAuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
     
-        $user = Seller::create([
+        $seller = new Seller([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        
+        $seller->save();
     
         // ユーザーの登録成功時の処理
-    
-        return redirect('/dashboard');
+        Auth::login($seller);
+
+        return redirect('/seller-dashboard');
     }
 
     public function showLoginForm()
@@ -47,12 +50,14 @@ class SellerAuthController extends Controller
 
     public function login(Request $request)
     {
+        // var_dump($request);
         // カスタムログインのロジックを実装する
         $credentials = $request->only('email', 'password');
+        $guard = 'sellers';
     
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard($guard)->attempt($credentials)) {
             // ログイン成功時の処理
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/seller-dashboard');
         } else {
             // ログイン失敗時の処理
             return redirect()->back()->withErrors([
@@ -60,6 +65,21 @@ class SellerAuthController extends Controller
             ]);
         }
     }
+    // public function login(Request $request) {
+    //     
+    //     $credentials = $request->only(['email', 'password']);
+    //     $guard = $request->guard;
+
+    //     if(Auth::guard($guard)->attempt($credentials)) {
+
+    //         return redirect($guard .'/dashboard'); // ログインしたらリダイレクト
+
+    //     }
+
+    //     return back()->withErrors([
+    //         'auth' => ['認証に失敗しました']
+    //     ]);
+    // }
 
     public function logout(Request $request)
     {
