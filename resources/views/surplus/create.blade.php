@@ -85,8 +85,8 @@
                                 </div>
                               </div> --}}
                               <div class="p-2 w-1/2">
-                                <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録</button>
-                                <button class="text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg">戻る</button>
+                                <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" style="padding-left: 32px; padding-right: 32px;">登録</button>
+                                <button type="button" onclick="window.history.back()" class="text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg" style="padding-left: 32px; padding-right: 32px;">戻る</button>
                               </div>
                             </div>
                           </div>
