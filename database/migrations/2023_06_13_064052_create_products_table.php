@@ -21,7 +21,8 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->string('category');
             $table->string('image');
-            $table->time('time');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->timestamps();
         });
     }

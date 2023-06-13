@@ -25,7 +25,6 @@ public function store(Request $request)
             'quantity' => 'required|string',
             'category' => 'required|string|max:30',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-            // 'time' => 'required|date',
         ]);
 
         $file = request()->file('image')->getClientOriginalName();
@@ -39,12 +38,13 @@ public function store(Request $request)
         $product-> category = $request -> category;
         $product-> image = $request->image;
         $product->image=$file;
-        $product -> time = $request -> time;
+        $product->start_time = $request->start_time;
+        $product->end_time = $request->end_time;
         
 
         $product -> save();
 
-        // return redirect()->route('');
+        return redirect()->route('dashboard');
    
 }
 

@@ -28,16 +28,20 @@
                               <div class="p-2 w-full flex">
                                 <div class="relative flex-grow">
                                     <label for="price" class="leading-7 text-sm text-gray-600">値段</label>
-                                    <input type="text" id="price" name="price" value="{{ old('title') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <div class="flex items-center">
+                                      <input type="text" id="price" name="price" value="{{ old('title') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                      <p class="ml-1">円</p>
+                                    </div>
                                 </div>
-                                <p>円</p>
                               </div>
                               <div class="p-2 w-full flex">
                                 <div class="relative flex-grow">
                                     <label for="quantity" class="leading-7 text-sm text-gray-600">個数</label>
-                                    <input type="number" id="quantity" name="quantity" value="{{ old('title') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <div class="flex items-center">
+                                      <input type="number" id="quantity" name="quantity" value="{{ old('title') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                      <p class="ml-1">個</p>
+                                    </div>
                                 </div>
-                                <p>個</p>
                               </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
@@ -58,10 +62,16 @@
                               </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
-                                    <label for="time" class="leading-7 text-sm text-gray-600">受け渡し可能時間</label>
-                                    <input type="time" id="time" name="time" value="{{ old('time') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <label for="start_time" class="leading-7 text-sm text-gray-600">受け渡し可能時間（開始）</label>
+                                    <input type="time" id="start_time" name="start_time" value="{{ old('start_time') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
-                            </div>
+                              </div>
+                              <div class="p-2 w-full">
+                                <div class="relative">
+                                    <label for="end_time" class="leading-7 text-sm text-gray-600">受け渡し可能時間（終了）</label>
+                                    <input type="time" id="end_time" name="end_time" value="{{ old('end_time') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                </div>
+                              </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
                                   <label class="leading-7 text-sm text-gray-600">画像</label>
