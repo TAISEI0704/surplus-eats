@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+// sellerユーザー用の認証処理
 class SellerAuthController extends Controller
 {
     public function showRegistrationForm()
@@ -65,21 +66,6 @@ class SellerAuthController extends Controller
             ]);
         }
     }
-    // public function login(Request $request) {
-    //     
-    //     $credentials = $request->only(['email', 'password']);
-    //     $guard = $request->guard;
-
-    //     if(Auth::guard($guard)->attempt($credentials)) {
-
-    //         return redirect($guard .'/dashboard'); // ログインしたらリダイレクト
-
-    //     }
-
-    //     return back()->withErrors([
-    //         'auth' => ['認証に失敗しました']
-    //     ]);
-    // }
 
     public function logout(Request $request)
     {
@@ -93,6 +79,7 @@ class SellerAuthController extends Controller
         return redirect('/');
     }
 
+    // sellerユーザー用プロフィールページに遷移
     public function showProfile(Request $request)
     {
         $user = Auth::guard('sellers')->user();
