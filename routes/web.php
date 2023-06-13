@@ -31,7 +31,7 @@ Route::middleware([
 });
 
 
-//Sellerユーザー用の認証機能等のルート
+
 Route::group(['middleware' => 'web'], function () {
     Route::get('/seller-dashboard', function () {
         return view('seller\dashboard');
