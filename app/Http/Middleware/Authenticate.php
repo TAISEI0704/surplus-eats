@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Str;
 
 class Authenticate extends Middleware
 {
@@ -14,7 +15,21 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+        // if (! $request->expectsJson()) {
+        //     return route('seller.login.post');
+        // }
+
         if (! $request->expectsJson()) {
+
+            $uri = $request->path();
+
+            // URIが以下３つから始まる場合
+            if(Str::startsWith($uri, ['sellers/'])) {
+
+                return 'seller-login';
+
+            }
+
             return route('login');
         }
     }

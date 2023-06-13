@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SellerAuthController;
+use App\Models\Models\Seller;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +30,20 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/detail', function () {
-    return view('\Surplus\detail');
+
+
+
+
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/seller-dashboard', function () {
+        return view('seller\dashboard');
+    })->name('seller.dashboard');
+    Route::get('/seller-register', [SellerAuthController::class, 'showRegistrationForm'])->name('seller.register');
+    Route::post('/seller-register', [SellerAuthController::class, 'register'])->name('seller.register.post');
+    Route::get('/seller-login', [SellerAuthController::class, 'showLoginForm'])->name('seller.login');
+    Route::post('/seller-login', [SellerAuthController::class, 'login'])->name('seller.login.post');
+    Route::post('/seller-logout', [SellerAuthController::class, 'logout'])->name('seller.logout');
+
+    Route::get('/profile/seller', [SellerAuthController::class, 'showProfile'])->name('seller.profile.show');
 });
 
-
-Route::get('/post/create', 'PostController@create')->name('post.create');
-Route::post('/post/store', 'PostController@store')->name('post.store');
