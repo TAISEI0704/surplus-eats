@@ -23,7 +23,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('\Surplus\timeline');
+        return view('Surplus.timeline');
         // return view('dashboard');
     })->name('dashboard');
 });
@@ -31,3 +31,6 @@ Route::middleware([
 Route::get('/detail', function () {
     return view('\Surplus\detail');
 });
+
+Route::get('/posts/create', 'PostController@create')->name('posts.create');
+Route::post('/posts/store', 'PostController@store')->name('posts.store');
