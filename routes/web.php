@@ -40,5 +40,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/seller-login', [SellerAuthController::class, 'showLoginForm'])->name('seller.login');
     Route::post('/seller-login', [SellerAuthController::class, 'login'])->name('seller.login.post');
     Route::post('/seller-logout', [SellerAuthController::class, 'logout'])->name('seller.logout');
+
+    Route::get('/profile/seller', [SellerAuthController::class, 'showProfile'])->name('seller.profile.show');
 });
 

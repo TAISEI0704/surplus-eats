@@ -96,7 +96,7 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                            <x-jet-dropdown-link href="{{ Auth::user()->is_seller ? route('seller.profile.show') : route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 

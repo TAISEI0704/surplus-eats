@@ -92,4 +92,14 @@ class SellerAuthController extends Controller
     
         return redirect('/');
     }
+
+    public function showProfile(Request $request)
+    {
+        $user = Auth::guard('sellers')->user();
+        
+        return view('profile.seller-show', [
+            'request' => $request,
+            'user' => $user,
+        ]);
+    }
 }
