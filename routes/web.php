@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellerAuthController;
 use App\Models\Models\Seller;
@@ -45,3 +46,5 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/profile/seller', [SellerAuthController::class, 'showProfile'])->name('seller.profile.show');
 });
 
+
+Route::get('/user/cart',[CartController::class,'showCart'])->name('cart.show');

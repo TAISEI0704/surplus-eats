@@ -96,6 +96,12 @@
                                 {{ __('Manage Account') }}
                             </div>
 
+                            @if (Auth::user()->is_seller == false)
+                                <x-jet-dropdown-link href="{{ route('cart.show') }}">
+                                    {{ __('Cart') }}
+                                </x-jet-dropdown-link>
+                            @endif
+
                             <x-jet-dropdown-link href="{{ Auth::user()->is_seller ? route('seller.profile.show') : route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
