@@ -31,6 +31,7 @@ Route::middleware([
 });
 
 
+
 Route::group(['middleware' => 'web'], function () {
     Route::get('/seller-dashboard', function () {
         return view('seller-dashboard');
