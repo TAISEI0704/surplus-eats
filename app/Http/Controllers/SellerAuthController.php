@@ -13,7 +13,7 @@ class SellerAuthController extends Controller
 {
     public function showRegistrationForm()
     {
-        return view('auth\seller-register');
+        return view('seller\register');
     }
 
     public function register(Request $request)
@@ -45,7 +45,7 @@ class SellerAuthController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth\seller-login');
+        return view('seller\login');
     }
 
     public function login(Request $request)
@@ -96,8 +96,8 @@ class SellerAuthController extends Controller
     public function showProfile(Request $request)
     {
         $user = Auth::guard('sellers')->user();
-        
-        return view('profile.seller-show', [
+
+        return view('seller\show', [
             'request' => $request,
             'user' => $user,
         ]);
