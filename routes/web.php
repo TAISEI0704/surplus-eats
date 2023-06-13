@@ -25,10 +25,12 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('\Surplus\timeline');
+        return view('Surplus.timeline');
         // return view('dashboard');
     })->name('dashboard');
 });
+
+
 
 
 
