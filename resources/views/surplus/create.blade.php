@@ -28,16 +28,16 @@
                               <div class="p-2 w-full flex">
                                 <div class="relative flex-grow">
                                     <label for="price" class="leading-7 text-sm text-gray-600">値段</label>
-                                    <input type="number" id="price" name="price" value="{{ old('title') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="price" name="price" value="{{ old('title') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
-                                <p class="ml-2">円</p>
+                                <p>円</p>
                               </div>
                               <div class="p-2 w-full flex">
                                 <div class="relative flex-grow">
                                     <label for="quantity" class="leading-7 text-sm text-gray-600">個数</label>
                                     <input type="number" id="quantity" name="quantity" value="{{ old('title') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
-                                <p class="ml-2">個</p>
+                                <p>個</p>
                               </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
@@ -65,7 +65,7 @@
                               <div class="p-2 w-full">
                                 <div class="relative">
                                   <label class="leading-7 text-sm text-gray-600">画像</label>
-                                  <input type="file" id="file" name="file" accept="image/png, image/jpeg, image/jpg" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                  <input type="file" id="image" name="image" accept="image/png, image/jpeg, image/jpg" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                               </div>
                               {{-- <div class="p-2 w-full">

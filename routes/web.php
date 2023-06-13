@@ -32,5 +32,5 @@ Route::get('/detail', function () {
     return view('\Surplus\detail');
 });
 
-Route::get('/posts/create', 'PostController@create')->name('posts.create');
-Route::post('/posts/store', 'PostController@store')->name('posts.store');
+Route::get('/post/create', 'PostController@create')->name('post.create');
+Route::post('/post/store', 'PostController@store')->name('post.store');
