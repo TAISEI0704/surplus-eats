@@ -29,6 +29,7 @@ Route::middleware([
         return view('\Surplus\timeline');
         // return view('dashboard');
     })->name('dashboard');
+    Route::get('/user/cart/{id}',[CartController::class,'showCart'])->name('cart.show');
 });
 
 
@@ -46,5 +47,3 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/profile/seller', [SellerAuthController::class, 'showProfile'])->name('seller.profile.show');
 });
 
-
-Route::get('/user/cart',[CartController::class,'showCart'])->name('cart.show');
