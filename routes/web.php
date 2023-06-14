@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellerAuthController;
+use App\Http\Controllers\PostController;
 use App\Models\Models\Seller;
 
 /*
@@ -26,10 +27,12 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('Surplus.cart');
+        return view('Surplus.timeline');
         // return view('dashboard');
     })->name('dashboard');
     Route::get('/user/cart/{id}',[CartController::class,'showCart'])->name('cart.show');
+    Route::get('/post/create',[PostController::class,'create'])->name('post.create');
+    Route::post('/post/store',[PostController::class,'store'])->name('post.store');
 });
 
 

@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('content');
             $table->integer('quantity');
             $table->string('category');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->time('start_time');
             $table->time('end_time');
             $table->timestamps();
