@@ -10,6 +10,13 @@ use App\Models\Product;
 class PostController extends Controller
 {
     //
+
+    public function index()
+    {
+        $posts=Product::all();
+        return view('surplus.timeline', compact('posts'));
+
+    }
     public function create()
 {
     return view('surplus.create');
@@ -44,7 +51,7 @@ public function store(Request $request)
 
         $product -> save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('seller.dashboard');
    
 }
 
