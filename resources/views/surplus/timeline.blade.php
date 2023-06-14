@@ -8,9 +8,9 @@
   </div>
     
 
-    <div style="background-color:#EDEBDA" class="py-12">
+    <div style="background-color:#F8F7EE" class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div style="background-color:#EDEBDA" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               <section class="text-gray-600 body-font">
                 <div class="container px-5 py-24 mx-auto">
                   <div class="flex flex-wrap -m-4">
