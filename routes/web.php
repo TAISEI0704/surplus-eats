@@ -26,13 +26,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('Surplus.timeline');
-        // return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view(dashboard');
+    // })->name('dashboard');
+    Route::get('/dashboard',[PostController::class,'index'])->name('dashboard');
     Route::get('/user/cart/{id}',[CartController::class,'showCart'])->name('cart.show');
-    Route::get('/post/create',[PostController::class,'create'])->name('post.create');
-    Route::post('/post/store',[PostController::class,'store'])->name('post.store');
 });
 
 
@@ -50,5 +48,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/seller-logout', [SellerAuthController::class, 'logout'])->name('seller.logout');
 
     Route::get('/profile/seller', [SellerAuthController::class, 'showProfile'])->name('seller.profile.show');
+
+    Route::get('/post/create',[PostController::class,'create'])->name('post.create');
+    Route::post('/post/store',[PostController::class,'store'])->name('post.store');
 });
 
