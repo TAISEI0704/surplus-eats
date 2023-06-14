@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellerAuthController;
 use App\Models\Models\Seller;
@@ -28,6 +29,7 @@ Route::middleware([
         return view('Surplus.cart');
         // return view('dashboard');
     })->name('dashboard');
+    Route::get('/user/cart/{id}',[CartController::class,'showCart'])->name('cart.show');
 });
 
 

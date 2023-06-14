@@ -28,6 +28,7 @@ class Seller extends Authenticatable
         'name',
         'email',
         'password',
+        'is_seller',
     ];
 
     /**
