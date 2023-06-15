@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Seller;
 use App\Models\Product;
 
 
@@ -17,6 +18,17 @@ class PostController extends Controller
         return view('surplus.timeline', compact('posts'));
 
     }
+
+    public function sellerIndex()
+    {
+        $user = Auth::user();
+        $seller = Seller::find($user->id);
+    
+        $posts = Product::where('seller_id', $seller->getId())->get();
+    
+        return view('seller.surplus.timeline', compact('posts'));
+    }
+
     public function create()
 {
     return view('surplus.create');

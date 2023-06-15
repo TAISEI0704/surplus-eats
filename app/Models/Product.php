@@ -16,6 +16,12 @@ class Product extends Model
         'category', 
         'image', 
         'time', 
+        'seller_id'
     ];
+
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class, 'seller_id');
+    }
 
 }
