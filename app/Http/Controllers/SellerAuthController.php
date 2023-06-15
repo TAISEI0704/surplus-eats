@@ -14,7 +14,7 @@ class SellerAuthController extends Controller
 {
     public function showRegistrationForm()
     {
-        return view('seller\register');
+        return view('seller.register');
     }
 
     public function register(Request $request)
@@ -23,6 +23,8 @@ class SellerAuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|string|max:255',
+            'adress' => 'required|string|max:255',
             'password' => 'required|string|confirmed|min:8',
         ]);
     
@@ -33,6 +35,8 @@ class SellerAuthController extends Controller
         $seller = new Seller([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'adress' => $request->adress,
             'password' => Hash::make($request->password),
         ]);
         
@@ -46,7 +50,7 @@ class SellerAuthController extends Controller
 
     public function showLoginForm()
     {
-        return view('seller\login');
+        return view('seller.login');
     }
 
     public function login(Request $request)
@@ -84,7 +88,7 @@ class SellerAuthController extends Controller
     {
         $user = Auth::guard('sellers')->user();
 
-        return view('seller\show', [
+        return view('seller.show', [
             'request' => $request,
             'user' => $user,
         ]);

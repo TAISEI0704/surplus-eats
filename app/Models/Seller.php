@@ -28,6 +28,8 @@ class Seller extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'adress',
         'password',
         'is_seller',
     ];
