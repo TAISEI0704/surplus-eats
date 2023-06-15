@@ -23,6 +23,8 @@ class SellerAuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|string|max:255',
+            'adress' => 'required|string|max:255',
             'password' => 'required|string|confirmed|min:8',
         ]);
     
@@ -33,6 +35,8 @@ class SellerAuthController extends Controller
         $seller = new Seller([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'adress' => $request->adress,
             'password' => Hash::make($request->password),
         ]);
         
