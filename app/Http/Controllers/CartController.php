@@ -30,10 +30,11 @@ class CartController extends Controller
             
     }
 
-    public function store($post_id)
+    public function store($post_id, Request $request)
     {
+        $quantity = (int) $request->input('quantity');
         $user_id = Auth::user()->id;
-
+        // $post_id = Product::id();
     // すでにカートが存在するかチェック
     $existingCart = Cart::where('product_id', $post_id)->where('user_id', $user_id)->first();
 
@@ -45,6 +46,7 @@ class CartController extends Controller
         $cart = new Cart();
         $cart->product_id = $post_id;
         $cart->user_id = $user_id;
+        $cart->quantity = $quantity;
         $cart->save();
     }
 
@@ -55,7 +57,13 @@ class CartController extends Controller
     {
         $cart = Cart::where('product_id', $post_id)->where('user_id', Auth::user()->id)->first();
         if ($cart) {
-        $cart->delete();
+            if ($cart->quantity > 1) {
+                // カートの数量が1より大きい場合は、数量を1減らす
+                $cart->decrement('quantity');
+            } else {
+                // カートの数量が1の場合は、削除する
+                $cart->delete();
+            }
     } else {
         // カートが存在しない場合は新規作成
         $cart = new Cart();
