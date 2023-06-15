@@ -21,17 +21,40 @@
                 <x-jet-section-border />
             @endif
 
-            @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+            {{-- @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.two-factor-authentication-form')
                 </div>
 
                 <x-jet-section-border />
-            @endif
+            @endif --}}
 
             <div class="mt-10 sm:mt-0">
-                @livewire('profile.logout-other-browser-sessions-form')
-            </div>
+                {{-- @livewire('profile.logout-other-browser-sessions-form') --}}
+                Purchase History
+                <section class="text-gray-600 body-font">
+                    <div class="container px-5 py-24 mx-auto">
+                      {{-- @foreach($posts as $post) --}}
+                      <div class="flex flex-wrap -m-4">
+                      {{-- @foreach($posts as $post) --}}
+                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                          <a class="block relative h-48 rounded overflow-hidden">
+                            <img alt="ecommerce" class="object-cover object-center w-full h-full block">
+                          </a>
+                          <div class="mt-4">
+                            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">レストラン名（仮） </h3>
+                            <h2 class="text-gray-900 title-font text-lg font-medium"></h2>
+                            <p class="mt-1">円</p>
+                          </div>
+                          <x-jet-button>
+                            {{ __('Feedback') }}
+                          </x-jet-button>
+                        </div>
+                      {{-- @endforeach --}}
+                      </div>
+                    </div>
+                </section>
+            </div> 
 
             @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
                 <x-jet-section-border />
