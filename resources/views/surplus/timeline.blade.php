@@ -24,6 +24,11 @@
                         <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">レストラン名（仮） </h3>
                         <h2 class="text-gray-900 title-font text-lg font-medium">{{ $post->name }}</h2>
                         <p class="mt-1">{{ $post->price }}円</p>
+                        @if($post->cartedBy(Auth::user())->exists())
+                          <a href="/products/{{ $post->id }}">カートから削除</a>
+                        @else
+                          <a href="/products/{{ $post->id }}/cart">カートに入れる</a>
+                        @endif
                       </div>
                     </div>
                   @endforeach

@@ -31,6 +31,8 @@ Route::middleware([
     // })->name('dashboard');
     Route::get('/dashboard',[PostController::class,'index'])->name('dashboard');
     Route::get('/user/cart/{id}',[CartController::class,'showCart'])->name('cart.show');
+    Route::get('/products/{post_id}/cart',[CartController::class,'store']);
+    Route::get('products/{post_id}/',[CartController::class,'destroy']);
 });
 
 
