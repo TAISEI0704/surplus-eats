@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
@@ -17,6 +18,14 @@ class PostController extends Controller
         return view('surplus.timeline', compact('posts'));
 
     }
+
+    public function detail($id)
+    {
+        $post = Product::find($id);
+        return view('surplus.detail', compact('post'));
+
+    }
+
     public function create()
 {
     return view('surplus.create');
