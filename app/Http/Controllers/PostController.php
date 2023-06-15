@@ -47,6 +47,7 @@ public function store(Request $request)
         $product->image=$file;
         $product->start_time = $request->start_time;
         $product->end_time = $request->end_time;
+        $product->seller_id = Auth::id();
         
 
         $product -> save();
