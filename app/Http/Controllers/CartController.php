@@ -4,32 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     //
-    public function showCart(Request $request)
+    public function showCart($user_id)
     {
         // var_dump($id);
 
-        $user = User::all()->first();
-        // $carts = Cart::where('user_id', $id);
-        // $productIds = $carts->pluck('product_id'); // カートに入った商品のIDを取得
-        // $products = Product::whereIn('id', $productIds);
+        // $user = User::all()->first();
+        $carts = Cart::where('user_id', $user_id);
+        $productIds = $carts->pluck('product_id'); // カートに入った商品のIDを取得
+        $posts = Product::whereIn('id', $productIds)->get();
 
+        // var_dump($posts);
         // foreach ($products as $product) {
         //     $product['user_ids'] = json_decode($product->user_ids, true);
         // }
 
         // return redirect('surplus\cart',compact("products"));
-        if ($request->is_seller == $user->is_seller){
-            return view('\surplus\cart',['id' => $request->id,]);
-        }
-        else{
-            return ;
-        }
+        return view('surplus.cart',compact("posts"));
             
     }
 
