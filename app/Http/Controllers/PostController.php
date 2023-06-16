@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Seller;
 use App\Models\Product;
 
 
@@ -19,10 +20,21 @@ class PostController extends Controller
 
     }
 
+
     public function detail($id)
     {
         $post = Product::find($id);
         return view('surplus.detail', compact('post'));
+
+
+    public function sellerIndex()
+    {
+        $user = Auth::user();
+        $seller = Seller::find($user->id);
+    
+        $posts = Product::where('seller_id', $seller->getId())->get();
+    
+        return view('seller.surplus.timeline', compact('posts'));
 
     }
 
@@ -56,6 +68,7 @@ public function store(Request $request)
         $product->image=$file;
         $product->start_time = $request->start_time;
         $product->end_time = $request->end_time;
+        $product->seller_id = Auth::id();
         
 
         $product -> save();

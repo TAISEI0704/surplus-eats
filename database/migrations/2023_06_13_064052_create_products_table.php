@@ -23,6 +23,8 @@ class CreateProductsTable extends Migration
             $table->string('image')->nullable();
             $table->time('start_time');
             $table->time('end_time');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers');
             $table->timestamps();
         });
     }

@@ -12,12 +12,12 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
                     <x-jet-nav-link href="{{ Auth::user()->is_seller ? route('seller.dashboard') : route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Catalog page') }}
                     </x-jet-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ Auth::user()->is_seller ? route('seller.dashboard') : route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
@@ -26,7 +26,7 @@
                     <x-jet-nav-link href="{{ Auth::user()->is_seller ? route('seller.dashboard') : route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                </div>
+                </div> --}}
                 @if (Auth::user()->is_seller == true)
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
@@ -115,7 +115,7 @@
                             </div>
 
                             @if (Auth::user()->is_seller == false)
-                                <x-jet-dropdown-link href="{{ route('cart.show', Auth::user()) }}">
+                                <x-jet-dropdown-link href="{{ route('cart.show', Auth::user()->id) }}">
                                     {{ __('Cart') }}
                                 </x-jet-dropdown-link>
                             @endif

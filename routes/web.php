@@ -32,16 +32,21 @@ Route::middleware([
     Route::get('/dashboard',[PostController::class,'index'])->name('dashboard');
     Route::get('/detail/{id}',[PostController::class,'detail'])->name('detail');
     Route::get('/user/cart/{id}',[CartController::class,'showCart'])->name('cart.show');
+    Route::post('/products/{post_id}/cart',[CartController::class,'store']);
+    Route::get('products/{post_id}/',[CartController::class,'destroy']);
 });
 
 
 
 
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/seller-dashboard', function () {
-        return view('seller.dashboard');
-    })->name('seller.dashboard');
+Route::group(['middleware' => 'web',
+    ], function () {
+    // Route::get('/seller-dashboard', function () {
+    //     return view('seller\dashboard');
+    // })->name('seller.dashboard');
+    Route::get('/seller-dashboard',[PostController::class,'sellerIndex'])->name('seller.dashboard');
+
     Route::get('/seller-register', [SellerAuthController::class, 'showRegistrationForm'])->name('seller.register');
     Route::post('/seller-register', [SellerAuthController::class, 'register'])->name('seller.register.post');
     Route::get('/seller-login', [SellerAuthController::class, 'showLoginForm'])->name('seller.login');
