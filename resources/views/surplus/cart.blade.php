@@ -63,7 +63,9 @@
                           <button class="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
                         </div> --}}
                         <div class="flex ml-6 items-center">
-                          <span class="mr-3">{{ $post->quantity }}</span>
+                          @foreach($quantities as $quantity)
+                          <span class="mr-3">{{ $quantity }}</span>
+                          @endforeach
                           <div class="relative">
                             <select class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
                               <option>1</option>

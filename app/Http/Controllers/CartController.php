@@ -24,9 +24,11 @@ class CartController extends Controller
         // foreach ($products as $product) {
         //     $product['user_ids'] = json_decode($product->user_ids, true);
         // }
+        $carts = Cart::where('user_id', $user_id)->whereIn('product_id', $productIds)->get();
+        $quantities = $carts->pluck('quantity');
 
         // return redirect('surplus\cart',compact("products"));
-        return view('surplus.cart',compact("posts"));
+        return view('surplus.cart',compact("posts","quantities"));
             
     }
 
