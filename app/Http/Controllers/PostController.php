@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Seller;
@@ -19,6 +20,13 @@ class PostController extends Controller
 
     }
 
+
+    public function detail($id)
+    {
+        $post = Product::find($id);
+        return view('surplus.detail', compact('post'));
+
+
     public function sellerIndex()
     {
         $user = Auth::user();
@@ -27,6 +35,7 @@ class PostController extends Controller
         $posts = Product::where('seller_id', $seller->getId())->get();
     
         return view('seller.surplus.timeline', compact('posts'));
+
     }
 
     public function create()
