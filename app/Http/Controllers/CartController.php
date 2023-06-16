@@ -24,9 +24,11 @@ class CartController extends Controller
         // foreach ($products as $product) {
         //     $product['user_ids'] = json_decode($product->user_ids, true);
         // }
+        $carts = Cart::where('user_id', $user_id)->whereIn('product_id', $productIds)->get();
+        $quantities = $carts->pluck('quantity');
 
         // return redirect('surplus\cart',compact("products"));
-        return view('surplus.cart',compact("posts"));
+        return view('surplus.cart',compact("posts","quantities"));
             
     }
 
@@ -39,8 +41,9 @@ class CartController extends Controller
     $existingCart = Cart::where('product_id', $post_id)->where('user_id', $user_id)->first();
 
     if ($existingCart) {
-        // カートが存在する場合は削除
-        $existingCart->delete();
+        //カートが存在する場合,数量を更新
+        $existingCart->quantity += $quantity;
+        $existingCart->save();
     } else {
         // カートが存在しない場合は新規作成
         $cart = new Cart();
@@ -50,7 +53,8 @@ class CartController extends Controller
         $cart->save();
     }
 
-    return redirect()->back();
+    // return redirect()->back();
+    return $this->showCart($user_id);
     }
 
     public function destroy($post_id)
@@ -71,6 +75,7 @@ class CartController extends Controller
         $cart->user_id = Auth::user()->id;
         $cart->save();
     }
-        return redirect()->back();
+        // return redirect()->back();
+        return $this->showCart(Auth::user()->id);
     }
 }
