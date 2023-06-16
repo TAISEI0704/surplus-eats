@@ -115,7 +115,7 @@
                             </div>
 
                             @if (Auth::user()->is_seller == false)
-                                <x-jet-dropdown-link href="{{ route('cart.show', Auth::user()) }}">
+                                <x-jet-dropdown-link href="{{ route('cart.show', Auth::user()->id) }}">
                                     {{ __('Cart') }}
                                 </x-jet-dropdown-link>
                             @endif
