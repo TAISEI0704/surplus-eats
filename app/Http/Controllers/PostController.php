@@ -78,4 +78,9 @@ public function store(Request $request)
    
 }
 
+public function feedback()
+{
+    return view('surplus.feedback');
+}
+
 }

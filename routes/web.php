@@ -34,6 +34,7 @@ Route::middleware([
     Route::get('/user/cart/{id}',[CartController::class,'showCart'])->name('cart.show');
     Route::post('/products/{post_id}/cart',[CartController::class,'store']);
     Route::get('products/{post_id}/',[CartController::class,'destroy']);
+    Route::get('/feedback',[PostController::class,'feedback'])->name('feedback');
 });
 
 

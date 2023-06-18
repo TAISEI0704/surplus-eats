@@ -46,9 +46,11 @@
                             <h2 class="text-gray-900 title-font text-lg font-medium"></h2>
                             <p class="mt-1">円</p>
                           </div>
-                          <x-jet-button>
-                            {{ __('Feedback') }}
-                          </x-jet-button>
+                          <a href="{{ route('feedback') }}">
+                            <button>
+                             {{ __('Feedback') }}
+                            </button>
+                          </a>  
                         </div>
                       {{-- @endforeach --}}
                       </div>
