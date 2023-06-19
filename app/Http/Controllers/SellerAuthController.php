@@ -24,7 +24,7 @@ class SellerAuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:255',
-            'adress' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
             'password' => 'required|string|confirmed|min:8',
         ]);
     
@@ -36,7 +36,7 @@ class SellerAuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'adress' => $request->adress,
+            'address' => $request->address,
             'password' => Hash::make($request->password),
         ]);
         

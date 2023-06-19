@@ -2,7 +2,7 @@
     <div style="background-color: #EDEBDA;">
       <x-slot name="header">
           <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-              Catalog page
+            Product List
           </h2>
       </x-slot>
     </div>
@@ -16,13 +16,13 @@
                     <div class="flex flex-wrap -m-4">
                     @foreach($posts as $post)
                       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                        <a class="block relative h-48 rounded overflow-hidden">
+                        <a href="{{ route('post.edit',$post->id) }}" class="block relative h-48 rounded overflow-hidden">
                           <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('storage/images/'.$post->image) }}">
                         </a>
                         <div class="mt-4">
                           <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">レストラン名（仮） </h3>
                           <h2 class="text-gray-900 title-font text-lg font-medium">{{ $post->name }}</h2>
-                          <p class="mt-1">{{ $post->price }}円</p>
+                          <p class="mt-1">{{ $post->price }}Php</p>
                         </div>
                         {{-- <div class="lg:w-1/4 md:w-1/2 p-4 w-full flex">
                           <div class="w-1/2">

@@ -29,7 +29,7 @@ class Seller extends Authenticatable
         'name',
         'email',
         'phone',
-        'adress',
+        'address',
         'password',
         'is_seller',
     ];
