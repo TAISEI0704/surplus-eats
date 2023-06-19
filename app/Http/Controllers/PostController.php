@@ -83,4 +83,11 @@ public function feedback()
     return view('surplus.feedback');
 }
 
+public function edit($id)
+{
+    $post = Product::find($id);
+
+    return view('seller.surplus.edit');
+}
+
 }
