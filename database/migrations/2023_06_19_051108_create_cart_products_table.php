@@ -3,8 +3,10 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Cart;
+use App\Models\Product;
 
-class CreateCartsTable extends Migration
+class CreateCartProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +15,11 @@ class CreateCartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('cart_products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            // $table->integer('quantity');
-            $table->timestamps();
+            $table->foreignIdFor(Cart::class)->constrained();
+            $table->foreignIdFor(Product::class)->constrained();
+            $table->integer('quantity');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateCartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('cart_products');
     }
 }

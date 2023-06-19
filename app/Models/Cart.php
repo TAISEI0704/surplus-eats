@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
@@ -11,7 +12,7 @@ class Cart extends Model
     protected $fillable = [
         'user_id',
         'product_id',
-        'quantity', 
+        // 'quantity', 
     ];
 
     public function user()
@@ -19,8 +20,8 @@ class Cart extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function product()
+    public function products(): BelongsToMany
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsToMany(Product::class, 'cart_products')->withPivot('quantity');
     }
 }
