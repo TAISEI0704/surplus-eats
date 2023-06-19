@@ -34,6 +34,7 @@ Route::middleware([
     Route::get('/user/cart/{id}',[CartController::class,'showCart'])->name('cart.show');
     Route::post('/products/{post_id}/cart',[CartController::class,'store']);
     Route::get('products/{post_id}/',[CartController::class,'destroy']);
+    Route::get('/feedback',[PostController::class,'feedback'])->name('feedback');
 });
 
 
@@ -57,5 +58,9 @@ Route::group(['middleware' => 'web',
 
     Route::get('/post/create',[PostController::class,'create'])->name('post.create');
     Route::post('/post/store',[PostController::class,'store'])->name('post.store');
+
+    Route::get('/post/{id}/edit',[PostController::class,'edit'])->name('post.edit');
+    Route::patch('/post/{id}',[PostController::class,'update'])->name('post.update');
+    Route::delete('/post/{id}',[PostController::class,'destroy'])->name('post.destroy');
 });
 
