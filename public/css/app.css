@@ -1095,6 +1095,10 @@ select {
   margin-left: auto;
   margin-right: auto;
 }
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
 .-mb-10 {
   margin-bottom: -2.5rem;
 }
@@ -1815,6 +1819,9 @@ select {
 }
 .leading-8 {
   line-height: 2rem;
+}
+.leading-normal {
+  line-height: 1.5;
 }
 .leading-relaxed {
   line-height: 1.625;
