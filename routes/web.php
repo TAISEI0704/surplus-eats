@@ -60,5 +60,7 @@ Route::group(['middleware' => 'web',
     Route::post('/post/store',[PostController::class,'store'])->name('post.store');
 
     Route::get('/post/{id}/edit',[PostController::class,'edit'])->name('post.edit');
+    Route::patch('/post/{id}',[PostController::class,'update'])->name('post.update');
+    Route::delete('/post/{id}',[PostController::class,'destroy'])->name('post.destroy');
 });
 
