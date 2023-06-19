@@ -63,17 +63,24 @@
                           <button class="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
                         </div> --}}
                         <div class="flex ml-6 items-center">
-                          @foreach($quantities as $quantity)
-                          <span class="mr-3">{{ $quantity }}</span>
-                          @endforeach
+                          {{-- @foreach($quantities as $quantity)
+                          <span class="mr-3">{{ $quantity }}</span> --}}
                           <div class="relative">
-                            <select class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                            @foreach($quantities as $quantity)
+                            {{-- <select value={{ $quantity }} class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
                               <option>1</option>
                               <option>2</option>
                               <option>3</option>
                               <option>4</option>
                               <option>5</option>
-                            </select>
+                            </select> --}}
+            
+                            <select name="quantity" class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                              @for ($i = 1; $i <= $quantity; $i++)
+                                  <option value="{{ $i }}" {{ $i == $quantity ? 'selected' : '' }}>{{ $i }}</option>
+                              @endfor
+                          </select>
+                          @endforeach
                             <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
                                 <path d="M6 9l6 6 6-6"></path>

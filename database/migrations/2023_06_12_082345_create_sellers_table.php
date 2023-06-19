@@ -22,7 +22,7 @@ class CreateSellersTable extends Migration
             $table->string('password');
             $table->string('content')->nullable();
             $table->string('phone');
-            $table->string('adress');
+            $table->string('address');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
