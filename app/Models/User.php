@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class, 'user_id');
     }
+
+    public function purchase_histories()
+    {
+        return $this->hasMany(PurchaseHistories::class, 'user_id');
+    }
 }

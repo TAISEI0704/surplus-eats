@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellerAuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PurchaseController;
 use App\Models\Models\Seller;
 
 /*
@@ -35,6 +36,8 @@ Route::middleware([
     Route::post('/products/{post_id}/cart',[CartController::class,'store']);
     Route::get('products/{post_id}/',[CartController::class,'destroy']);
     Route::get('/feedback',[PostController::class,'feedback'])->name('feedback');
+    Route::post('/purchase', [PurchaseController::class, 'storePurchase'])->name('purchase');
+    Route::get('/purchase/{id}',[PurchaseController::class,'showPurchase'])->name('purchase.show');
     Route::get('/complete',[PostController::class,'complete'])->name('complete');
 });
 
