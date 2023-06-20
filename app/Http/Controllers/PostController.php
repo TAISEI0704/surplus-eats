@@ -133,9 +133,6 @@ public function update(Request $request, $id)
     return redirect()->route('seller.dashboard');
 }
 
-public function complete()
-{
-    return view('surplus.complete');
-}
+
 
 }

@@ -18,6 +18,10 @@
                         <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">Your purchase is complete</h2>
                       </div>
                       <div class="flex flex-wrap -m-4">
+                        @php
+
+                        @endphp
+                        @foreach($purchaseHistories as $purchaseHistory)
                         <div class="p-4 md:w-1/3">
                           <div class="flex rounded-lg h-full w-full bg-gray-100 p-8 flex-col">
                             <div class="flex items-center mb-3">
@@ -26,12 +30,13 @@
                                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                                 </svg>
                               </div> --}}
-                              <h2 class="text-gray-900 text-lg title-font font-medium">Restaurant Name</h2>
+                              <h2 class="text-gray-900 text-lg title-font font-medium">{{ $purchaseHistory->product->seller->name }}</h2>
                             </div>
                             <div class="flex-grow">
-                              <p class="leading-relaxed text-base">Product Name</p>
-                              <p class="leading-relaxed text-base">Price</p>
-                              <p class="leading-relaxed text-base">Quantity</p>
+                              <p class="leading-relaxed text-base">商品名:{{ $purchaseHistory->product->name }}</p>
+                              <p class="leading-relaxed text-base">金額:{{ $purchaseHistory->product->price }}円</p>
+                              <p class="leading-relaxed text-base">数量:{{ $purchaseHistory->purchase_quantity }}個</p>
+                              <p class="leading-relaxed text-base">購入日:{{ date('Y-m-d H:i', strtotime($purchaseHistory->created_at)) }}</p>
                               {{-- <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                   <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -39,9 +44,10 @@
                               </a> --}}
                             </div>
                           </div>
-                          <button class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">戻る</button>
+                          {{-- <button class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"><a href="{{ route('dashboard') }}">戻る</a></button> --}}
                         </div>
-                        
+                        @endforeach
+                        <button class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"><a href="{{ route('dashboard') }}">戻る</a></button>
                         {{-- <div class="p-4 md:w-1/3">
                           <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
                             <div class="flex items-center mb-3">
@@ -86,6 +92,16 @@
                           </div>
                         </div> --}}
                       </div>
+                      <div>
+                        @php
+                            $totalPrice = 0;
+                            foreach ($purchaseHistories as $purchaseHistory) {
+                                $totalPrice += $purchaseHistory->product->price*$purchaseHistory->purchase_quantity;
+                            }
+                        @endphp
+                    
+                        <p>Total Price: {{ $totalPrice }}</p>
+                    </div>
                     </div>
                 </section>
             </div>

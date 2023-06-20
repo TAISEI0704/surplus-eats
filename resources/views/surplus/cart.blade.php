@@ -7,6 +7,9 @@
     <div class="py-12">
       <form action="{{ route('purchase') }}" method="POST">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          @if ($carts->isEmpty())
+          <p>カートに入れている商品がありません。</p>
+          @else
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               @foreach($carts as $cart)
               @foreach($cart->products as $product)
@@ -20,7 +23,7 @@
                   <div class="lg:w-4/5 mx-auto flex flex-wrap">
                     <img alt="ecommerce" class="lg:w-1/2 w-5 lg:h-auto h-10 object-cover object-center rounded" src="{{ asset('storage/images/'.$product->image) }}">
                     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                      <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
+                      <h2 class="text-sm title-font text-gray-500 tracking-widest">{{ $product->seller->name }}</h2>
                       <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $product->name }}</h1>
                        {{-- <div class="flex mb-4">
                         <span class="flex items-center">
@@ -40,7 +43,7 @@
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                           </svg> --}}
                           <span class="text-gray-600 ml-3">{{ date('H:i', strtotime($product->start_time)) }}~{{ date('H:i', strtotime($product->end_time)) }}</span> 
-                          <span class="text-gray-600 ml-3">3 left</span>
+                          <span class="text-gray-600 ml-3">{{ $product->quantity }} left</span>
                           
                         {{-- </span>
                         <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
@@ -103,7 +106,7 @@
                       </div>
                       <div class="flex">
                         <span class="title-font font-medium text-2xl text-gray-900">{{ $product->price }}円</span>
-                        <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"><a href="/products/{{ $product->id }}">カートから削除</a></button>
+                        <div class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"><a href="/products/{{ $product->id }}">カートから削除</a></div>
                       </div>
                     </div>
                   </div>
@@ -116,6 +119,7 @@
             <button type="submit" class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
               購入する
             </button>
+            @endif
         </div>
       </form>
     </div>
