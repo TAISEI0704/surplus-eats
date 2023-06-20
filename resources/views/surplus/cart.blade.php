@@ -5,10 +5,16 @@
         </h2>
     </x-slot>
     <div class="py-12">
+      <form action="{{ route('purchase') }}" method="POST">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               @foreach($carts as $cart)
               @foreach($cart->products as $product)
+              
+                @csrf
+                <input type="hidden" name="product_id[]" value="{{ $product->id }}">
+                <!-- 商品情報の表示部分 -->
+              
               <section class="text-gray-600 body-font overflow-hidden">
                 <div class="container px-3 py-18 mx-auto">
                   <div class="lg:w-4/5 mx-auto flex flex-wrap">
@@ -79,9 +85,9 @@
                               <option>5</option>
                             </select> --}}
             
-                            <select name="quantity" class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                              @for ($i = 1; $i <= $product->pivot->quantity; $i++)
-                                  <option value="{{ $i }}" {{ $i == $quantity ? 'selected' : '' }}>{{ $i }}</option>
+                            <select name="quantity[]" class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                              @for ($i = 1; $i <= $product->quantity; $i++)
+                                  <option value="{{ $i }}" {{ $i == $product->pivot->quantity ? 'selected' : '' }}>{{ $i }}</option>
                               @endfor
                           </select>
                           {{--@endforeach--}}
@@ -95,18 +101,23 @@
                       </div>
                       <div class="flex">
                         <span class="title-font font-medium text-2xl text-gray-900">{{ $product->price }}円</span>
-                        <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                        {{-- <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                           <a href="">購入する</a>
-                        </button>
+                        </button> --}}
                         <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"><a href="/products/{{ $product->id }}">カートから削除</a></button>
                       </div>
                     </div>
                   </div>
                 </div>
               </section>
+
                 @endforeach
                 @endforeach
             </div>
+            <button type="submit" class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+              購入する
+            </button>
         </div>
+      </form>
     </div>
 </x-app-layout>

@@ -30,7 +30,7 @@ class MultiAuthTableSeeder extends Seeder
             'email' => 'admin@admin.admin',
             'password' => Hash::make('password'),
             'phone' => '080-0123-4567',
-            'adress' => '福岡県',
+            'address' => '福岡県',
         ]);
 
         Product::create([
