@@ -44,5 +44,17 @@ class MultiAuthTableSeeder extends Seeder
             'image' => 'food_chikinnanban_ogura.jpeg',
             'category' => 'カテゴリ1',
         ]);
+
+        Product::create([
+            'name' => 'ぎょうざ',
+            'price' => '600',
+            'content' => '丸岡のぎょうざ',
+            'quantity' => '6',
+            'start_time' => '10:30',
+            'end_time' => '16:00',
+            'seller_id' => '1',
+            'image' => 'food_gyoza_maruoka.jpeg',
+            'category' => 'カテゴリ3',
+        ]);
     }
 }

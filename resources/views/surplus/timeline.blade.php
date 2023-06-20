@@ -16,6 +16,12 @@
                   {{-- @foreach($posts as $post) --}}
                   <div class="flex flex-wrap -m-4">
                   @foreach($posts as $post)
+                    {{-- @if ($post->quantity <= 0)
+                      @php
+                      $currentTime = now();
+                      $hideTime = $post->updated_at->addHour(); // 投稿の更新日時から1時間後を非表示の時刻とする
+                      @endphp
+                    @endif --}}
                     <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
                       {{-- <a class="block relative h-48 rounded overflow-hidden"> --}}
                       <a class="block relative h-48 rounded overflow-hidden" href="{{ route('detail',$post->id) }}">
@@ -30,6 +36,7 @@
                         {{-- @else --}}
                           {{-- <a href="/products/{{ $post->id }}/cart">カートに入れる</a> --}}
                         {{-- @endif --}}
+                        @if ($post->quantity > 0)
                         <form action="/products/{{ $post->id }}/cart" method="POST">
                           @csrf
                           {{-- <input type="number" id="quantity" name="cart_quantity" value="{{ old('quantity') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> --}}
@@ -42,6 +49,9 @@
                           <p class="ml-1">個</p>
                           <button type="submit">カートに入れる</button>
                         </form>
+                        @else
+                        <p>SOLD OUT</p>
+                        @endif
                       </div>
                     </div>
                   @endforeach
