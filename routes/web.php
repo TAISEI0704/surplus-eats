@@ -35,6 +35,7 @@ Route::middleware([
     Route::post('/products/{post_id}/cart',[CartController::class,'store']);
     Route::get('products/{post_id}/',[CartController::class,'destroy']);
     Route::get('/feedback',[PostController::class,'feedback'])->name('feedback');
+    Route::get('/complete',[PostController::class,'complete'])->name('complete');
 });
 
 
