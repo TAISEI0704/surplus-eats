@@ -85,8 +85,10 @@
                               <option>5</option>
                             </select> --}}
             
+
                             <select name="quantity[]" class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
                               @for ($i = 1; $i <= $product->quantity; $i++)
+
                                   <option value="{{ $i }}" {{ $i == $product->pivot->quantity ? 'selected' : '' }}>{{ $i }}</option>
                               @endfor
                           </select>
@@ -101,9 +103,6 @@
                       </div>
                       <div class="flex">
                         <span class="title-font font-medium text-2xl text-gray-900">{{ $product->price }}円</span>
-                        {{-- <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                          <a href="">購入する</a>
-                        </button> --}}
                         <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"><a href="/products/{{ $product->id }}">カートから削除</a></button>
                       </div>
                     </div>

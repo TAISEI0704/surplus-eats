@@ -38,6 +38,7 @@ Route::middleware([
     Route::get('/feedback',[PostController::class,'feedback'])->name('feedback');
     Route::post('/purchase', [PurchaseController::class, 'storePurchase'])->name('purchase');
     Route::get('/purchase/{id}',[PurchaseController::class,'showPurchase'])->name('purchase.show');
+    Route::get('/complete',[PostController::class,'complete'])->name('complete');
 });
 
 
