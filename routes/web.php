@@ -6,6 +6,7 @@ use App\Http\Controllers\SellerAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PurchaseController;
 use App\Models\Models\Seller;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +36,12 @@ Route::middleware([
     Route::get('/user/cart/{id}',[CartController::class,'showCart'])->name('cart.show');
     Route::post('/products/{post_id}/cart',[CartController::class,'store']);
     Route::get('products/{post_id}/',[CartController::class,'destroy']);
-    Route::get('/feedback',[PostController::class,'feedback'])->name('feedback');
+    // Route::get('/feedback',[PostController::class,'feedback'])->name('feedback');
     Route::post('/purchase', [PurchaseController::class, 'storePurchase'])->name('purchase');
     Route::get('/purchase/{id}',[PurchaseController::class,'showPurchase'])->name('purchase.show');
     // Route::get('/complete',[PostController::class,'complete'])->name('complete');
+    Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
+    Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
 });
 
 
@@ -66,5 +69,8 @@ Route::group(['middleware' => 'web',
     Route::get('/post/{id}/edit',[PostController::class,'edit'])->name('post.edit');
     Route::patch('/post/{id}',[PostController::class,'update'])->name('post.update');
     Route::delete('/post/{id}',[PostController::class,'destroy'])->name('post.destroy');
+
+    // Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
+    // Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
 });
 

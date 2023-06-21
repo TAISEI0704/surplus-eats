@@ -78,10 +78,10 @@ public function store(Request $request)
    
 }
 
-public function feedback()
-{
-    return view('surplus.feedback');
-}
+// public function feedback()
+// {
+//     return view('surplus.feedback');
+// }
 
 public function edit($id)
 {
