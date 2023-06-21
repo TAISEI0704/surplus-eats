@@ -75,4 +75,16 @@ class PurchaseController extends Controller
         return view('surplus.complete', compact('purchaseHistories'));
     }
 
+    // public function showPurchaseHistory()
+    // {
+    //     $userId = Auth::user()->id;
+
+    //     $latestPurchaseHistories = PurchaseHistory::where('user_id', $userId)
+    //     ->with('product', 'product.seller')
+    //     ->latest('created_at')
+    //     ->get();
+
+    //     return
+    // }
+
 }

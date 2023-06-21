@@ -28,9 +28,11 @@ class MultiAuthTableSeeder extends Seeder
         Seller::create([
             'name' => '管理者',
             'email' => 'admin@admin.admin',
+            'image' => 'imas_0801-3.jpg',
             'password' => Hash::make('password'),
             'phone' => '080-0123-4567',
-            'address' => '福岡県',
+            'address' => '宮崎県北諸県郡三股町稗田30-8',
+            'content' => 'レストランだよ～',
         ]);
 
         Product::create([

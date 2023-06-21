@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellerAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\UserProfileController;
 use App\Models\Models\Seller;
 use App\Http\Controllers\ReviewController;
 
@@ -40,8 +41,13 @@ Route::middleware([
     Route::post('/purchase', [PurchaseController::class, 'storePurchase'])->name('purchase');
     Route::get('/purchase/{id}',[PurchaseController::class,'showPurchase'])->name('purchase.show');
     // Route::get('/complete',[PostController::class,'complete'])->name('complete');
+
     Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
     Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
+    Route::get('/user/profile', [UserProfileController::class, 'show'])
+    ->name('profile.show')
+    ->middleware(['auth']);
+
 });
 
 

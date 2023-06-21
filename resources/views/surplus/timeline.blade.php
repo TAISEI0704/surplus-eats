@@ -22,7 +22,7 @@
                       $hideTime = $post->updated_at->addHour(); // 投稿の更新日時から1時間後を非表示の時刻とする
                       @endphp
                     @endif --}}
-                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" @if($post->quantity <= 0 && now() >= $post->updated_at->addHour()) style="display: none;" @endif>
                       {{-- <a class="block relative h-48 rounded overflow-hidden"> --}}
                       <a class="block relative h-48 rounded overflow-hidden" href="{{ route('detail',$post->id) }}">
                         <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('storage/images/'.$post->image) }}">
@@ -31,6 +31,9 @@
                         <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $post->seller->name }} </h3>
                         <h2 class="text-gray-900 title-font text-lg font-medium">{{ $post->name }}</h2>
                         <p class="mt-1">{{ $post->price }}Php</p>
+                        <span class="text-gray-600 ml-3">
+                          {{ \Carbon\Carbon::parse($post->start_time)->format('H:i') }} ~ {{ \Carbon\Carbon::parse($post->end_time)->format('H:i') }}
+                          </span>
                         {{-- @if($post->cartedBy(Auth::user())->exists())
                           <a href="/products/{{ $post->id }}">カートから削除</a> --}}
                         {{-- @else --}}
@@ -40,14 +43,14 @@
                         <form action="/products/{{ $post->id }}/cart" method="POST">
                           @csrf
                           {{-- <input type="number" id="quantity" name="cart_quantity" value="{{ old('quantity') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> --}}
+                          <p class="ml-1">Quantity:</p>
                           <select name='cart_quantity' class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
                             @for ($i = 1; $i <= $post->quantity; $i++)
                                   <option>{{ $i }}</option>
                             @endfor
                           </select>
-
-                          <p class="ml-1">個</p>
-                          <button type="submit">カートに入れる</button>
+                          <p></p>
+                          <button type="submit">Add to Your Cart</button>
                         </form>
                         @else
                         <p>SOLD OUT</p>
