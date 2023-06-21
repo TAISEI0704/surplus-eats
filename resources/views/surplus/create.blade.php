@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            新規投稿
+            New Post
         </h2>
     </x-slot>
 
@@ -15,66 +15,66 @@
                     <section class="text-gray-600 body-font relative">
                         <div class="container px-5 py-24 mx-auto">
                           <div class="flex flex-col text-center w-full mb-12">
-                            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">新規投稿</h1>
+                            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">New Post</h1>
                           </div>
                           <div class="lg:w-1/2 md:w-2/3 mx-auto">
                             <div class="flex flex-wrap -m-2">
                               <div class="p-2 w-full">
                                 <div class="relative">
-                                  <label for="name" class="leading-7 text-sm text-gray-600">商品名</label>
+                                  <label for="name" class="leading-7 text-sm text-gray-600">Product Name</label>
                                   <input type="text" id="name" name="name" value="{{ old('title') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                               </div>
                               <div class="p-2 w-full flex">
                                 <div class="relative flex-grow">
-                                    <label for="price" class="leading-7 text-sm text-gray-600">値段</label>
+                                    <label for="price" class="leading-7 text-sm text-gray-600">Price</label>
                                     <div class="flex items-center">
                                       <input type="text" id="price" name="price" value="{{ old('title') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                      <p class="ml-1">円</p>
+                                      <p class="ml-1">Peso</p>
                                     </div>
                                 </div>
                               </div>
                               <div class="p-2 w-full flex">
                                 <div class="relative flex-grow">
-                                    <label for="quantity" class="leading-7 text-sm text-gray-600">個数</label>
+                                    <label for="quantity" class="leading-7 text-sm text-gray-600">Quantity</label>
                                     <div class="flex items-center">
                                       <input type="number" id="quantity" name="quantity" value="{{ old('title') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                      <p class="ml-1">個</p>
+                                      <p class="ml-1"></p>
                                     </div>
                                 </div>
                               </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
-                                    <label for="category" class="leading-7 text-sm text-gray-600">カテゴリ</label>
+                                    <label for="category" class="leading-7 text-sm text-gray-600">Category</label>
                                     <select id="category" name="category" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                        <option value="">カテゴリを選択してください</option>
-                                        <option value="category1">カテゴリ1</option>
-                                        <option value="category2">カテゴリ2</option>
-                                        <option value="category3">カテゴリ3</option>
+                                        <option value="">Please select a category</option>
+                                        <option value="category1">category1</option>
+                                        <option value="category2">category2</option>
+                                        <option value="category3">category3</option>
                                     </select>
                                 </div>
                               </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
-                                  <label for="content" class="leading-7 text-sm text-gray-600">紹介文</label>
+                                  <label for="content" class="leading-7 text-sm text-gray-600">Introduction</label>
                                   <textarea id="content" name="content" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ old('contents') }}</textarea>
                                 </div>
                               </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
-                                    <label for="start_time" class="leading-7 text-sm text-gray-600">受け渡し可能時間（開始）</label>
+                                    <label for="start_time" class="leading-7 text-sm text-gray-600">Available Pickup Time（Start）</label>
                                     <input type="time" id="start_time" name="start_time" value="{{ old('start_time') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                               </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
-                                    <label for="end_time" class="leading-7 text-sm text-gray-600">受け渡し可能時間（終了）</label>
+                                    <label for="end_time" class="leading-7 text-sm text-gray-600">Available Pickup Time（End）</label>
                                     <input type="time" id="end_time" name="end_time" value="{{ old('end_time') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                               </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
-                                  <label class="leading-7 text-sm text-gray-600">画像</label>
+                                  <label class="leading-7 text-sm text-gray-600">Image</label>
                                   <input type="file" id="image" name="image" accept="image/png, image/jpeg, image/jpg" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                               </div>
@@ -85,8 +85,8 @@
                                 </div>
                               </div> --}}
                               <div class="p-2 w-1/2">
-                                <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" style="padding-left: 32px; padding-right: 32px;">登録</button>
-                                <button type="button" onclick="window.history.back()" class="text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg" style="padding-left: 32px; padding-right: 32px;">戻る</button>
+                                <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" style="padding-left: 32px; padding-right: 32px;">Register</button>
+                                <button type="button" onclick="window.history.back()" class="text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg" style="padding-left: 32px; padding-right: 32px;">Return</button>
                               </div>
                             </div>
                           </div>

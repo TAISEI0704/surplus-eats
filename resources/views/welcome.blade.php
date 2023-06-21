@@ -91,7 +91,7 @@
         @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
-                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                <a href="{{ Illuminate\Support\Facades\Auth::user()->is_seller ? route('seller.dashboard') : route('dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
             @else
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
                 <a href="{{ route('seller.login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in(seller)</a>

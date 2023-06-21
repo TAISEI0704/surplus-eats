@@ -4,7 +4,10 @@ use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellerAuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\UserProfileController;
 use App\Models\Models\Seller;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,17 +33,34 @@ Route::middleware([
     //     return view(dashboard');
     // })->name('dashboard');
     Route::get('/dashboard',[PostController::class,'index'])->name('dashboard');
+    Route::get('/detail/{id}',[PostController::class,'detail'])->name('detail');
     Route::get('/user/cart/{id}',[CartController::class,'showCart'])->name('cart.show');
+    Route::post('/products/{post_id}/cart',[CartController::class,'store']);
+    Route::get('products/{post_id}/',[CartController::class,'destroy']);
+    // Route::get('/feedback',[PostController::class,'feedback'])->name('feedback');
+    Route::post('/purchase', [PurchaseController::class, 'storePurchase'])->name('purchase');
+    Route::get('/purchase/{id}',[PurchaseController::class,'showPurchase'])->name('purchase.show');
+    // Route::get('/complete',[PostController::class,'complete'])->name('complete');
+
+    Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
+    Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
+    Route::get('/user/profile', [UserProfileController::class, 'show'])
+    ->name('profile.show')
+    ->middleware(['auth']);
+
 });
 
 
 
 
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/seller-dashboard', function () {
-        return view('seller.dashboard');
-    })->name('seller.dashboard');
+Route::group(['middleware' => 'web',
+    ], function () {
+    // Route::get('/seller-dashboard', function () {
+    //     return view('seller\dashboard');
+    // })->name('seller.dashboard');
+    Route::get('/seller-dashboard',[PostController::class,'sellerIndex'])->name('seller.dashboard');
+
     Route::get('/seller-register', [SellerAuthController::class, 'showRegistrationForm'])->name('seller.register');
     Route::post('/seller-register', [SellerAuthController::class, 'register'])->name('seller.register.post');
     Route::get('/seller-login', [SellerAuthController::class, 'showLoginForm'])->name('seller.login');
@@ -51,5 +71,12 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/post/create',[PostController::class,'create'])->name('post.create');
     Route::post('/post/store',[PostController::class,'store'])->name('post.store');
+
+    Route::get('/post/{id}/edit',[PostController::class,'edit'])->name('post.edit');
+    Route::patch('/post/{id}',[PostController::class,'update'])->name('post.update');
+    Route::delete('/post/{id}',[PostController::class,'destroy'])->name('post.destroy');
+
+    // Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
+    // Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
 });
 

@@ -6,7 +6,7 @@
 
         <x-jet-validation-errors class="mb-4" />
             seller
-        <form method="POST" action="{{ route('seller.register.post') }}">
+        <form method="POST" action="{{ route('seller.register.post') }}"  enctype="multipart/form-data">
             @csrf
 
             <div>
@@ -25,8 +25,19 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="adress" value="{{ __('Adress') }}" />
-                <x-jet-input id="adress" class="block mt-1 w-full" type="text" name="adress" :value="old('adress')" required />
+                <x-jet-label for="address" value="{{ __('Address') }}" />
+                <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="content" value="{{ __('content') }}" />
+                <x-jet-input id="content" class="block mt-1 w-full" type="textarea" name="content" :value="old('content')" required />
+            </div>
+
+           
+            <div class="mt-4">
+                <x-jet-label for="image" value="{{ __('Image') }}" />
+                <x-jet-input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/png, image/jpeg, image/jpg" required />
             </div>
 
             <div class="mt-4">
@@ -61,6 +72,9 @@
                     {{ __('Already registered?') }}
                 </a>
 
+                <button type="button" onclick="window.history.back()" class="ml-4 bg-gray-500 hover:bg-gray-600 text-white font-bold py-1 px-4 rounded">
+                    {{ __('Return') }}
+                </button>
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}
                 </x-jet-button>

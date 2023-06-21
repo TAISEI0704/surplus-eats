@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Seller extends Authenticatable
 {
@@ -28,7 +29,9 @@ class Seller extends Authenticatable
         'name',
         'email',
         'phone',
-        'adress',
+        'address',
+        'image',
+        'content',
         'password',
         'is_seller',
     ];
@@ -62,4 +65,19 @@ class Seller extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'seller_id');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
 }

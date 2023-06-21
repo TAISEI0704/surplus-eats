@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Details page
         </h2>
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     </x-slot>
 
     <div class="py-12">
@@ -11,10 +12,13 @@
                 <section class="text-gray-600 body-font overflow-hidden">
                     <div class="container px-5 py-24 mx-auto">
                       <div class="lg:w-4/5 mx-auto flex flex-wrap">
-                        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+                        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="{{ asset('storage/images/'.$post->image) }}">
                         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                          {{-- <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2> --}}
-                          <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
+                          <h2 class="text-sm title-font text-gray-500 tracking-widest">{{ $post->seller->name }}</h2>
+                          <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $post->name }}</h1>
+                      
+                            <span class="text-gray-600 ml-3"><i class="fas fa-tag fa-rotate-90" style="margin-right: 10px;"></i>{{ $post->category}}</span>
+                       
                           <div class="flex mb-4">
                             <span class="flex items-center">
                               {{-- <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -32,10 +36,13 @@
                               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                               </svg> --}}
-                              <span class="text-gray-600 ml-3">14:00 ~ 16:00</span>
+
+                          
+                            <span class="text-gray-600 ml-3">
+                            {{ \Carbon\Carbon::parse($post->start_time)->format('H:i') }} ~ {{ \Carbon\Carbon::parse($post->end_time)->format('H:i') }}
                             </span>
                             <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                                <span class="text-gray-600 ml-3">2 left</span>
+                                <span class="text-gray-600 ml-3  @if ($post->quantity <= 3) text-red-500 @endif">{{ $post->quantity }} left</span>
                               {{-- <a class="text-gray-500">
                                 <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                                   <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -52,8 +59,12 @@
                                 </svg>
                               </a> --}}
                             </span>
+                           
                           </div>
-                          <p class="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
+                          <p class="leading-relaxed">{{ $post->content }}</p>
+                          @if ($post->quantity > 0)
+                          <form action="/products/{{ $post->id }}/cart" method="POST">
+                          @csrf
                           <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                             {{-- <div class="flex">
                               <span class="mr-3">Color</span>
@@ -64,12 +75,11 @@
                             <div class="flex ml-6 items-center">
                               <span class="mr-3">Quantity</span>
                               <div class="relative">
-                                <select class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
+
+                                <select name='cart_quantity' class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                                  @for ($i = 1; $i <= $post->quantity; $i++)
+                                        <option>{{ $i }}</option>
+                                  @endfor
                                 </select>
                                 <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
@@ -80,39 +90,29 @@
                             </div>
                           </div>
                           <div class="flex">
-                            <span class="title-font font-medium text-2xl text-gray-900">$58.00</span>
-                            <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add</button>
+                            <span class="title-font font-medium text-2xl text-gray-900">{{ $post->price }}Php</span>
+                            <button type="submit" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to Your Cart</button>
                             {{-- <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                               {{-- <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24"> --}}
                                 {{-- <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                               </svg> --}}
                             {{-- </button>  --}}
                           </div>
+                          </form>
+                          @else
+                          <p class="@if ($post->quantity <= 0) text-red-500 @endif">SOLD OUT</p>
+                          @endif
                         </div>
                       </div>
                     </div>
                 </section>
                 <section class="text-gray-600 body-font relative">
                     <div class="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-                      <div class="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
-                        <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed" style="filter: grayscale(1) contrast(1.2) opacity(0.4);"></iframe>
-                        <div class="bg-white relative flex flex-wrap py-6 rounded shadow-md">
-                          <div class="lg:w-1/2 px-6">
-                            <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
-                            <p class="mt-1">Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter</p>
-                          </div>
-                          <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
-                            <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
-                            <a class="text-indigo-500 leading-relaxed">example@email.com</a>
-                            <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
-                            <p class="leading-relaxed">123-456-7890</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
-                        <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Feedback</h2>
-                        <p class="leading-relaxed mb-5 text-gray-600">Post-ironic portland shabby chic echo park, banjo fashion axe</p>
-                        <div class="relative mb-4">
+
+                      {{-- <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+                        <h2 class="text-gray-900 text-lg mb-1 font-midium title-font text-center">{{ $post->seller->name }}</h2>
+                        <p class="leading-relaxed mb-5 text-gray-600 text-center">{{ $post->seller->content }}</p> --}}
+                        {{-- <div class="relative mb-4">
                           <img src="" alt="">
                           <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
                           <input type="text" id="name" name="name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -127,6 +127,32 @@
                         </div>
                         <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
                         <p class="text-xs text-gray-500 mt-3">Chicharrones blog helvetica normcore iceland tousled brook viral artisan.</p>
+                      </div> --}}
+                      <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+                        <h2 class="text-gray-900 text-lg mb-1 font-medium title-font text-center">{{ $post->seller->name }}</h2>
+                        <p class="leading-relaxed mb-5 text-gray-600 text-center">{{ $post->seller->content }}</p>
+                        <div class="relative mb-4">
+                          <div class="w-full h-64">
+                            <img src="{{ asset('storage/images/'.$post->seller->image) }}" alt="写真の説明" class="w-full h-full object-cover">
+                          </div>
+                        </div>
+                        {{-- <p class="text-xs text-gray-500 mt-3">Chicharrones blog helvetica normcore iceland tousled brook viral artisan.</p> --}}
+                      </div>
+                      <div class="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+                        {{-- <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q={{ urlencode($post->seller->address) }}&ie=UTF8&t=&z=14&iwloc=B&output=embed" style="filter: grayscale(1) contrast(1.2) opacity(0.4);"></iframe> --}}
+                        <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q={{ urlencode($post->seller->address) }}&ie=UTF8&t=&z=14&iwloc=B&output=embed"></iframe>
+                        <div class="bg-white relative flex flex-wrap py-6 rounded shadow-md">
+                          <div class="lg:w-1/2 px-6">
+                            <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
+                            <p class="mt-1">{{ $post->seller->address }}</p>
+                          </div>
+                          <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+                            <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
+                            <a class="text-indigo-500 leading-relaxed">{{ $post->seller->email }}</a>
+                            <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
+                            <p class="leading-relaxed">{{ $post->seller->phone }}</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                 </section>
