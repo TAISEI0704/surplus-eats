@@ -22,7 +22,7 @@
                       $hideTime = $post->updated_at->addHour(); // 投稿の更新日時から1時間後を非表示の時刻とする
                       @endphp
                     @endif --}}
-                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" @if($post->quantity <= 0 && now() >= $post->updated_at->addHour()) style="display: none;" @endif>
                       {{-- <a class="block relative h-48 rounded overflow-hidden"> --}}
                       <a class="block relative h-48 rounded overflow-hidden" href="{{ route('detail',$post->id) }}">
                         <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('storage/images/'.$post->image) }}">
