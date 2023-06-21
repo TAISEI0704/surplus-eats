@@ -22,9 +22,12 @@
                         <div class="mt-4">
                           <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $post->seller->name }}</h3>
                           <h2 class="text-gray-900 title-font text-lg font-medium">{{ $post->name }}</h2>
+                          <p class="mt-1">{{ $post->content }}</p>
                           <p class="mt-1">{{ $post->price }}Php</p>
                           @if ($post->quantity <= 0)
-                          <p>SOLD OUT</p>
+                          <p class="@if ($post->quantity <= 0) text-red-500 @endif">SOLD OUT</p>
+                          @else
+                          <p class="mt-1  @if ($post->quantity <= 3) text-red-500 @endif">{{ $post->quantity }} left</p>
                           @endif
                         </div>
                         {{-- <div class="lg:w-1/4 md:w-1/2 p-4 w-full flex">
