@@ -15,12 +15,12 @@
                   <div class="container px-5 py-24 mx-auto">
                     <div class="flex flex-wrap -m-4">
                     @foreach($posts as $post)
-                      <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                      <div class="lg:w-1/4 md:w-1/2 p-4 w-full"  @if($post->quantity <= 0 && now() >= $post->updated_at->addMinutes(5)) style="display: none;" @endif>
                         <a href="{{ route('post.edit',$post->id) }}" class="block relative h-48 rounded overflow-hidden">
                           <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('storage/images/'.$post->image) }}">
                         </a>
                         <div class="mt-4">
-                          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">レストラン名（仮） </h3>
+                          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $post->seller->name }}</h3>
                           <h2 class="text-gray-900 title-font text-lg font-medium">{{ $post->name }}</h2>
                           <p class="mt-1">{{ $post->price }}Php</p>
                         </div>
