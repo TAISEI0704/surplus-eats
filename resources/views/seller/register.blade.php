@@ -72,6 +72,9 @@
                     {{ __('Already registered?') }}
                 </a>
 
+                <button type="button" onclick="window.history.back()" class="ml-4 bg-gray-500 hover:bg-gray-600 text-white font-bold py-1 px-4 rounded">
+                    {{ __('Return') }}
+                </button>
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}
                 </x-jet-button>

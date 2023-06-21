@@ -44,7 +44,7 @@ class MultiAuthTableSeeder extends Seeder
             'end_time' => '14:00',
             'seller_id' => '1',
             'image' => 'food_chikinnanban_ogura.jpeg',
-            'category' => 'カテゴリ1',
+            'category' => 'category1',
         ]);
 
         Product::create([
@@ -56,7 +56,7 @@ class MultiAuthTableSeeder extends Seeder
             'end_time' => '16:00',
             'seller_id' => '1',
             'image' => 'food_gyoza_maruoka.jpeg',
-            'category' => 'カテゴリ3',
+            'category' => 'category3',
         ]);
     }
 }

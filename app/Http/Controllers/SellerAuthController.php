@@ -33,8 +33,8 @@ class SellerAuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $file = request()->file('image')->getClientOriginalName();
-        request()->file('image')->storeAs('public/images', $file);
+        $file = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/images', $file);
     
     
         $seller = new Seller([

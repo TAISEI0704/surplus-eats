@@ -15,7 +15,8 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts=Product::all();
+        // $posts=Product::all()->latest('created_at')->get();
+        $posts = Product::latest('created_at')->get();
         return view('surplus.timeline', compact('posts'));
 
     }
@@ -33,7 +34,7 @@ class PostController extends Controller
         $user = Auth::user();
         $seller = Seller::find($user->id);
     
-        $posts = Product::where('seller_id', $seller->getId())->get();
+        $posts = Product::where('seller_id', $seller->getId())->latest('created_at')->get();;
     
         return view('seller.surplus.timeline', compact('posts'));
 
