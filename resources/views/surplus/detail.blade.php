@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Details page
         </h2>
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     </x-slot>
 
     <div class="py-12">
@@ -15,6 +16,9 @@
                         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                           {{-- <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2> --}}
                           <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $post->name }}</h1>
+                      
+                            <span class="text-gray-600 ml-3"><i class="fas fa-tag fa-rotate-90" style="margin-right: 10px;"></i>{{ $post->category}}</span>
+                       
                           <div class="flex mb-4">
                             <span class="flex items-center">
                               {{-- <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -55,6 +59,7 @@
                                 </svg>
                               </a> --}}
                             </span>
+                           
                           </div>
                           <p class="leading-relaxed">{{ $post->content }}</p>
                           <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">

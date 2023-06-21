@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('content');
             $table->integer('quantity');
             $table->string('category');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->time('start_time');
             $table->time('end_time');
             $table->unsignedBigInteger('seller_id');
