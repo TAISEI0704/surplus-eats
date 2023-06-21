@@ -25,18 +25,25 @@ class SellerAuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:255',
             'address' => 'required|string|max:255',
+            'content'=> 'required|string',
             'password' => 'required|string|confirmed|min:8',
         ]);
     
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+
+        $file = request()->file('image')->getClientOriginalName();
+        request()->file('image')->storeAs('public/images', $file);
+    
     
         $seller = new Seller([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
+            'image' => $file,
+            'content'=>$request->content,
             'password' => Hash::make($request->password),
         ]);
         
