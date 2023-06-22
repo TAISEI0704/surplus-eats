@@ -12,14 +12,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <form action="{{ route('products.filter') }}" method="GET">
             @csrf
-            <select name="category">
-              <option value="">{{ __('Select Category') }}</option>
-              <option value="all">All</option>
-              <option value="category1">Category 1</option>
-              <option value="category2">Category 2</option>
-              <option value="category3">Category 3</option>
-              <!-- 絞り込み条件に応じたカテゴリオプションを追加する -->
-            </select>
+            <x-category-select />
             <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Search</button>
             @if (session('error'))
               <div class="bg-red-500 text-white p-4 mb-4">
