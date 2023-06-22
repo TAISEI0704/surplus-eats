@@ -135,6 +135,14 @@ public function store(Request $request)
         return redirect()->route('seller.dashboard');
     }
 
+    public function destroy($product_id)
+    {
+        $post = Product::find($product_id);
+        $post->delete();
+
+        return redirect()->route('seller.dashboard');
+    }
+
     public function filterByCategory(Request $request)
     {
         $category = $request->category;
