@@ -117,9 +117,23 @@
                 @endforeach
                 @endforeach
             </div>
-            <button type="submit" class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded inline-flex items-center justify-center ml-4">
-              Purchase
-            </button>
+            <a id="show-payment-button">支払い方法を選択</a>
+            <div id="payment-form" style="display: none;">
+              <label>
+                <input type="radio" name="payment_method" value="method1">
+                Cash
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="payment_method" value="method2">
+                G-cash
+              </label>
+              <br>
+              <button type="submit" class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded inline-flex items-center justify-center ml-4">
+                Purchase
+              </button>
+              <a id="cancel-payment-button">キャンセル</a>
+            </div>
             @endif
         </div>
       </form>
