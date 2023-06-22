@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Seller;
 use App\Models\Product;
-
+use App\Models\Review;
 
 class PostController extends Controller
 {
@@ -25,6 +25,7 @@ class PostController extends Controller
     public function detail($id)
     {
         $post = Product::find($id);
+        
         return view('surplus.detail', compact('post'));
     }
 

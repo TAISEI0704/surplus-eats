@@ -42,8 +42,11 @@ Route::middleware([
     Route::get('/purchase/{id}',[PurchaseController::class,'showPurchase'])->name('purchase.show');
     // Route::get('/complete',[PostController::class,'complete'])->name('complete');
 
-    Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
+    Route::get('/review/{product_id}/create',[ReviewController::class,'create'])->name('review.create');
     Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
+    Route::get('/review/{id}', [ReviewController::class, 'show'])->name('review.show');
+
+
     Route::get('/user/profile', [UserProfileController::class, 'show'])
     ->name('profile.show')
     ->middleware(['auth']);

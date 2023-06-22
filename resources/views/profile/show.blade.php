@@ -5,6 +5,12 @@
         </h2>
     </x-slot>
 
+    {{-- @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif --}}
+
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
@@ -20,6 +26,12 @@
 
                 <x-jet-section-border />
             @endif
+
+            {{-- @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif --}}
 
             {{-- @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
                 <div class="mt-10 sm:mt-0">
@@ -49,7 +61,7 @@
                             <p class="mt-1">合計金額:{{ $purchaseHistory->purchase_quantity*$purchaseHistory->product->price }} Php</p>
                             <p class="mt-1">購入日:{{ date('Y-m-d H:i', strtotime($purchaseHistory->created_at)) }}</p>
                           </div>
-                          <a href="{{ route('review.create') }}">
+                          <a href="{{ route('review.create', $purchaseHistory->product->id) }}">
                             <button>
                              {{ __('Feedback') }}
                             </button>
