@@ -100,4 +100,45 @@ class SellerAuthController extends Controller
             'user' => $user,
         ]);
     }
+
+    public function updateProfile(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'phone' => 'required|string|max:255',
+        'address' => 'required|string|max:255',
+        'content'=> 'required|string',
+    ]);
+
+    $seller = Seller::find($id);
+
+    if ($request->hasFile('image')) { //画像がアップロードありの処理
+        $file = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/images', $file);
+        // $post->title = $request->title;
+        $seller->name = $request->name;
+        $seller->email = $request->email;
+        $seller->phone = $request->phone;
+        $seller->address = $request->address;
+        $seller->content = $request->content;
+        $seller->image = $file;
+
+        $seller->save();
+    }else{ //画像のアップロードなしの処理
+        // $post->title = $request->title;
+        $seller->name = $request->name;
+        $seller->email = $request->email;
+        $seller->phone = $request->phone;
+        $seller->address = $request->address;
+        $seller->content = $request->content;
+       
+
+        $seller->save();
+    }
+        
+    return redirect()->route('seller.dashboard');
 }
+
+}
+
