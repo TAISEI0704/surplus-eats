@@ -18,6 +18,12 @@
               <div class="bg-red-500 text-white p-4 mb-4">
                   {{ session('error') }}
               </div>
+            @elseif($category !== null && $category !== 'all')
+              <div class="p-4 mb-4">
+                Category:{{ $category }}
+              </div>
+            @else
+            <div class="p-4 mb-4"></div>
             @endif
           </form>
             <div style="background-color:#EDEBDA" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
