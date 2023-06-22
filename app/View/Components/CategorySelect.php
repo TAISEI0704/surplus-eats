@@ -12,16 +12,44 @@ class CategorySelect extends Component
      * @return void
      */
     public $categories;
-    
+
     public function __construct()
     {
         // カテゴリの選択肢を取得する処理
         $this->categories = [
-            '' => __('Select Category'),
-            'all' => 'All',
-            'category1' => 'Category 1',
-            'category2' => 'Category 2',
-            'category3' => 'Category 3',
+            // '' => __('Select Category'),
+            // 'all' => 'All',
+            'Chicken' => 'Chicken',
+            'Noodles' => 'Noodles',
+            'Pizza' => 'Pizza',
+            'Burgers' => 'Burgers',
+            'Donut' => 'Donut',
+            'Fries' => 'Fries',
+            'Salad' => 'Salad',
+            'Sisig' => 'Sisig',
+            'Ramen' => 'Ramen',
+            'Milk Tea' => 'Milk Tea',
+            'Cakes' => 'Cakes',
+            'Coffee' => 'Coffee',
+            'Takoyaki' => 'Takoyaki',
+            'Ice Cream' => 'Ice Cream',
+            'Filipino' => 'Filipino',
+            'Fast Food' => 'Fast Food',
+            'Pasta' => 'Pasta',
+            'Pork' => 'Pork',
+            'Beef' => 'Beef',
+            'Snack' => 'Snack',
+            'Chinese' => 'Chinese',
+            'Japanese' => 'Japanese',
+            'BBQ' => 'BBQ',
+            'Seafood' => 'Seafood',
+            'Sushi' => 'Sushi',
+            'Soup' => 'Soup',
+            'Steak' => 'Steak',
+            'French' => 'French',
+            'Beer' => 'Beer',
+            'Drink' => 'Drink',
+            'Dessert' => 'Dessert',
             // 追加のカテゴリオプション
         ];
     }

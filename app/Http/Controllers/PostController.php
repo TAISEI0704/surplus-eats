@@ -17,7 +17,8 @@ class PostController extends Controller
     {
         // $posts=Product::all()->latest('created_at')->get();
         $posts = Product::latest('created_at')->get();
-        return view('surplus.timeline', compact('posts'));
+        $category = null;
+        return view('surplus.timeline', compact('posts','category'));
 
     }
 
@@ -142,11 +143,10 @@ public function store(Request $request)
             return back()->with('error', 'カテゴリを選択してください');
         }elseif($category === 'all'){
             $posts = Product::latest('created_at')->get();
-            return view('surplus.timeline', compact('posts'));
+            return view('surplus.timeline', compact('posts','category'));
         }else{
             $posts = Product::where('category', $category)->latest('created_at')->get();
-        
-            return view('surplus.timeline', compact('posts'));
+            return view('surplus.timeline', compact('posts','category'));
         }
     }
 
