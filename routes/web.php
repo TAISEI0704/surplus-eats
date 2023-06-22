@@ -47,6 +47,7 @@ Route::middleware([
     Route::get('/user/profile', [UserProfileController::class, 'show'])
     ->name('profile.show')
     ->middleware(['auth']);
+    Route::get('/filter',[PostController::class,'filterByCategory'])->name('products.filter');
 
 });
 
