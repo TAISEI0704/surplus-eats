@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Review;
 use App\Models\Product;
+use App\Models\Seller;
 
 class ReviewController extends Controller
 {
-    public function create($product_id)
+    public function create($seller_id)
     {
-        $product = Product::find($product_id);
-        return view('surplus.review', compact('product'));
+        $seller = Seller::find($seller_id);
+        return view('surplus.review', compact('seller'));
     }
 
     public function store(Request $request)
@@ -25,12 +26,12 @@ class ReviewController extends Controller
         ]);
 
         // レビューモデルの作成と保存
-        $product = Product::find($request->product_id);
+        $product = Product::find($request->seller_id);
         $review = new Review;
         $review -> name = $request -> name;
         $review -> content = $request -> comment;
         $review -> user_id = Auth::id();
-        $review -> product_id = $request -> product_id;
+        $review -> seller_id = $request -> seller_id;
         $review->save();
         // dd($review);
 
@@ -51,9 +52,9 @@ class ReviewController extends Controller
     // }
 
 
-    public function show($user_id)
+    public function show($product_id)
     {
-        $reviews = Review::where('user_id', $user_id)->get();
+        $reviews = Review::where('product_id', $product_id)->get();
     
         return view('surplus.detail', compact('reviews'));
     }

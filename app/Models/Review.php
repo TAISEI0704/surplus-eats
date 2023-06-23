@@ -12,12 +12,12 @@ class Review extends Model
         'name',
         'content', 
         'user_id',
-        'product_id',
+        'seller_id',
     ];
 
     public function product()
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsTo(Product::class, 'seller_id');
     }
 
     public function user()
