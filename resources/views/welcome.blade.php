@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     
-    <head>
+      <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -27,7 +27,7 @@
             html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
         </style>
 
-        <style>
+      <style>
         body {
 
             font-family: 'Nunito', sans-serif;
@@ -64,47 +64,101 @@
         .js-wrap {
             display: flex;
             justify-content: center;
+            height: 80%;
         }
 
         .full-width-height {
             width: 100%;
             height: 100%;
         }
-        </style>
+
+        /* CSSカルーセル */
+        .carousel-container {
+          width: 460px;
+          height: 500px;
+          margin: 0 auto;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .carousel {
+          width: 460px;
+          height: 500px;
+          display: flex;
+          transition: transform .3s;
+        }
+
+        .box {
+          height: 460px;
+          min-width: 500px;
+        }
+
+        .box-1 {
+          background: skyblue;
+        }
+
+        .box-2 {
+          background: tomato;
+        }
+
+        #lt,
+        #gt {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          border: none;
+          border-radius: 50%;
+          background: rgba(0, 0, 0, .8);
+          color: #fff;
+          font-size: 24px;
+          padding: 0 6px;
+          cursor: pointer;
+        }
+
+        #lt {
+          left: 8px;
+        }
+
+        #gt {
+          right: 8px;
+        }
+
+        #lt:hover,
+        #gt:hover {
+          opacity: .8;
+        }
+
+        .hidden {
+          display: none;
+        }
+      </style>
     </head>
 
-    <header class="text-gray-600 body-font body-font fixed-header">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
-                <span class="ml-3 text-xl">Tailblocks</span>
-          </a>
-          <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-            <a class="mr-5 hover:text-gray-900">About us</a>
-            <a class="mr-5 hover:text-gray-900">How to use</a>
-            <a class="mr-5 hover:text-gray-900">Feature</a>
-            <a class="mr-5 hover:text-gray-900">FAQ</a>
-          </nav>
-        </div>
-        @if (Route::has('login'))
-        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            @auth
-                <a href="{{ Illuminate\Support\Facades\Auth::user()->is_seller ? route('seller.dashboard') : route('dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-            @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                <a href="{{ route('seller.login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in(seller)</a>
+        <header class="text-gray-600 body-font body-font fixed-header">
+                <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+                  <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                      <div xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                          <img src="{{ asset('img/logo.png') }}" alt="" style="width: 20px; height: 20px;">
+                      </div>
+                  </a>
+                </div>
+            @if (Route::has('login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                        <a href="{{ Illuminate\Support\Facades\Auth::user()->is_seller ? route('seller.dashboard') : route('dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('seller.login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in(seller)</a>
 
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                    <a href="{{ route('seller.register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register(seller)</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            <a href="{{ route('seller.register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register(seller)</a>
 
-                @endif
-            @endauth
-        </div>
-    @endif
-    </header>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+        </header>
 
 
         <body class="antialiased">
@@ -113,81 +167,90 @@
             </div>
         </body>
 
+        <h1 class="">About us</h1>
+
     <div style=""> {{-- about us 部分 --}}
         
         <section class="text-gray-600 body-font">
             <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
               <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">An app to reduce food loss in Cebu and spread the joy of eating together.
+                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">We will reduce food loss in Cebu and spread the joy of eating together.
                   <br class="hidden lg:inline-block">
                 </h1>
-                <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
+                <p class="mb-8 leading-relaxed">
+                  Recently, the Philippines has been facing a serious problem of food waste.
+                  <br class="lg:inline-block">As much as 9 million tons of food is wasted annually.
+                  <br class="lg:inline-block">If we translate this amount into Jollibee chicken, it amounts to 90 million pieces.
+                  <br class="lg:inline-block">This means that each person throws away 800 pieces of chicken per year.
+                </p>
                 <div class="flex justify-center">
-                  <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Click here for materials</button>
+                  <button class="inline-flex text-white bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-orange-600 rounded text-lg">
+                    Click here for materials
+                  </button>
                 </div>
               </div>
               <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+                <img class="object-cover object-center rounded" alt="hero" src="{{ asset('img/chicken.png') }}">
               </div>
             </div>
           </section>
     </div>
 
+    <h1>How to use </h1>
+
     <section class="text-gray-600 body-font"> {{-- How to 部分 --}}
         <div class="container px-5 py-24 mx-auto flex flex-wrap">
-          <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
-            <img alt="feature" class="object-cover object-center h-full w-full" src="https://dummyimage.com/460x500">
+          <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden carousel-container">
+            <div alt="feature" class="object-cover object-center h-full w-full carousel" src="https://dummyimage.com/460x500">
+              <div class="box box-1"></div>
+              <div class="box box-2"></div>
+              <button id="lt"><</button>
+              <button id="gt">></button>
+            </div>
           </div>
           <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
             <div class="flex flex-col mb-10 lg:items-start items-center">
-              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <button class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-lime-500 text-white mb-5" onclick="myFunction()">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                 </svg>
-              </div>
+              </button>
               <div class="flex-grow">
-                <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Hungry or Excess food</h2>
-                <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
+                <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
+                  Hungry or Excess food
+                </h2>
+                <p class="leading-relaxed text-base">
+                  Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.
+                </p>
               </div>
             </div>
             <div class="flex flex-col mb-10 lg:items-start items-center">
-              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <button class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-lime-500 text-white mb-5" onclick="myFunction()">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
                   <circle cx="6" cy="6" r="3"></circle>
                   <circle cx="6" cy="18" r="3"></circle>
                   <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
                 </svg>
-              </div>
+              </button>
               <div class="flex-grow">
                 <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Select a food item or Post food information.</h2>
-                <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
+                <p class="leading-relaxed text-base">
+                  Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.
+                </p>
               </div>
             </div>
             <div class="flex flex-col mb-10 lg:items-start items-center">
-              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <button class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-lime-500 text-white mb-5" onclick="myFunction()">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
                   <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-              </div>
+              </button>
               <div class="flex-grow">
                 <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Full stomach or no extra food</h2>
-                <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
+                <p class="leading-relaxed text-base">
+                  Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.
+                </p>
               </div>
             </div>
           </div>
@@ -195,30 +258,29 @@
     </section>
     
 
+    <h1>User's voice</h1>
+
     <section class="text-gray-600 body-font">{{-- User's Voice 部分 --}}
         <div class="area js-area">
             <div class="wrap js-wrap">
-                <div class=" item item04 js-item container mx-auto flex justify-center px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 50px 0px 300px;">
+                <div class=" item item04 js-item container mx-auto flex justify-center px-0 py-1 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 50px 0px 300px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                        <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+                        <img class="object-cover object-center rounded" alt="hero" src="{{ asset('img/userphoto05.jpeg')}}">
                     </div>
                     <div class="lg:flex-grow md:w-1/2 lg:pl-2 md:pl-6 flex flex-col md:items-start md:text-left items-center text-center">
                             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">We no longer worry about 
                                 <br class="lg:inline-block">food disposal!
                             </h1>
-                            <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant 
-                                <br class="lg:inline-block">cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.
+                            <p class="mb-8 leading-relaxed">I am very grateful for this app. Because this app is a service that 
+                              <br class="lg:inline-block"> delivers extra food that have been thrown away to someone who is hungry.
                             </p>
-                            <div class="flex justify-center">
-                                <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                                <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                            </div>
+                            
                     </div>
                 </div>
 
-                <div class=" item item05 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 50px 0px 0px;">
+                <div class=" item item05 js-item container mx-auto flex px-0 py-12 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 50px 0px 0px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                        <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+                        <img class="object-cover object-center rounded" alt="hero" src="{{ asset('img/userphoto02.jpeg')}}">
                     </div>
                     <div class="lg:flex-grow md:w-1/2 lg:pl-2 md:pl-6 flex flex-col md:items-start md:text-left items-center text-center">
                             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">We had a delicious meal
@@ -227,16 +289,13 @@
                             <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant
                                 <br class="lg:inline-block">cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.
                             </p>
-                            <div class="flex justify-center">
-                                <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                                <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                            </div>
+                           
                     </div>
                 </div>
            
-                <div class=" item item06 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0);margin: 0px 50px 0px 0px;">
+                <div class=" item item06 js-item container mx-auto flex px-0 py-12 md:flex-row flex-col items-center" style="transform: translate(-300px, 0);margin: 0px 50px 0px 0px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                        <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+                        <img class="object-cover object-center rounded" alt="hero" src="{{ asset('img/userphoto03.jpeg')}}">
                     </div>
                     <div class="lg:flex-grow md:w-1/2 lg:pl-2 md:pl-6 flex flex-col md:items-start md:text-left items-center text-center">
                             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">It's great to see surplus food
@@ -245,16 +304,13 @@
                             <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra
                                 <br class="lg:inline-block">air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.
                             </p>
-                            <div class="flex justify-center">
-                                <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                                <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                            </div>
+                            
                     </div>
                 </div>
 
-                <div class=" item item07 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 150px 0px 0px;">
+                <div class=" item item07 js-item container mx-auto flex px-0 py-12 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 150px 0px 0px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                        <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+                        <img class="object-cover object-center rounded" alt="hero" src="{{ asset('img/userphoto04.jpeg')}}">
                     </div>
                     <div class="lg:flex-grow md:w-1/2 lg:pl-2 md:pl-6 flex flex-col md:items-start md:text-left items-center text-center">
                             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Before they sold out
@@ -263,10 +319,7 @@
                             <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant 
                                 <br class="lg:inline-block">cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.
                             </p>
-                            <div class="flex justify-center">
-                                <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                                <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                            </div>
+                            
                     </div>
                 </div>
             </div>
