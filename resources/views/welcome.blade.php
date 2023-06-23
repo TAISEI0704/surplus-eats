@@ -74,19 +74,13 @@
     </head>
 
     <header class="text-gray-600 body-font body-font fixed-header">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
-                <span class="ml-3 text-xl">Tailblocks</span>
-          </a>
-          <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-            <a class="mr-5 hover:text-gray-900">About us</a>
-            <a class="mr-5 hover:text-gray-900">How to use</a>
-            <a class="mr-5 hover:text-gray-900">Feature</a>
-            <a class="mr-5 hover:text-gray-900">FAQ</a>
-          </nav>
+        {{-- <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-center;">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"> --}}
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <img src="img/logo.png" alt="" style="width: 100px; height: 100px;">
+                <span class="ml-3 text-xl"></span>
+            </div>  
+          {{-- </a> --}}
         </div>
         @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -123,11 +117,11 @@
                 </h1>
                 <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
                 <div class="flex justify-center">
-                  <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Click here for materials</button>
+                  <button class="inline-flex text-white bg-orange-300 border-0 py-2 px-6 focus:outline-none hover:bg-orange-600 rounded text-lg">Click here for materials</button>
                 </div>
               </div>
               <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+                <img class="object-cover object-center rounded" alt="hero" src="img/chicken.png">
               </div>
             </div>
           </section>
@@ -140,7 +134,7 @@
           </div>
           <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
             <div class="flex flex-col mb-10 lg:items-start items-center">
-              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-lime-400 text-white mb-5">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                 </svg>
@@ -148,15 +142,11 @@
               <div class="flex-grow">
                 <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Hungry or Excess food</h2>
                 <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
+                
               </div>
             </div>
             <div class="flex flex-col mb-10 lg:items-start items-center">
-              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-lime-400 text-white mb-5">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
                   <circle cx="6" cy="6" r="3"></circle>
                   <circle cx="6" cy="18" r="3"></circle>
@@ -166,15 +156,11 @@
               <div class="flex-grow">
                 <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Select a food item or Post food information.</h2>
                 <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
+                
               </div>
             </div>
             <div class="flex flex-col mb-10 lg:items-start items-center">
-              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-lime-400 text-white mb-5">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
                   <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
@@ -183,11 +169,7 @@
               <div class="flex-grow">
                 <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Full stomach or no extra food</h2>
                 <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
+                
               </div>
             </div>
           </div>
@@ -200,7 +182,7 @@
             <div class="wrap js-wrap">
                 <div class=" item item04 js-item container mx-auto flex justify-center px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 50px 0px 300px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                        <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+                        <img class="object-cover object-center rounded" alt="hero" src="img/userphoto05.jpeg">
                     </div>
                     <div class="lg:flex-grow md:w-1/2 lg:pl-2 md:pl-6 flex flex-col md:items-start md:text-left items-center text-center">
                             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">We no longer worry about 
@@ -209,16 +191,13 @@
                             <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant 
                                 <br class="lg:inline-block">cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.
                             </p>
-                            <div class="flex justify-center">
-                                <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                                <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                            </div>
+                            
                     </div>
                 </div>
 
                 <div class=" item item05 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 50px 0px 0px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                        <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+                        <img class="object-cover object-center rounded" alt="hero" src="img/userphoto02.jpeg">
                     </div>
                     <div class="lg:flex-grow md:w-1/2 lg:pl-2 md:pl-6 flex flex-col md:items-start md:text-left items-center text-center">
                             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">We had a delicious meal
@@ -227,16 +206,13 @@
                             <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant
                                 <br class="lg:inline-block">cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.
                             </p>
-                            <div class="flex justify-center">
-                                <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                                <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                            </div>
+                            
                     </div>
                 </div>
            
                 <div class=" item item06 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0);margin: 0px 50px 0px 0px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                        <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+                        <img class="object-cover object-center rounded" alt="hero" src="img/userphoto03.jpeg">
                     </div>
                     <div class="lg:flex-grow md:w-1/2 lg:pl-2 md:pl-6 flex flex-col md:items-start md:text-left items-center text-center">
                             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">It's great to see surplus food
@@ -245,16 +221,13 @@
                             <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra
                                 <br class="lg:inline-block">air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.
                             </p>
-                            <div class="flex justify-center">
-                                <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                                <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                            </div>
+                           
                     </div>
                 </div>
 
                 <div class=" item item07 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 150px 0px 0px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                        <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+                        <img class="object-cover object-center rounded" alt="hero" src="img/userphoto04.jpeg">
                     </div>
                     <div class="lg:flex-grow md:w-1/2 lg:pl-2 md:pl-6 flex flex-col md:items-start md:text-left items-center text-center">
                             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Before they sold out
@@ -263,10 +236,7 @@
                             <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant 
                                 <br class="lg:inline-block">cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.
                             </p>
-                            <div class="flex justify-center">
-                                <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                                <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                            </div>
+                            
                     </div>
                 </div>
             </div>
@@ -276,15 +246,8 @@
 
     <footer class="text-gray-600 body-font">{{-- footer部分 --}}
         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
-            <span class="ml-3 text-xl">Tailblocks</span>
-        </a>
-        <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 Tailblocks —
-            <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@knyttneve</a>
-        </p>
+        <img src="img/logo.png" alt="" style="height: 100px; width: 100px">
+        
         <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
             <a class="text-gray-500">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
