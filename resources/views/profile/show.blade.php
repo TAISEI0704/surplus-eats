@@ -42,16 +42,16 @@
                             <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('storage/images/'.$purchaseHistory->product->image) }}">
                           </a>
                           <div class="mt-4">
-                            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $purchaseHistory->product->seller->name }}</h3>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">商品名:{{ $purchaseHistory->product->name }}</h2>
-                            <p class="mt-1">金額:{{ $purchaseHistory->product->price }} Php</p>
-                            <p class="mt-1">数量:{{ $purchaseHistory->purchase_quantity }}個</p>
-                            <p class="mt-1">合計金額:{{ $purchaseHistory->purchase_quantity*$purchaseHistory->product->price }} Php</p>
-                            <p class="mt-1">購入日:{{ date('Y-m-d H:i', strtotime($purchaseHistory->created_at)) }}</p>
+                            <h3 class="text-gray-900 title-font text-lg font-medium">{{ $purchaseHistory->product->seller->name }}</h3>
+                            <p class="mt-1">Product Name:{{ $purchaseHistory->product->name }}</p>
+                            <p class="mt-1">Price:{{ $purchaseHistory->product->price }} Php</p>
+                            <p class="mt-1">Quantity:{{ $purchaseHistory->purchase_quantity }}</p>
+                            <p class="mt-1">Total Price:{{ $purchaseHistory->purchase_quantity*$purchaseHistory->product->price }} Php</p>
+                            <p class="mt-1">Purchase Date:{{ date('Y-m-d H:i', strtotime($purchaseHistory->created_at)) }}</p>
                           </div>
                           <a href="{{ route('review.create') }}">
-                            <button>
-                             {{ __('Feedback') }}
+                            <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                                Review
                             </button>
                           </a>  
                         </div>
