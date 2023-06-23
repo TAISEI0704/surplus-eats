@@ -34,8 +34,8 @@
                             </div>
                             <div class="flex-grow">
                               <p class="leading-relaxed text-base">Product:{{ $purchaseHistory->product->name }}</p>
-                              <p class="leading-relaxed text-base">Price:{{ $purchaseHistory->product->price }}円</p>
-                              <p class="leading-relaxed text-base">Quantity:{{ $purchaseHistory->purchase_quantity }}個</p>
+                              <p class="leading-relaxed text-base">Price:{{ $purchaseHistory->product->price }}Php</p>
+                              <p class="leading-relaxed text-base">Quantity:{{ $purchaseHistory->purchase_quantity }}</p>
                               <p class="leading-relaxed text-base">Purchase Date:{{ date('Y-m-d H:i', strtotime($purchaseHistory->created_at)) }}</p>
                               {{-- <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
@@ -47,7 +47,8 @@
                           {{-- <button class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"><a href="{{ route('dashboard') }}">戻る</a></button> --}}
                         </div>
                         @endforeach
-                        <button class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"><a href="{{ route('dashboard') }}">戻る</a></button>
+                        {{-- <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"><a href="{{ route('dashboard') }}">Back</a></button> --}}
+                        {{-- <button class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"><a href="{{ route('dashboard') }}">Back</a></button> --}}
                         {{-- <div class="p-4 md:w-1/3">
                           <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
                             <div class="flex items-center mb-3">
@@ -102,7 +103,9 @@
                     
                         <p>Total Price: {{ $totalPrice }}</p>
                     </div>
+                    <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"><a href="{{ route('dashboard') }}">Back</a></button>
                     </div>
+                    {{-- <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"><a href="{{ route('dashboard') }}">Back</a></button> --}}
                 </section>
             </div>
         </div>

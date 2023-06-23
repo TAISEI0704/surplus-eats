@@ -117,7 +117,7 @@
                 @endforeach
                 @endforeach
             </div>
-            <a id="show-payment-button">支払い方法を選択</a>
+            {{-- <a id="show-payment-button">支払い方法を選択</a>
             <div id="payment-form" style="display: none;">
               <label>
                 <input type="radio" name="payment_method" value="method1">
@@ -127,12 +127,12 @@
               <label>
                 <input type="radio" name="payment_method" value="method2">
                 G-cash
-              </label>
+              </label> --}}
               <br>
-              <button type="submit" class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded inline-flex items-center justify-center ml-4">
+              <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                 Purchase
               </button>
-              <a id="cancel-payment-button">キャンセル</a>
+              {{-- <a id="cancel-payment-button">キャンセル</a> --}}
             </div>
             @endif
         </div>
