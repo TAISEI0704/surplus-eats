@@ -22852,21 +22852,3 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	
 /******/ })()
 ;
-
-document.addEventListener('DOMContentLoaded', function() {
-  var paymentForm = document.getElementById('payment-form');
-  var showPaymentButton = document.getElementById('show-payment-button');
-  var cancelPaymentButton = document.getElementById('cancel-payment-button');
-
-  showPaymentButton.addEventListener('click', function() {
-    // 支払いフォームを表示し、選択ボタンを非表示にする
-    paymentForm.style.display = 'block';
-    showPaymentButton.style.display = 'none';
-  });
-
-  cancelPaymentButton.addEventListener('click', function() {
-    // 支払いフォームを非表示にし、選択ボタンを表示する
-    paymentForm.style.display = 'none';
-    showPaymentButton.style.display = 'inline';
-  });
-});

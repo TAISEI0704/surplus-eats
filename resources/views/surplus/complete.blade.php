@@ -33,10 +33,10 @@
                               <h2 class="text-gray-900 text-lg title-font font-medium">{{ $purchaseHistory->product->seller->name }}</h2>
                             </div>
                             <div class="flex-grow">
-                              <p class="leading-relaxed text-base">商品名:{{ $purchaseHistory->product->name }}</p>
-                              <p class="leading-relaxed text-base">金額:{{ $purchaseHistory->product->price }}円</p>
-                              <p class="leading-relaxed text-base">数量:{{ $purchaseHistory->purchase_quantity }}個</p>
-                              <p class="leading-relaxed text-base">購入日:{{ date('Y-m-d H:i', strtotime($purchaseHistory->created_at)) }}</p>
+                              <p class="leading-relaxed text-base">Product:{{ $purchaseHistory->product->name }}</p>
+                              <p class="leading-relaxed text-base">Price:{{ $purchaseHistory->product->price }}円</p>
+                              <p class="leading-relaxed text-base">Quantity:{{ $purchaseHistory->purchase_quantity }}個</p>
+                              <p class="leading-relaxed text-base">Purchase Date:{{ date('Y-m-d H:i', strtotime($purchaseHistory->created_at)) }}</p>
                               {{-- <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                   <path d="M5 12h14M12 5l7 7-7 7"></path>
