@@ -46,7 +46,7 @@
                               <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('storage/images/'.$post->image) }}">
                             </a>
                           </div>
-                          <div class="w-1/2">
+                          <div class="w-1/2"> 
                             <div class="mt-4">
                               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">レストラン名（仮） </h3>
                               <h2 class="text-gray-900 title-font text-lg font-medium">{{ $post->name }}</h2>
