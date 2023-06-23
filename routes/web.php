@@ -67,8 +67,11 @@ Route::group(['middleware' => 'web',
     Route::get('/seller-login', [SellerAuthController::class, 'showLoginForm'])->name('seller.login');
     Route::post('/seller-login', [SellerAuthController::class, 'login'])->name('seller.login.post');
     Route::post('/seller-logout', [SellerAuthController::class, 'logout'])->name('seller.logout');
+    
 
     Route::get('/profile/seller', [SellerAuthController::class, 'showProfile'])->name('seller.profile.show');
+    Route::patch('/profile/seller/{id}', [SellerAuthController::class, 'updateProfile'])->name('seller.profile.update');
+
 
     Route::get('/post/create',[PostController::class,'create'])->name('post.create');
     Route::post('/post/store',[PostController::class,'store'])->name('post.store');
