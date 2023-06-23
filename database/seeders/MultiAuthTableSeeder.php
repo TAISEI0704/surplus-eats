@@ -26,37 +26,49 @@ class MultiAuthTableSeeder extends Seeder
 
 
         Seller::create([
-            'name' => '管理者',
-            'email' => 'admin@admin.admin',
+            'name' => "Taisei's Kitchen",
+            'email' => 'test@test.test',
             'image' => 'imas_0801-3.jpg',
             'password' => Hash::make('password'),
             'phone' => '080-0123-4567',
             'address' => '宮崎県北諸県郡三股町稗田30-8',
-            'content' => 'レストランだよ～',
+            'content' => 'レストラン',
         ]);
 
         Product::create([
-            'name' => 'チキン南蛮',
-            'price' => '500',
-            'content' => 'おぐらのチキン南蛮',
+            'name' => 'ストロベリーパンケーキ',
+            'price' => '450',
+            'content' => '『外はカリッと、中はふんわりっ』なジラフオリジナルパンケーキ。',
+            'quantity' => '10',
+            'start_time' => '14:00',
+            'end_time' => '21:00',
+            'seller_id' => '1',
+            'image' => 'storberry_pancake.jpg',
+            'category' => 'Dessert',
+        ]);
+
+        Product::create([
+            'name' => '焦がしチーズの窯焼きボルケーノ',
+            'price' => '730',
+            'content' => 'Giraffe Monochromeの鉄板メニュー。チーズ好きにオススメの一品です。',
             'quantity' => '5',
-            'start_time' => '12:00',
-            'end_time' => '14:00',
+            'start_time' => '19:30',
+            'end_time' => '22:00',
             'seller_id' => '1',
-            'image' => 'food_chikinnanban_ogura.jpeg',
-            'category' => 'category1',
+            'image' => 'volcano.jpg',
+            'category' => 'Pasta',
         ]);
 
         Product::create([
-            'name' => 'ぎょうざ',
-            'price' => '600',
-            'content' => '丸岡のぎょうざ',
+            'name' => 'アンティパストミスト-前菜盛り合わせ-',
+            'price' => '400',
+            'content' => 'みんなでつまめてお得！オススメの前菜5種盛り合わせ。内容は仕入れにより異なります。',
             'quantity' => '6',
-            'start_time' => '10:30',
-            'end_time' => '16:00',
+            'start_time' => '15:30',
+            'end_time' => '19:00',
             'seller_id' => '1',
-            'image' => 'food_gyoza_maruoka.jpeg',
-            'category' => 'category3',
+            'image' => 'antipasto.jpg',
+            'category' => 'Snack',
         ]);
     }
 }
