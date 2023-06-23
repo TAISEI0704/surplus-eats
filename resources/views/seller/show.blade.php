@@ -39,7 +39,7 @@
                         <p class="leading-relaxed text-lg mb-4"><textarea id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out resize-none" style="height: 200px; white-space: pre-wrap; word-wrap: break-word;" >{{ $user->content }}</textarea></p>
                         
         
-                    @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::sellerUpdate()))
+                    @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                         <div class="mt-10 sm:mt-0">
                             @livewire('profile.update-password-form')
                         </div>
