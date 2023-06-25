@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="py-12">
-      <form action="{{ route('purchase') }}" method="POST">
+      <form action="{{ route('purchase') }}" method="POST" id="purchase-form">
         @csrf
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           @if ($carts->isEmpty())
@@ -43,7 +43,7 @@
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                           </svg> --}}
-                          <span class="text-gray-600 ml-3">{{ date('H:i', strtotime($product->start_time)) }}~{{ date('H:i', strtotime($product->end_time)) }}</span> 
+                          <span class="text-gray-600 ml-3">{{ $product->available_time }}</span> 
                           <span class="text-gray-600 ml-3">{{ $product->quantity }} left</span>
                           
                         {{-- </span>
@@ -129,7 +129,7 @@
                 G-cash
               </label> --}}
               <br>
-              <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+              <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onclick="confirmPurchase(event)">
                 Purchase
               </button>
               {{-- <a id="cancel-payment-button">キャンセル</a> --}}
@@ -138,4 +138,13 @@
         </div>
       </form>
     </div>
+    <script>
+      function confirmPurchase(event) {
+        event.preventDefault(); // デフォルトのフォーム送信をキャンセル
+    
+        if (confirm('本当に購入しますか？')) {
+          document.getElementById('purchase-form').submit(); // フォームを送信
+        }
+      }
+    </script>
 </x-app-layout>

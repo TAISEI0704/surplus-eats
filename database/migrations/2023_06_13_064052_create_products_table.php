@@ -21,8 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->string('category');
             $table->string('image');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->string('available_time');
             $table->unsignedBigInteger('seller_id');
             $table->foreign('seller_id')->references('id')->on('sellers');
             $table->timestamps();

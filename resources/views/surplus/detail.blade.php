@@ -39,7 +39,7 @@
 
                           
                             <span class="text-gray-600 ml-3">
-                            {{ \Carbon\Carbon::parse($post->start_time)->format('H:i') }} ~ {{ \Carbon\Carbon::parse($post->end_time)->format('H:i') }}
+                            {{ $post->available_time }}
                             </span>
                             <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
                                 <span class="text-gray-600 ml-3  @if ($post->quantity <= 3) text-red-500 @endif">{{ $post->quantity }} left</span>

@@ -16,7 +16,7 @@ class Product extends Model
         'quantity', 
         'category', 
         'image', 
-        'time', 
+        'available_time', 
         'seller_id'
     ];
 
