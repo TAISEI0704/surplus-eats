@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use App\Models\Seller;
+use App\Models\Review;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -95,9 +96,12 @@ class SellerAuthController extends Controller
     {
         $user = Auth::guard('sellers')->user();
 
+        $reviews = Review::where('seller_id',$user->id)->get();
+
         return view('seller.show', [
             'request' => $request,
             'user' => $user,
+            'reviews' => $reviews,
         ]);
     }
 
