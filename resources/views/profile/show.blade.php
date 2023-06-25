@@ -1,9 +1,22 @@
+@if (session('success'))
+    <script>
+        window.onload = function() {
+            alert("{{ session('success') }}");
+        };
+    </script>
+@endif
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
         </h2>
     </x-slot>
+
+    {{-- @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif --}}
 
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
@@ -20,6 +33,12 @@
 
                 <x-jet-section-border />
             @endif
+
+            {{-- @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif --}}
 
             {{-- @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
                 <div class="mt-10 sm:mt-0">
@@ -49,11 +68,12 @@
                             <p class="mt-1">Total Price:{{ $purchaseHistory->purchase_quantity*$purchaseHistory->product->price }} Php</p>
                             <p class="mt-1">Purchase Date:{{ date('Y-m-d H:i', strtotime($purchaseHistory->created_at)) }}</p>
                           </div>
-                          <a href="{{ route('review.create') }}">
-                            <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                                Review
+
+                          <a href="{{ route('review.create', $purchaseHistory->id) }}">
+                            <button　type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                             {{ __('Feedback') }}
                             </button>
-                          </a>  
+                          </a>
                         </div>
                       @endforeach
                       </div>

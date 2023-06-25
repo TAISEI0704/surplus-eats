@@ -42,8 +42,11 @@ Route::middleware([
     Route::get('/purchase/{id}',[PurchaseController::class,'showPurchase'])->name('purchase.show');
     // Route::get('/complete',[PostController::class,'complete'])->name('complete');
 
-    Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
+    Route::get('/review/{purchaseHistory_id}/create',[ReviewController::class,'create'])->name('review.create');
     Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
+    // Route::get('/review/{id}', [ReviewController::class, 'show'])->name('review.show');
+
+
     Route::get('/user/profile', [UserProfileController::class, 'show'])
     ->name('profile.show')
     ->middleware(['auth']);
@@ -79,6 +82,10 @@ Route::group(['middleware' => 'web',
     Route::get('/post/{id}/edit',[PostController::class,'edit'])->name('post.edit');
     Route::patch('/post/{id}/update',[PostController::class,'update'])->name('post.update');
     Route::delete('/post/{id}',[PostController::class,'destroy'])->name('post.destroy');
+
+    // Route::get('/review/{seller_id}/create',[ReviewController::class,'create'])->name('review.create');
+    // Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
+    // Route::get('/review/{id}', [ReviewController::class, 'show'])->name('review.show');
 
     // Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
     // Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
