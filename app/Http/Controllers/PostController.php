@@ -25,8 +25,10 @@ class PostController extends Controller
     public function detail($id)
     {
         $post = Product::find($id);
+
+        $reviews = Review::where('product_id',$id)->get();
         
-        return view('surplus.detail', compact('post'));
+        return view('surplus.detail', compact('post','reviews'));
     }
 
 
