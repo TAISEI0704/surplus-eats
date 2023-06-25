@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="py-12">
-      <form action="{{ route('purchase') }}" method="POST">
+      <form action="{{ route('purchase') }}" method="POST" id="purchase-form">
         @csrf
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           @if ($carts->isEmpty())
@@ -129,7 +129,7 @@
                 G-cash
               </label> --}}
               <br>
-              <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+              <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onclick="confirmPurchase(event)">
                 Purchase
               </button>
               {{-- <a id="cancel-payment-button">キャンセル</a> --}}
@@ -138,4 +138,13 @@
         </div>
       </form>
     </div>
+    <script>
+      function confirmPurchase(event) {
+        event.preventDefault(); // デフォルトのフォーム送信をキャンセル
+    
+        if (confirm('本当に購入しますか？')) {
+          document.getElementById('purchase-form').submit(); // フォームを送信
+        }
+      }
+    </script>
 </x-app-layout>
