@@ -34,11 +34,11 @@
                           <button class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">
                             <a href="{{ route('post.edit', $post->id) }}">{{ __('Edit') }}</a>
                           </button>
-                          <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display: inline;">
+                          {{-- <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded" onclick="return confirm('本当に削除しますか？')">{{ __('Delete') }}</button>
-                          </form>
+                          </form> --}}
                         </div>
                         {{-- <div class="lg:w-1/4 md:w-1/2 p-4 w-full flex">
                           <div class="w-1/2">
