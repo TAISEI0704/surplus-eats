@@ -7,13 +7,18 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Review;
 use App\Models\Product;
 use App\Models\Seller;
+use App\Models\PurchaseHistory;
 
 class ReviewController extends Controller
 {
-    public function create($seller_id)
+    public function create($purchaseHistory_id)
     {
+        $purchaseHistory = PurchaseHistory::find($purchaseHistory_id);
+        $product_id = $purchaseHistory->product->id;
+        $product = Product::find($product_id);
+        $seller_id = $product->seller_id;
         $seller = Seller::find($seller_id);
-        return view('surplus.review', compact('seller'));
+        return view('surplus.review', compact('seller','product','purchaseHistory'));
     }
 
     public function store(Request $request)

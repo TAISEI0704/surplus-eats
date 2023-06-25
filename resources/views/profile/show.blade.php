@@ -61,7 +61,7 @@
                             <p class="mt-1">合計金額:{{ $purchaseHistory->purchase_quantity*$purchaseHistory->product->price }} Php</p>
                             <p class="mt-1">購入日:{{ date('Y-m-d H:i', strtotime($purchaseHistory->created_at)) }}</p>
                           </div>
-                          <a href="{{ route('review.create', $purchaseHistory->seller->id) }}">
+                          <a href="{{ route('review.create', $purchaseHistory->id) }}">
                             <button>
                              {{ __('Feedback') }}
                             </button>
