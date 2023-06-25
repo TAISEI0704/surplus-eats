@@ -30,13 +30,23 @@
                           <p class="mt-1  @if ($post->quantity <= 3) text-red-500 @endif">{{ $post->quantity }} left</p>
                           @endif
                         </div>
+                        <div class="py-3">
+                          <button class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">
+                            <a href="{{ route('post.edit', $post->id) }}">{{ __('Edit') }}</a>
+                          </button>
+                          <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded" onclick="return confirm('本当に削除しますか？')">{{ __('Delete') }}</button>
+                          </form>
+                        </div>
                         {{-- <div class="lg:w-1/4 md:w-1/2 p-4 w-full flex">
                           <div class="w-1/2">
                             <a class="block relative h-48 rounded overflow-hidden">
                               <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('storage/images/'.$post->image) }}">
                             </a>
                           </div>
-                          <div class="w-1/2">
+                          <div class="w-1/2"> 
                             <div class="mt-4">
                               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">レストラン名（仮） </h3>
                               <h2 class="text-gray-900 title-font text-lg font-medium">{{ $post->name }}</h2>

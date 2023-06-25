@@ -10,6 +10,26 @@
 
     <div style="background-color:#F8F7EE" class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <form action="{{ route('products.filter') }}" method="GET">
+            @csrf
+            <select name="category">
+              <option value="">{{ __('Select Category') }}</option>
+              <option value="all">All</option>
+              <x-category-select />
+            </select>
+            <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Search</button>
+            @if (session('error'))
+              <div class="bg-red-500 text-white p-4 mb-4">
+                  {{ session('error') }}
+              </div>
+            @elseif($category !== null && $category !== 'all')
+              <div class="p-4 mb-4">
+                Category : {{ $category }}
+              </div>
+            @else
+            <div class="p-4 mb-4"></div>
+            @endif
+          </form>
             <div style="background-color:#EDEBDA" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               <section class="text-gray-600 body-font">
                 <div class="container px-5 py-24 mx-auto">
@@ -22,7 +42,7 @@
                       $hideTime = $post->updated_at->addHour(); // 投稿の更新日時から1時間後を非表示の時刻とする
                       @endphp
                     @endif --}}
-                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" @if($post->quantity <= 0 && now() >= $post->updated_at->addHour()) style="display: none;" @endif>
+                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" @if(now() >= $post->created_at->addHour(24)) style="display: none;" @endif>
                       {{-- <a class="block relative h-48 rounded overflow-hidden"> --}}
                       <a class="block relative h-48 rounded overflow-hidden" href="{{ route('detail',$post->id) }}">
                         <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('storage/images/'.$post->image) }}">
@@ -30,7 +50,7 @@
                       <div class="mt-4">
                         <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $post->seller->name }} </h3>
                         <h2 class="text-gray-900 title-font text-lg font-medium">{{ $post->name }}</h2>
-                        <p class="text-gray-600 ml-1">Amount:{{ $post->price }}Php</p>
+                        <p class="text-gray-600 ml-1">Price:{{ $post->price }}Php</p>
                         <p class="text-gray-600 ml-1">Available time:{{ \Carbon\Carbon::parse($post->start_time)->format('H:i') }} ~ {{ \Carbon\Carbon::parse($post->end_time)->format('H:i') }}</p>
                         {{-- @if($post->cartedBy(Auth::user())->exists())
                           <a href="/products/{{ $post->id }}">カートから削除</a> --}}

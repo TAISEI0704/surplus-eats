@@ -6,6 +6,7 @@
     </x-slot>
     <div class="py-12">
       <form action="{{ route('purchase') }}" method="POST">
+        @csrf
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           @if ($carts->isEmpty())
           <p>カートに入れている商品がありません。</p>
@@ -105,8 +106,8 @@
                         </div>
                       </div>
                       <div class="flex">
-                        <span class="title-font font-medium text-2xl text-gray-900">{{ $product->price }}Php</span>
-                        <div class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"><a href="/products/{{ $product->id }}">Remove from Your Cart</a></div>
+                        <span class="title-font font-medium text-2xl text-gray-900">Price:{{ $product->price }}Php</span>
+                        <div class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"><a href="/products/{{ $product->id }}">{{ __('Remove from Your Cart') }}</a></div>
                       </div>
                     </div>
                   </div>
@@ -116,9 +117,23 @@
                 @endforeach
                 @endforeach
             </div>
-            <button type="submit" class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-              Purchase
-            </button>
+            {{-- <a id="show-payment-button">支払い方法を選択</a>
+            <div id="payment-form" style="display: none;">
+              <label>
+                <input type="radio" name="payment_method" value="method1">
+                Cash
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="payment_method" value="method2">
+                G-cash
+              </label> --}}
+              <br>
+              <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                Purchase
+              </button>
+              {{-- <a id="cancel-payment-button">キャンセル</a> --}}
+            </div>
             @endif
         </div>
       </form>
