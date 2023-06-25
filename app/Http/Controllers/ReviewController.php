@@ -24,25 +24,28 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         // 入力データのバリデーション
-        $validatedData = $request->validate([
+        $request->validate([
             'product_id' => 'required|exists:products,id',
-            'name' => 'required|string|max:30',
+            'name' => 'nullable|string|max:30',
             'comment' => 'required|string|max:255',
+            'rating' => 'required|integer|min:1|max:5',
         ]);
 
         // レビューモデルの作成と保存
-        $product = Product::find($request->seller_id);
+        $product = Product::find($request->product_id);
         $review = new Review;
         $review -> name = $request -> name;
         $review -> content = $request -> comment;
+        $review -> rating = $request -> rating;
         $review -> user_id = Auth::id();
         $review -> seller_id = $request -> seller_id;
+        $review -> product_id =$request -> product_id;
         $review->save();
         // dd($review);
 
         // 保存後の処理などを追加する場合はここに記述する
 
-        // return redirect()->back()->with('success', 'レビューが投稿されました。');
+        // return redirect()->back()->with('success', 'The review has been posted');
         return redirect()->route('profile.show')->with('success', 'The review has been posted');
     }
 

@@ -44,7 +44,7 @@ Route::middleware([
 
     Route::get('/review/{purchaseHistory_id}/create',[ReviewController::class,'create'])->name('review.create');
     Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
-    Route::get('/review/{id}', [ReviewController::class, 'show'])->name('review.show');
+    // Route::get('/review/{id}', [ReviewController::class, 'show'])->name('review.show');
 
 
     Route::get('/user/profile', [UserProfileController::class, 'show'])

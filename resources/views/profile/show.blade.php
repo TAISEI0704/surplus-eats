@@ -1,3 +1,10 @@
+@if (session('success'))
+    <script>
+        window.onload = function() {
+            alert("{{ session('success') }}");
+        };
+    </script>
+@endif
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -65,7 +72,7 @@
                             <button>
                              {{ __('Feedback') }}
                             </button>
-                          </a>  
+                          </a>
                         </div>
                       @endforeach
                       </div>
