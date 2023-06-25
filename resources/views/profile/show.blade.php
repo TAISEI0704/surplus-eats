@@ -63,6 +63,7 @@
                           <div class="mt-4">
                             <h3 class="text-gray-900 title-font text-lg font-medium">{{ $purchaseHistory->product->seller->name }}</h3>
                             <p class="mt-1">Product Name:{{ $purchaseHistory->product->name }}</p>
+                            <p class="mt-1">Avilable Time:{{ $purchaseHistory->product->available_time }}</p>
                             <p class="mt-1">Price:{{ $purchaseHistory->product->price }} Php</p>
                             <p class="mt-1">Quantity:{{ $purchaseHistory->purchase_quantity }}</p>
                             <p class="mt-1">Total Price:{{ $purchaseHistory->purchase_quantity*$purchaseHistory->product->price }} Php</p>
@@ -70,7 +71,7 @@
                           </div>
 
                           <a href="{{ route('review.create', $purchaseHistory->id) }}">
-                            <button　type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                            <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                              {{ __('Feedback') }}
                             </button>
                           </a>

@@ -72,8 +72,7 @@ public function store(Request $request)
         $product-> category = $request -> category;
         $product-> image = $request->image;
         $product->image=$file;
-        $product->start_time = $request->start_time;
-        $product->end_time = $request->end_time;
+        $product->available_time = $request->available_time;
         $product->seller_id = Auth::id();
         
 
@@ -117,8 +116,7 @@ public function store(Request $request)
             $post->content = $request->content;
             $post->quantity = $request->quantity;
             $post->category = $request->category;
-            $post->start_time = $request->start_time;
-            $post->end_time = $request->end_time;
+            $post->available_time = $request->available_time;
             $post->image = $file;
 
             $post->save();
@@ -129,8 +127,7 @@ public function store(Request $request)
             $post->content = $request->content;
             $post->quantity = $request->quantity;
             $post->category = $request->category;
-            $post->start_time = $request->start_time;
-            $post->end_time = $request->end_time;
+            $post->available_time = $request->available_time;
         
             $post->save();
         }
