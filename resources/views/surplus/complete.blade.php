@@ -42,6 +42,9 @@
                                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
                               </a> --}}
+                              </div>
+                                <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"><a href="{{ route('detail', ['id' => $purchaseHistory->product->id]) }}">{{ __('Detail') }}</a></button>
+                              </div>
                             </div>
                           </div>
                           {{-- <button class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"><a href="{{ route('dashboard') }}">戻る</a></button> --}}
