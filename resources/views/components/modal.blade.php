@@ -4,52 +4,32 @@
     </button>
     
     <div class="modal" id="modal-1">
-      <div class="modal-overlay" data-modal-close>
+      <div class="modal-overlay" data-modal-close="modal-1">
         <div class="modal-container">
-          <h2 class="modal-title">モーダルウィンドウ</h2>
+          <h2 class="modal-title">CATEGORY</h2>
           <div class="modal-content">
             <div class="container px-5 py-24 mx-auto">
                 <div class="flex flex-wrap md:text-left text-center -mb-10 -mx-4">
                   <div class="lg:w-1/6 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">DISHES</h2>
                     <nav class="list-none mb-10 flex flex-wrap">
+                        @foreach($categories_1 as $value => $label)
                         <div class="w-1/2">
-                          <input type="radio" id="category1" name="category" value="category1" class="category-radio">
-                          <label for="category1" class="text-gray-600 hover:text-gray-800">First Link</label>
+                          <input type="radio" id="category" name="category" value="{{ $value }}" class="category-radio">
+                          <label for="category1" class="text-gray-600 hover:text-gray-800">{{ $label }}</label>
                         </div>
-                        <div class="w-1/2">
-                          <input type="radio" id="category2" name="category" value="category2" class="category-radio">
-                          <label for="category2" class="text-gray-600 hover:text-gray-800">Second Link</label>
-                        </div>
-                        <div class="w-1/2">
-                          <input type="radio" id="category3" name="category" value="category3" class="category-radio">
-                          <label for="category3" class="text-gray-600 hover:text-gray-800">Third Link</label>
-                        </div>
-                        <div class="w-1/2">
-                          <input type="radio" id="category4" name="category" value="category4" class="category-radio">
-                          <label for="category4" class="text-gray-600 hover:text-gray-800">Fourth Link</label>
-                        </div>
-                        <div class="w-1/2">
-                            <input type="radio" id="category4" name="category" value="category4" class="category-radio">
-                            <label for="category4" class="text-gray-600 hover:text-gray-800">Fourth Link</label>
-                        </div>
-                      </nav>
+                        @endforeach
+                    </nav>
                   </div>
                   <div class="lg:w-1/6 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
-                    <nav class="list-none mb-10">
-                      <li>
-                        <a class="text-gray-600 hover:text-gray-800">First Link</a>
-                      </li>
-                      <li>
-                        <a class="text-gray-600 hover:text-gray-800">Second Link</a>
-                      </li>
-                      <li>
-                        <a class="text-gray-600 hover:text-gray-800">Third Link</a>
-                      </li>
-                      <li>
-                        <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
-                      </li>
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">INGREDIENTS</h2>
+                    <nav class="list-none mb-10 flex flex-wrap">
+                        @foreach($categories_2 as $value => $label)
+                        <div class="w-1/2">
+                          <input type="radio" id="category" name="category" value="{{ $value }}" class="category-radio">
+                          <label for="category1" class="text-gray-600 hover:text-gray-800">{{ $label }}</label>
+                        </div>
+                        @endforeach
                     </nav>
                   </div>
                 </div>
@@ -136,28 +116,28 @@
   </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const elem = document.getElementById('modal-1');
-  new Modal(elem);
-});
+    document.addEventListener('DOMContentLoaded', () => {
+        const elem = document.getElementById('modal-1');
+        new Modal(elem);
+    });
 
-/**
- * モーダルウィンドウ
- * @property {HTMLElement} modal モーダル要素
- * @property {NodeList} openers モーダルを開く要素
- * @property {NodeList} closers モーダルを閉じる要素
- */
-function Modal(modal) {
-  this.modal = modal;
-  const id = this.modal.id;
-  this.openers = document.querySelectorAll('[data-modal-open="' + id + '"]');
-  this.closers = this.modal.querySelectorAll('[data-modal-close]');
-  
-  this.handleOpen();
-  this.handleClose();
-}
+    /**
+     * モーダルウィンドウ
+     * @property {HTMLElement} modal モーダル要素
+     * @property {NodeList} openers モーダルを開く要素
+     * @property {NodeList} closers モーダルを閉じる要素
+     */
+    function Modal(modal) {
+        this.modal = modal;
+        const id = this.modal.id;
+        this.openers = document.querySelectorAll('[data-modal-open="' + id + '"]');
+        this.closers = this.modal.querySelectorAll('[data-modal-close]');
 
-/**
+        this.handleOpen();
+        this.handleClose();
+    }
+
+    /**
  * 開くボタンのイベント登録
  */
 Modal.prototype.handleOpen = function() {
@@ -186,14 +166,22 @@ Modal.prototype.handleClose = function() {
 /**
  * モーダルを開く
  */
-Modal.prototype.open = function() {
+Modal.prototype.open = function(event) {
+  event.stopPropagation(); // ラジオボタンのクリックイベントをキャンセル
   this.modal.classList.add('is-open');
 };
 
 /**
  * モーダルを閉じる
  */
-Modal.prototype.close = function() {
-  this.modal.classList.remove('is-open');
+Modal.prototype.close = function(event) {
+  event.stopPropagation(); // ラジオボタンのクリックイベントをキャンセル
+  const closeButton = event.target;
+  const closeType = closeButton.getAttribute('data-close-type');
+
+  // CLOSEボタンをクリックした場合のみモーダルを閉じる
+  if (closeType === 'close') {
+    this.modal.classList.remove('is-open');
+  }
 };
 </script>
