@@ -10,7 +10,7 @@
 
     <div style="background-color:#F8F7EE" class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <form action="{{ route('products.filter') }}" method="GET">
+          {{-- <form action="{{ route('products.filter') }}" method="GET">
             @csrf
             <select name="category">
               <option value="">{{ __('Select Category') }}</option>
@@ -29,7 +29,8 @@
             @else
             <div class="p-4 mb-4"></div>
             @endif
-          </form>
+          </form> --}}
+          <x-modal />
             <div style="background-color:#EDEBDA" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               <section class="text-gray-600 body-font">
                 <div class="container px-5 py-24 mx-auto">
