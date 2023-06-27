@@ -80,7 +80,7 @@ Route::group(['middleware' => 'web',
     Route::patch('/post/{id}',[PostController::class,'update'])->name('post.update');
     Route::delete('/post/{id}',[PostController::class,'destroy'])->name('post.destroy');
 
-    Route::get('/seller/notification/{id}',[SellerAuthController::class,'notificationShow'])->name('notification.show');
+    Route::get('/seller/notification',[SellerAuthController::class,'notificationShow'])->name('notification.show');
 
     // Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
     // Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
