@@ -5,15 +5,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-        
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
+        <link rel="icon" href="{{ asset('img/favicon.ico') }}" id="favicon">
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180x180.png">
 
         <script src="{{ asset('js/welcome.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
         <script>
@@ -77,9 +76,16 @@
         }
 
         .full-width-height {
-            width: 100%;
-            height: 100%;
+          width: 100%;
+          height: 800px;
+          object-fit: cover;
+          object-position: center;
         }
+
+
+
+
+
         </style>
     </head>
 
@@ -94,20 +100,22 @@
         @if (Route::has('login'))
         <div class="hidden fixed top-0 flex-col items-center justify-center right-0 px-6 pt-8 pb-4 sm:block">
             @auth
-                <a href="{{ Illuminate\Support\Facades\Auth::user()->is_seller ? route('seller.dashboard') : route('dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline rounded-full border border-black">Dashboard</a>
+                <a href="{{ Illuminate\Support\Facades\Auth::user()->is_seller ? route('seller.dashboard') : route('dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 rounded-full border border-black" style="padding: 5px;">
+                  Dashboard
+                </a>
             @else
-                <i class="far fa-user"></i>
-                <a href="{{ route('login') }}" class="text-gray-700 dark:text-gray-500 rounded-full border border-black">
+                <i class="fas fa-user"></i>
+                <a href="{{ route('login') }}" class="text-gray-700 dark:text-gray-500 rounded-full border border-black" style="padding: 5px;">
                     Log in
                 </a>
-                <a href="{{ route('register') }}" class="text-gray-700 dark:text-gray-500 rounded-full border border-black mr-10">
+                <a href="{{ route('register') }}" class="text-gray-700 dark:text-gray-500 rounded-full border border-black ml-1 mr-10" style="padding: 5px;">
                     Register
                 </a>
-                <i class="far fa-hat-chef"></i>
-                <a href="{{ route('seller.login') }}" class="text-gray-700 dark:text-gray-500 rounded-full border border-black">
+                <i class="fas fa-utensils"></i>
+                <a href="{{ route('seller.login') }}" class="text-gray-700 dark:text-gray-500 rounded-full border border-black" style="padding: 5px;">
                     Log in(seller)
                 </a>
-                <a href="{{ route('seller.register') }}" class="text-gray-700 dark:text-gray-500 rounded-full border border-black">
+                <a href="{{ route('seller.register') }}" class="text-gray-700 dark:text-gray-500 rounded-full border border-black ml-1" style="padding: 5px;">
                     Register(seller)
                 </a>
             @endauth
@@ -118,9 +126,9 @@
 
         <body class="antialiased">
             <div class="relative flex items-top justify-center min-h-screen dark:bg-gray-900 sm:items-center sm:pt-0" style="background-color: #F8F7EE">
-                <img src="img/welcome5.jpeg" style="filter: blur(3px);" alt="" class="full-width-height" >
+                <img src="img/welcome9.jpeg" style="filter: blur(3px);" alt="" class="full-width-height" >
                 <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-                    <h1 class="text-7xl font-bold" style="color: white;">Hello! We're Surplus Eats!</h1>
+                    <h1 class="text-8xl font-bold" style="color: white;">Hello! We're Surplus Eats!</h1>
                     <p class="text-white"></p>
                 </div>
             </div>
@@ -158,9 +166,9 @@
             <div class="flex flex-col flex-wrap lg:py-6 mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
                 <div class="flex flex-col mb-32 lg:items-start items-center">
                     <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-orange-400 text-white mb-5">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                            </svg>
+                      <div style="width: 24px; height: 24px;">
+                        <i class="far fa-sad-tear" style="font-size: 24px;"></i>
+                      </div>
                     </div>
                     <div class="flex-grow">
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Hungry or Excess food</h2>
@@ -170,11 +178,9 @@
                 </div>
                 <div class="flex flex-col mb-32 lg:items-start items-center">
                     <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-orange-400 text-white mb-5">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
-                            <circle cx="6" cy="6" r="3"></circle>
-                            <circle cx="6" cy="18" r="3"></circle>
-                            <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-                        </svg>
+                      <div>
+                        <i class="fas fa-hands-helping" style="font-size: 24px;"></i> 
+                      </div>
                     </div>
                     <div class="flex-grow">
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Select a food item or Post food information.</h2>
@@ -186,10 +192,13 @@
                 </div>
                 <div class="flex flex-col mb-32 lg:items-start items-center">
                     <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-orange-400 text-white mb-5">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                        {{-- <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
                             <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
+                        </svg> --}}
+                        <div style="width: 24px; height: 24px;">
+                          <i class="far fa-smile" style="font-size: 24px;"></i>
+                        </div>
                     </div>
                     <div class="flex-grow">
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Full stomach or no extra food</h2>
@@ -206,7 +215,7 @@
     <section class="text-gray-600 body-font">{{-- User's Voice 部分 --}}
         <div class="area js-area">
             <div class="wrap js-wrap">
-                <div class=" item item04 js-item container mx-auto flex justify-center px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 50px 0px 0px; border: 1px solid black; background-color: #f5f5f5; padding-top: 30px; padding-bottom: 30px;">
+                <div class=" item item04 js-item container mx-auto flex justify-center px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 50px 0px 0px; border: 1px solid black; background-color: #f5f5f5; padding-top: 30px; padding-bottom: 30px; border-radius: 10px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
                         <img class="object-cover object-center rounded" alt="hero" src="img/userphoto05.jpeg">
                     </div>
@@ -219,13 +228,11 @@
                              <br class="lg:inline-block">But this app solved that problem.
                              <br class="lg:inline-block">Because you can deliver food to people
                              <br class="lg:inline-block">who are hungry just by posting your unsold food items.
-                               
-                            </p>
-                            
+                            </p>  
                     </div>
                 </div>
 
-                <div class=" item item05 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 50px 0px 0px; border: 1px solid black; background-color: #f5f5f5; padding-top: 30px; padding-bottom: 30px;">
+                <div class=" item item05 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0); margin: 0px 50px 0px 0px; border: 1px solid black; background-color: #f5f5f5; padding-top: 30px; padding-bottom: 30px; border-radius: 10px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
                         <img class="object-cover object-center rounded" alt="hero" src="img/userphoto02.jpeg">
                     </div>
@@ -237,13 +244,11 @@
                                 <br class="lg:inline-block">When I actually tried it, I found that 
                                 <br class="lg:inline-block">I could buy some foods at less than half of the regular price, which is very helpful. 
                                 <br class="lg:inline-block">Thanks to this, my children don't have to go hungry anymore.
-                                
                             </p>
-                            
                     </div>
                 </div>
            
-                <div class=" item item06 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0);margin: 0px 50px 0px 0px; border: 1px solid black; background-color: #f5f5f5; padding-top: 30px; padding-bottom: 30px;">
+                <div class=" item item06 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="transform: translate(-300px, 0);margin: 0px 50px 0px 0px; border: 1px solid black; background-color: #f5f5f5; padding-top: 30px; padding-bottom: 30px; border-radius: 10px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
                         <img class="object-cover object-center rounded" alt="hero" src="img/userphoto03.jpeg">
                     </div>
@@ -255,13 +260,12 @@
                                 <br class="lg:inline-block">This is because even just throwing it away costs money, regardless. 
                                 <br class="lg:inline-block">With this app, however, you can share your surplus food with hungry children.
                                 <br class="lg:inline-block">I think this system is having a positive impact on the children of Cebu.
-                                
                             </p>
-                           
+
                     </div>
                 </div>
 
-                <div class=" item item07 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="width: 600px; transform: translate(-300px, 0); margin: 0px 0px 0px 0px; border: 1px solid black; background-color: #f5f5f5; padding-top: 30px; padding-bottom: 30px;">
+                <div class=" item item07 js-item container mx-auto flex px-0 py-24 md:flex-row flex-col items-center" style="width: 600px; transform: translate(-300px, 0); margin: 0px 0px 0px 0px; border: 1px solid black; background-color: #f5f5f5; padding-top: 30px; padding-bottom: 30px; border-radius: 10px;">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
                         <img class="object-cover object-center rounded" alt="hero" src="img/userphoto04.jpeg">
                     </div>
@@ -274,9 +278,7 @@
                                 <br class="lg:inline-block">and I thought I could do something to help them. 
                                 <br class="lg:inline-block">As a result, I was able to buy good food for a small cost.
                                 <br class="lg:inline-block">I am very happy that my children have the opportunity to eat more rice than before. 
-                               
                             </p>
-                            
                     </div>
                 </div>
             </div>
@@ -423,22 +425,13 @@
 
 
     <footer class="text-gray-600 body-font">{{-- footer部分 --}}
+      <div class="flex">
         <div class="container px-5 py-2 mx-auto flex items-center sm:flex-row flex-col">
-            <img src="img/logo.png" alt="" style="height: 500px; width: 500px">
-            <p>
-                Orange→Cebu's sun
-            </p>
-            <p>
-                Light blue→Cebu's ocean
-            </p>
-            <p>
-                Green→Cebu's forest
-            </p>
-            
+            <img src="img/logo.png" alt="" style="height: 100px; width: 100px">
+             &copy;Surplus Eats.inc 2023
         </div>
-
         
-        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 mr-4 justify-center sm:justify-start">
             <a class="text-gray-500">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -462,6 +455,7 @@
             </svg>
             </a>
         </span>
+      </div>
     </footer>
         
 </html>
