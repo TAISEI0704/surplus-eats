@@ -140,5 +140,15 @@ class SellerAuthController extends Controller
     return redirect()->route('seller.dashboard');
 }
 
+    public function notificationShow($seller_id){
+      // ユーザー
+      $seller = Seller::find($seller_id);
+
+      //  全通知を取得
+      $notifications=$seller->notifications;
+      return view('seller.notifications', compact('notifications'));
+
+} 
+
 }
 
