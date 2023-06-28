@@ -11,12 +11,14 @@ class CategorySelect extends Component
      *
      * @return void
      */
-    public $categories;
+    public $categories_1;
+
+    public $categories_2;
 
     public function __construct()
     {
         // カテゴリの選択肢を取得する処理
-        $this->categories = [
+        $this->categories_1 = [
             // '' => __('Select Category'),
             // 'all' => 'All',
             'Chicken' => 'Chicken',
@@ -52,6 +54,26 @@ class CategorySelect extends Component
             'Dessert' => 'Dessert',
             // 追加のカテゴリオプション
         ];
+
+        $this->categories_2 = [
+           // '' => __('Select Category'),
+           // 'all' => 'All',
+           'Meat' => 'Meat',
+           'Seafood' => 'Seafood',
+           'Egg' => 'Egg',
+           'Milk' => 'Milk',
+           'Born' => 'Born',
+           'Animal Oil' => 'Animal Oil',
+           'Cereal' => 'Cereal',
+           'Vegetable' => 'Vegetable',
+           'Fruit' => 'Fruit',
+           'Herb' => 'Herb',
+           'Vegetable Oil' => 'Vegetable Oil',
+           'Sea Weed' => 'Sea Weed',
+           'Spice' => 'Spice',
+           'Condiment' => 'Condiment',
+           // 追加のカテゴリオプション
+       ];
     }
 
     /**
