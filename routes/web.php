@@ -8,6 +8,8 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserProfileController;
 use App\Models\Models\Seller;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\NotificationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +86,7 @@ Route::group(['middleware' => 'web',
     Route::delete('/post/{id}',[PostController::class,'destroy'])->name('post.destroy');
 
 
+    Route::get('/read/{seller_id}',[NotificationController::class,'read'])->name('notification.read');
     Route::get('/seller/notification',[SellerAuthController::class,'notificationShow'])->name('notification.show');
     // Route::get('/review/{seller_id}/create',[ReviewController::class,'create'])->name('review.create');
     // Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
