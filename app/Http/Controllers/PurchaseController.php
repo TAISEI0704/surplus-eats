@@ -20,11 +20,13 @@ class PurchaseController extends Controller
     public function storePurchase(Request $request)
     {
         $userId = Auth::user()->id;
+        $user = User::find($userId);
         $productIds = $request->input('product_id');
         $quantities = $request->input('quantity');
         $purchaseHistoryIds = [];
         // お知らせ内容を格納する配列
         $notifications = [];
+        // $notificationContent= "{$user->name} bought ";
 
 
           // purchasehistories テーブルにデータを保存
@@ -49,6 +51,7 @@ class PurchaseController extends Controller
                 $cart->delete();
             }
 
+
             // productsテーブルの数量を減らす
             $product->quantity -= $quantity;
             // $product->updated_at = now();
@@ -57,26 +60,35 @@ class PurchaseController extends Controller
             $sellerId = $product->seller_id;
             
             // セラーごとのお知らせ内容を組み立てる
-            $user = User::find($userId);
             $productName = $product->name;
-            $notificationContent = "{$user->name}が {$productName} を {$quantity} 個購入しました。";
+            // $notificationContent .= "{$quantity} of {$productName}";
+
+             // 最後の商品でない場合はカンマを追加
+            // if ($index < count($productIds) - 1) {
+            // $notificationContent .= ", ";
+            // }
 
             // セラーごとにお知らせを追加する
             if (!isset($notifications[$sellerId])) {
                   $notifications[$sellerId] = [];
             }
-            $notifications[$sellerId][] = $notificationContent;
+            $notifications[$sellerId][] ="{$quantity} of {$productName}";
 
        }
 
        // セラーごとにお知らせを送信
             foreach ($notifications as $sellerId => $notificationContents) {
             $seller = Seller::find($sellerId);
+            $notificationString = "{$user->name} bought ";
+            $notificationString .= implode(", ", $notificationContents);
+
 
         // お知らせテーブルへ登録
             $information = Information::create([
              'date' => date('Y-m-d H:i'),
-             'content' => implode(PHP_EOL, $notificationContents),
+            //  'content' => implode(PHP_EOL, $notificationContents),
+            // ]);
+             'content' => $notificationString,
             ]);
 
         // セラーにお知らせを送信
