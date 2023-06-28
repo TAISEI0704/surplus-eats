@@ -161,10 +161,10 @@ class SellerAuthController extends Controller
 
         public function notificationShow(){
             // ユーザー
-            $seller =  Auth::user();
+            $user =  Auth::user();
         
             // 通知を取得
-            $notifications = $seller->notifications;
+            $notifications = $user->notifications;
         
             return view('seller.notifications', compact('notifications'));
         }
