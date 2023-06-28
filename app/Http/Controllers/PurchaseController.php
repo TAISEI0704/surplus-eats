@@ -94,26 +94,6 @@ class PurchaseController extends Controller
         // セラーにお知らせを送信
         $seller->notify(new InformationNotification($information));
 
-            
-
-        //      // お知らせテーブルへ登録
-        //     $information = Information::create([
-        //         'date' => $request->get('date'),
-        //         'content' => $request->get('content'),
-    
-        //     ]);
-
-        //     // セラーIDを取得する
-        //     $sellerIds[] = $product->seller_id;
-
-        
-        //    // お知らせ内容を対象ユーザー宛てに通知登録
-        //    $sellers = Seller::whereIn('id', $sellerIds)->get();
-        //    foreach ($sellers as $seller) {
-        //        $seller->notify(
-        //                        new InformationNotification($information)
-        //                       );
-        //              }
         
 
         }
