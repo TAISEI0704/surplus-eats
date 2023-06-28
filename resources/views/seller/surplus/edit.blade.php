@@ -60,14 +60,14 @@
                           </div>
                           <div class="p-2 w-full">
                             <div class="relative">
-                                <label for="start_time" class="leading-7 text-sm text-gray-600">Available Pickup Time（Start）</label>
-                                <input type="time" id="start_time" name="start_time" value="{{ $post->start_time}}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                            </div>
-                          </div>
-                          <div class="p-2 w-full">
-                            <div class="relative">
-                                <label for="end_time" class="leading-7 text-sm text-gray-600">Available Pickup Time（End）</label>
-                                <input type="time" id="end_time" name="end_time" value="{{ $post->end_time }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                              <label for="start_time" class="leading-7 text-sm text-gray-600">Available Pickup Time (Start)</label>
+                              <select id="start_time" name="available_time" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <option value="{{ $post->availble_time }}">{{ $post->available_time }}</option>
+                                <option value="05:00~12:00 (Morning)">{{ __('05:00~12:00 (Morning)') }}</option>
+                                <option value="12:00~17:00 (Afternoon)">{{ __('012:00~17:00 (Afternoon)') }}</option>
+                                <option value="17:00~21:00 (Evening)">{{ __('17:00~21:00 (Evening)') }}</option>
+                                <option value="21:00~25:00 (Night)">{{ __('21:00~25:00 (Night)') }}</option>
+                              </select>
                             </div>
                           </div>
                           <div class="p-2 w-full">

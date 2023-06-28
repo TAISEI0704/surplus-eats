@@ -22,6 +22,8 @@
                         <div class="mt-4">
                           <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $post->seller->name }}</h3>
                           <h2 class="text-gray-900 title-font text-lg font-medium">{{ $post->name }}</h2>
+                          <p class="mt-1"><i class="fas fa-tag fa-rotate-90" style="margin-right: 10px;"></i>{{ $post->category}}</p>
+                          <p class="mt-1">{{ $post->available_time }}</p>
                           <p class="mt-1">{{ $post->content }}</p>
                           <p class="mt-1">{{ $post->price }}Php</p>
                           @if ($post->quantity <= 0)
@@ -34,11 +36,11 @@
                           <button class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">
                             <a href="{{ route('post.edit', $post->id) }}">{{ __('Edit') }}</a>
                           </button>
-                          <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display: inline;">
+                          {{-- <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded" onclick="return confirm('本当に削除しますか？')">{{ __('Delete') }}</button>
-                          </form>
+                          </form> --}}
                         </div>
                         {{-- <div class="lg:w-1/4 md:w-1/2 p-4 w-full flex">
                           <div class="w-1/2">
