@@ -145,17 +145,16 @@ public function store(Request $request)
 
     public function filterByCategory(Request $request)
     {
-        $category = $request->category;
+        $categories = $request->input('category');
 
-        if ($category === null) {
-            return back()->with('error', 'カテゴリを選択してください');
-        }elseif($category === 'all'){
+        if (empty($categories)) {
+            return redirect()->route('dashboard');
+        } elseif (in_array('all', $categories)) {
             $posts = Product::latest('created_at')->get();
-            return view('surplus.timeline', compact('posts','category'));
-        }else{
-            $posts = Product::where('category', $category)->latest('created_at')->get();
-            return view('surplus.timeline', compact('posts','category'));
+        } else {
+            $posts = Product::whereIn('category', $categories)->latest('created_at')->get();
         }
+    
+        return view('surplus.timeline', compact('posts', 'categories'));
     }
-
 }
