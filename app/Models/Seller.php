@@ -80,4 +80,9 @@ class Seller extends Authenticatable
     {
         return $this->id;
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'seller_id');
+    }
 }

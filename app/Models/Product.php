@@ -16,7 +16,7 @@ class Product extends Model
         'quantity', 
         'category', 
         'image', 
-        'time', 
+        'available_time', 
         'seller_id'
     ];
 
@@ -38,6 +38,11 @@ class Product extends Model
     public function purchase_histories()
     {
         return $this->hasMany(purchaseHistory::class, 'product_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'product_id');
     }
 
 }

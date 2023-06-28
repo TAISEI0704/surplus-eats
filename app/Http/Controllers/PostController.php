@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Seller;
 use App\Models\Product;
-
+use App\Models\Review;
 
 class PostController extends Controller
 {
@@ -26,7 +26,10 @@ class PostController extends Controller
     public function detail($id)
     {
         $post = Product::find($id);
-        return view('surplus.detail', compact('post'));
+
+        $reviews = Review::where('product_id',$id)->get();
+        
+        return view('surplus.detail', compact('post','reviews'));
     }
 
 
@@ -69,8 +72,7 @@ public function store(Request $request)
         $product-> category = $request -> category;
         $product-> image = $request->image;
         $product->image=$file;
-        $product->start_time = $request->start_time;
-        $product->end_time = $request->end_time;
+        $product->available_time = $request->available_time;
         $product->seller_id = Auth::id();
         
 
@@ -114,8 +116,7 @@ public function store(Request $request)
             $post->content = $request->content;
             $post->quantity = $request->quantity;
             $post->category = $request->category;
-            $post->start_time = $request->start_time;
-            $post->end_time = $request->end_time;
+            $post->available_time = $request->available_time;
             $post->image = $file;
 
             $post->save();
@@ -126,8 +127,7 @@ public function store(Request $request)
             $post->content = $request->content;
             $post->quantity = $request->quantity;
             $post->category = $request->category;
-            $post->start_time = $request->start_time;
-            $post->end_time = $request->end_time;
+            $post->available_time = $request->available_time;
         
             $post->save();
         }
