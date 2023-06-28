@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use App\Models\Seller;
+
+use App\Models\Notifications;
+
 use App\Models\Review;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -143,6 +147,28 @@ class SellerAuthController extends Controller
         
     return redirect()->route('seller.dashboard');
 }
+
+//     public function notificationShow(){
+//     //   // ユーザー
+//     //   $seller = Seller::find($seller_id);
+
+//     //   //  全通知を取得
+//     //   $notifications=$seller->notifications;
+//       return view('seller.notifications');
+
+// } 
+
+
+        public function notificationShow(){
+            // ユーザー
+            $seller =  Auth::user();
+        
+            // 通知を取得
+            $notifications = $seller->notifications;
+        
+            return view('seller.notifications', compact('notifications'));
+        }
+
 
 }
 

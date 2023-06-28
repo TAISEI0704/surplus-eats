@@ -83,9 +83,12 @@ Route::group(['middleware' => 'web',
     Route::patch('/post/{id}/update',[PostController::class,'update'])->name('post.update');
     Route::delete('/post/{id}',[PostController::class,'destroy'])->name('post.destroy');
 
+
+    Route::get('/seller/notification',[SellerAuthController::class,'notificationShow'])->name('notification.show');
     // Route::get('/review/{seller_id}/create',[ReviewController::class,'create'])->name('review.create');
     // Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
     // Route::get('/review/{id}', [ReviewController::class, 'show'])->name('review.show');
+
 
     // Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
     // Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Seller;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\CartProduct;
@@ -10,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Models\PurchaseHistory;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Information;
+use App\Notifications\InformationNotification;
 
 class PurchaseController extends Controller
 {
@@ -17,9 +20,14 @@ class PurchaseController extends Controller
     public function storePurchase(Request $request)
     {
         $userId = Auth::user()->id;
+        $user = User::find($userId);
         $productIds = $request->input('product_id');
         $quantities = $request->input('quantity');
         $purchaseHistoryIds = [];
+        // お知らせ内容を格納する配列
+        $notifications = [];
+        // $notificationContent= "{$user->name} bought ";
+
 
           // purchasehistories テーブルにデータを保存
           foreach ($productIds as $index => $productId) {
@@ -43,10 +51,70 @@ class PurchaseController extends Controller
                 $cart->delete();
             }
 
+
             // productsテーブルの数量を減らす
             $product->quantity -= $quantity;
             // $product->updated_at = now();
             $product->save();
+
+            $sellerId = $product->seller_id;
+            
+            // セラーごとのお知らせ内容を組み立てる
+            $productName = $product->name;
+            // $notificationContent .= "{$quantity} of {$productName}";
+
+             // 最後の商品でない場合はカンマを追加
+            // if ($index < count($productIds) - 1) {
+            // $notificationContent .= ", ";
+            // }
+
+            // セラーごとにお知らせを追加する
+            if (!isset($notifications[$sellerId])) {
+                  $notifications[$sellerId] = [];
+            }
+            $notifications[$sellerId][] ="{$quantity} of {$productName}";
+
+       }
+
+       // セラーごとにお知らせを送信
+            foreach ($notifications as $sellerId => $notificationContents) {
+            $seller = Seller::find($sellerId);
+            $notificationString = "{$user->name} bought ";
+            $notificationString .= implode(", ", $notificationContents);
+
+
+        // お知らせテーブルへ登録
+            $information = Information::create([
+             'date' => date('Y-m-d H:i'),
+            //  'content' => implode(PHP_EOL, $notificationContents),
+            // ]);
+             'content' => $notificationString,
+            ]);
+
+        // セラーにお知らせを送信
+        $seller->notify(new InformationNotification($information));
+
+            
+
+        //      // お知らせテーブルへ登録
+        //     $information = Information::create([
+        //         'date' => $request->get('date'),
+        //         'content' => $request->get('content'),
+    
+        //     ]);
+
+        //     // セラーIDを取得する
+        //     $sellerIds[] = $product->seller_id;
+
+        
+        //    // お知らせ内容を対象ユーザー宛てに通知登録
+        //    $sellers = Seller::whereIn('id', $sellerIds)->get();
+        //    foreach ($sellers as $seller) {
+        //        $seller->notify(
+        //                        new InformationNotification($information)
+        //                       );
+        //              }
+        
 
         }
 
