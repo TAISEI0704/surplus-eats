@@ -2,47 +2,49 @@
     <button class="button" data-modal-open="modal-1">
       OPEN
     </button>
-    
-    <div class="modal" id="modal-1">
-      <div class="modal-overlay" data-modal-close="modal-1">
-        <div class="modal-container">
-          <h2 class="modal-title">CATEGORY</h2>
-          <div class="modal-content">
-            <div class="container px-5 py-24 mx-auto">
-                <div class="flex flex-wrap md:text-left text-center -mb-10 -mx-4">
-                  <div class="lg:w-1/6 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">DISHES</h2>
-                    <nav class="list-none mb-10 flex flex-wrap">
-                        @foreach($categories_1 as $value => $label)
-                        <div class="w-1/2">
-                          <input type="radio" id="category" name="category" value="{{ $value }}" class="category-radio">
-                          <label for="category1" class="text-gray-600 hover:text-gray-800">{{ $label }}</label>
-                        </div>
-                        @endforeach
-                    </nav>
-                  </div>
-                  <div class="lg:w-1/6 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">INGREDIENTS</h2>
-                    <nav class="list-none mb-10 flex flex-wrap">
-                        @foreach($categories_2 as $value => $label)
-                        <div class="w-1/2">
-                          <input type="radio" id="category" name="category" value="{{ $value }}" class="category-radio">
-                          <label for="category1" class="text-gray-600 hover:text-gray-800">{{ $label }}</label>
-                        </div>
-                        @endforeach
-                    </nav>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="modal-footer">
-            <button class="button" data-modal-close="modal-1">
-              OK
-            </button>
-          </div>
+
+    <form action="{{ route('products.filter') }}" method="GET">
+        @csrf
+      <div class="modal" id="modal-1">
+        <div class="modal-overlay" data-modal-close="modal-1">
+            <div class="modal-container">
+            <h2 class="modal-title">CATEGORY</h2>
+            <div class="modal-content">
+                <div class="container px-5 py-24 mx-auto">
+                    <div class="flex flex-wrap md:text-left text-center -mb-10 -mx-4">
+                      <div class="lg:w-1/6 md:w-1/2 w-full px-4">
+                        <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">DISHES</h2>
+                        <nav class="list-none mb-10 flex flex-wrap">
+                          @foreach($categories_1 as $value => $label)
+                          <div class="w-1/2">
+                            <input type="checkbox" id="category_{{ $value }}" name="category[]" value="{{ $value }}" class="category-checkbox">
+                            <label for="category_{{ $value }}" class="text-gray-600 hover:text-gray-800">{{ $label }}</label>
+                          </div>
+                          @endforeach
+                        </nav>
+                      </div>
+                      <div class="lg:w-1/6 md:w-1/2 w-full px-4">
+                        <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">INGREDIENTS</h2>
+                        <nav class="list-none mb-10 flex flex-wrap">
+                          @foreach($categories_2 as $value => $label)
+                          <div class="w-1/2">
+                            <input type="checkbox" id="category_{{ $value }}" name="category[]" value="{{ $value }}" class="category-checkbox">
+                            <label for="category_{{ $value }}" class="text-gray-600 hover:text-gray-800">{{ $label }}</label>
+                          </div>
+                          @endforeach
+                        </nav>
+                      </div>
+                    </div>
+                  </div>                  
+            </div>
+            <div class="modal-footer">
+                <button class="button" data-modal-close="modal-1" data-close-type="close">CLOSE</button>
+                <button type="submit" class="button" data-modal-close="modal-1" data-close-type="ok">OK</button>
+            </div>
+            </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 
   <style>
@@ -178,6 +180,14 @@ Modal.prototype.close = function(event) {
   event.stopPropagation(); // ラジオボタンのクリックイベントをキャンセル
   const closeButton = event.target;
   const closeType = closeButton.getAttribute('data-close-type');
+
+// チェックボックスのクリックイベントをキャンセルする
+const checkboxes = document.querySelectorAll('.category-checkbox');
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+});  
 
   // CLOSEボタンをクリックした場合のみモーダルを閉じる
   if (closeType === 'close') {
