@@ -120,6 +120,12 @@
                                 </x-jet-dropdown-link>
                             @endif
 
+                            @if (Auth::user()->is_seller == true)
+                                <x-jet-dropdown-link href="{{ route('notification.show') }}">
+                                    {{ __('Notifications') }}
+                                </x-jet-dropdown-link>
+                            @endif
+
                             <x-jet-dropdown-link href="{{ Auth::user()->is_seller ? route('seller.profile.show') : route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
