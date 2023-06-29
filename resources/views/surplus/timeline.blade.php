@@ -37,12 +37,6 @@
                   {{-- @foreach($posts as $post) --}}
                   <div class="flex flex-wrap -m-4">
                   @foreach($posts as $post)
-                    {{-- @if ($post->quantity <= 0)
-                      @php
-                      $currentTime = now();
-                      $hideTime = $post->updated_at->addHour(); // 投稿の更新日時から1時間後を非表示の時刻とする
-                      @endphp
-                    @endif --}}
                     <div class="lg:w-1/4 md:w-1/2 p-4 w-full" @if(now() >= $post->created_at->addHour(24)) style="display: none;" @endif>
                       {{-- <a class="block relative h-48 rounded overflow-hidden"> --}}
                       <a class="block relative h-48 rounded overflow-hidden" href="{{ route('detail',$post->id) }}">

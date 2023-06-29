@@ -28,6 +28,8 @@
                           <p class="mt-1">{{ $post->price }}Php</p>
                           @if ($post->quantity <= 0)
                           <p class="@if ($post->quantity <= 0) text-red-500 @endif">SOLD OUT</p>
+                          @elseif(now() >= $post->created_at->addHour(24))
+                          <p class="@if ($post->quantity <= 0) text-red-500 @endif">TIME OUT</p>
                           @else
                           <p class="mt-1  @if ($post->quantity <= 3) text-red-500 @endif">{{ $post->quantity }} left</p>
                           @endif
