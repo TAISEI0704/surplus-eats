@@ -32,14 +32,14 @@
                         </div> --}}
                         <div class="flex flex-col items-center text-center justify-center">
                           <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">name of restaurant<input type="text" id="name" name="name" value="{{ $user->name }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out text-center"></h2>
-                          <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
+                          {{-- <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div> --}}
                           <p class="text-base">number<input type="text" id="phone" name="phone" value="{{ $user->phone }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out text-center"></p>
                           <p class="text-base">email<input type="text" id="email" name="email" value="{{ $user->email }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out text-center"></p>
                           <p class="text-base">address<input type="text" id="address" name="address" value="{{ $user->address }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out text-center"></p>
                         </div>
                       </div>
-                      <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                        <p class="leading-relaxed text-lg mb-4"><textarea id="content" name="content" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out resize-none" style="height: 200px; white-space: pre-wrap; word-wrap: break-word;" >{{ $user->content }}</textarea></p>
+                      <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-6 pt-4 sm:mt-0 text-center sm:text-left">
+                        <p class="leading-relaxed text-lg mb-4"><textarea id="content" name="content" class="mt-10 w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out resize-none" style="height: 200px; white-space: pre-wrap; word-wrap: break-word;" >{{ $user->content }}</textarea></p>
                       {{-- </div>   --}}
         
                     {{-- @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
@@ -51,9 +51,9 @@
                         <x-jet-section-border />
                     @endif --}}
                       <div style="text-align: right;">
-                        <x-jet-button type="submit">
-                            {{ __('edit') }}
-                          </x-jet-button>
+                        <button type="submit" class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">
+                            edit
+                        </button>
                       </div>
                         {{-- <a class="text-indigo-500 inline-flex items-center">Learn More
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
