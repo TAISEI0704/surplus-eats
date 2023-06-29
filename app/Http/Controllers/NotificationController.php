@@ -25,7 +25,51 @@ class NotificationController extends Controller
         $notification->save();
     }
 
+
+    $data = json_decode($notification->data, true);
+
+    // user_id を取り出して変数に代入
+    $userId = $data['user_id'];
+    $user = User::find($userId);
+    $sellerId=Auth::user()->id;
+    $seller=Seller::find($sellerId);
+    $content=$data['content'];
+    $notificationString="{$seller->name} has confirmed ' $content ' ";
+
+     // お知らせテーブルへ登録
+     $information = Information::create([
+        'date' => date('Y-m-d H:i'),
+        'content' => $notificationString,
+        'seller_id'=>$sellerId,
+       ]);
+
+   // セラーにお知らせを送信
+   $user->notify(new InformationNotification($information));
+
+
     return redirect()->route('notification.show');
 
    }
+
+   public function notificationShow(){
+    // ユーザー
+    $user =  Auth::user();
+
+    // 通知を取得
+    $notifications = $user->notifications;
+
+    return view('surplus.notifications', compact('notifications'));
+}
+
+public function onlyRead($notification_id){
+   
+    $notification = Notification::find($notification_id);
+
+    if ($notification) {
+        $notification->read_at=Carbon::now();
+        $notification->save();
+    }
+
+}
+
 }

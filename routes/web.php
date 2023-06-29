@@ -54,6 +54,9 @@ Route::middleware([
     ->middleware(['auth']);
     Route::get('/filter',[PostController::class,'filterByCategory'])->name('products.filter');
 
+    Route::get('/notification',[NotificationController::class,'notificationShow'])->name('user.notification.show');
+    Route::get('user/read/{notification_id}',[NotificationController::class,'onlyRead'])->name('notification.only.read');
+
 });
 
 

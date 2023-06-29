@@ -12,6 +12,8 @@ class Information extends Model
     protected $fillable = [
        'date',
        'content',
+       'user_id',
+       'seller_id'
         
     ];
 

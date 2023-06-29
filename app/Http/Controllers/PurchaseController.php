@@ -76,6 +76,7 @@ class PurchaseController extends Controller
 
        }
 
+
        // セラーごとにお知らせを送信
             foreach ($notifications as $sellerId => $notificationContents) {
             $seller = Seller::find($sellerId);
@@ -86,9 +87,8 @@ class PurchaseController extends Controller
         // お知らせテーブルへ登録
             $information = Information::create([
              'date' => date('Y-m-d H:i'),
-            //  'content' => implode(PHP_EOL, $notificationContents),
-            // ]);
              'content' => $notificationString,
+             'user_id'=>$userId,
             ]);
 
         // セラーにお知らせを送信

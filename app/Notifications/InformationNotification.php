@@ -61,7 +61,8 @@ class InformationNotification extends Notification
             //
             'date' => $this->information->date,
             'content' => $this->information->content,
-
+            'user_id'=>$this->information->user_id,
+            'seller_id'=>$this->information->seller_id,
         ];
     }
 }
