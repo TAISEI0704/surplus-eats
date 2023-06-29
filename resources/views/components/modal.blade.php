@@ -1,6 +1,6 @@
 <div class="container">
     <button class="button" data-modal-open="modal-1">
-      OPEN
+      {{ __('SElECT CATEGORY') }}
     </button>
 
     <form action="{{ route('products.filter') }}" method="GET">
@@ -8,7 +8,7 @@
       <div class="modal" id="modal-1">
         <div class="modal-overlay" data-modal-close="modal-1">
             <div class="modal-container">
-            <h2 class="modal-title">CATEGORY</h2>
+            <h2 class="modal-title">{{ __('CATEGORY') }}</h2>
             <div class="modal-content">
                 <div class="container px-5 py-24 mx-auto">
                     <div class="flex flex-wrap md:text-left text-center -mb-10 -mx-4">
@@ -38,8 +38,8 @@
                   </div>                  
             </div>
             <div class="modal-footer">
-                <button class="button" data-modal-close="modal-1" data-close-type="close">CLOSE</button>
-                <button type="submit" class="button" data-modal-close="modal-1" data-close-type="ok">OK</button>
+                <button class="button" data-modal-close="modal-1" data-close-type="close">{{ __('Clear') }}</button>
+                <button type="submit" class="button" data-modal-close="modal-1" data-close-type="ok">{{ __('Search') }}</button>
             </div>
             </div>
         </div>
