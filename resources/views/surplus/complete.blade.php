@@ -15,7 +15,7 @@
             <div class="container px-5 py-24 mx-auto">
               <div class="flex flex-col text-center w-full mb-20">
                 <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900"> Thank you for your purchase</h1>
-                <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">Your purchase is complete</h2>
+                <h2 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Your purchase is complete</h2>
               </div>
               <div class="flex flex-wrap -m-4">
                 @foreach($purchaseHistories as $purchaseHistory)
@@ -31,7 +31,7 @@
                         <p class="leading-relaxed text-base">Purchase Date:{{ date('Y-m-d H:i', strtotime($purchaseHistory->created_at)) }}</p>
                       </div>
                       <div>
-                        <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"><a href="{{ route('detail', ['id' => $purchaseHistory->product->id]) }}">{{ __('Detail') }}</a></button>
+                        <button type="submit" class="text-white bg-orange-300 border-0 py-2 px-6 focus:outline-none hover:bg-orange-400 rounded"><a href="{{ route('detail', ['id' => $purchaseHistory->product->id]) }}">{{ __('Detail') }}</a></button>
                       </div>
                     </div>
                   </div>
@@ -47,7 +47,7 @@
                 <p>Total Price: {{ $totalPrice }}</p>
               </div>
               <div>
-                <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"><a href="{{ route('dashboard') }}">Back</a></button>
+                <button type="submit" class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded"><a href="{{ route('dashboard') }}">Back</a></button>
               </div>
             </div>
           </section>
