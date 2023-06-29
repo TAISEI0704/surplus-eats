@@ -17,7 +17,10 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('content');
-            $table->integer('rating');
+            $table->string('rating_taste');
+            $table->string('rating_price');
+            $table->string('rating_service');
+            $table->integer('rating_total');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('seller_id');

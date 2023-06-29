@@ -62,7 +62,7 @@
                             <div class="relative">
                               <label for="start_time" class="leading-7 text-sm text-gray-600">Available Pickup Time (Start)</label>
                               <select id="start_time" name="available_time" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                <option value="{{ $post->availble_time }}">{{ $post->available_time }}</option>
+                                <option value="{{ $post->available_time }}">{{ $post->available_time }}</option>
                                 <option value="05:00~12:00 (Morning)">{{ __('05:00~12:00 (Morning)') }}</option>
                                 <option value="12:00~17:00 (Afternoon)">{{ __('012:00~17:00 (Afternoon)') }}</option>
                                 <option value="17:00~21:00 (Evening)">{{ __('17:00~21:00 (Evening)') }}</option>
