@@ -129,7 +129,7 @@
                 G-cash
               </label> --}}
               <br>
-              <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onclick="confirmPurchase(event)">
+              <button type="submit" class="text-white bg-orange-300 border-0 py-2 px-6 focus:outline-none hover:bg-orange-400 rounded" onclick="confirmPurchase(event)">
                 Purchase
               </button>
               {{-- <a id="cancel-payment-button">キャンセル</a> --}}
