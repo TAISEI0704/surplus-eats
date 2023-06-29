@@ -28,7 +28,10 @@ class ReviewController extends Controller
             'product_id' => 'required|exists:products,id',
             'name' => 'nullable|string|max:30',
             'comment' => 'required|string|max:255',
-            'rating' => 'required|integer|min:1|max:5',
+            'rating_taste' => 'required|string|max:30',
+            'rating_price' => 'required|string|max:30',
+            'rating_service' => 'required|string|max:30',
+            'rating_total' => 'required|integer|min:1|max:5',
         ]);
 
         // レビューモデルの作成と保存
@@ -36,7 +39,10 @@ class ReviewController extends Controller
         $review = new Review;
         $review -> name = $request -> name;
         $review -> content = $request -> comment;
-        $review -> rating = $request -> rating;
+        $review -> rating_taste = $request -> rating_taste;
+        $review -> rating_price = $request -> rating_price;
+        $review -> rating_service = $request -> rating_service;
+        $review -> rating_total = $request -> rating_total;
         $review -> user_id = Auth::id();
         $review -> seller_id = $request -> seller_id;
         $review -> product_id =$request -> product_id;
@@ -66,8 +72,6 @@ class ReviewController extends Controller
     
         return view('surplus.detail', compact('reviews'));
     }
-
-
 
 }
 

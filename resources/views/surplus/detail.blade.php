@@ -117,8 +117,8 @@
                     @foreach($reviews as $review)  
                       <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
                         {{-- <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Shooting Stars</h2> --}}
-                        <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">ユーザー名:{{ $review->user->name }}</h2>
-                        <h2 class="leading-relaxed text-base mb-4">投稿日:{{ \Carbon\Carbon::parse($review->created_at)->format('Y-m-d') }}</h2>
+                        <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Name : {{ $review->user->name }}</h2>
+                        <h2 class="leading-relaxed text-base mb-4">Date : {{ \Carbon\Carbon::parse($review->created_at)->format('Y-m-d') }}</h2>
                         {{-- <a class="text-indigo-500 inline-flex items-center">Learn More
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -126,7 +126,8 @@
                         </a> --}}
                       </div>
                       <div class="xl:w-3/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-                        <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">評価:{{ $review->rating }}</h2>
+                        <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"><span style="color: rgb(245, 156, 47);">Rating : {{ $review->rating_total }}</span></h2>
+                        <p class="leading-relaxed text-base mb-4">Taste : <span style="color: rgb(245, 156, 47);">{{ $review->rating_taste }}</span> Price : <span style="color: rgb(245, 156, 47);">{{ $review->rating_price }}</span> Service : <span style="color: rgb(245, 156, 47);">{{ $review->rating_service }}</span></p>
                         <h3 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">{{ $review->name }}</h3>
                         <p class="leading-relaxed text-base mb-4">{{ $review->content }}</p>
                         {{-- <a class="text-indigo-500 inline-flex items-center">Learn More
