@@ -64,7 +64,7 @@
                               @endfor
                             </select>
                           </div>
-                          <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to Your Cart</button>
+                          <button type="submit" class="mt-3 text-white bg-orange-300 border-0 py-2 px-6 focus:outline-none hover:bg-orange-400 rounded">Add to Your Cart</button>
                         </form>
                         @else
                         <p  class="@if ($post->quantity <= 0) text-red-500 @endif">SOLD OUT</p>
