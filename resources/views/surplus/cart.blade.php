@@ -9,7 +9,7 @@
         @csrf
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           @if ($carts->isEmpty())
-          <p>カートに入れている商品がありません。</p>
+          <p>There are no items in your cart.</p>
           @else
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               @foreach($carts as $cart)
@@ -142,7 +142,7 @@
       function confirmPurchase(event) {
         event.preventDefault(); // デフォルトのフォーム送信をキャンセル
     
-        if (confirm('本当に購入しますか？')) {
+        if (confirm('Are you really going to make the purchase?')) {
           document.getElementById('purchase-form').submit(); // フォームを送信
         }
       }
