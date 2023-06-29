@@ -58,13 +58,13 @@
                           {{-- <input type="number" id="quantity" name="cart_quantity" value="{{ old('quantity') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> --}}
                           <div class="flex items-center">
                             <p class="ml-1">Quantity : </p>
-                            <select name='cart_quantity' class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                            <select name='cart_quantity' class="ml-1 rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
                               @for ($i = 1; $i <= $post->quantity; $i++)
                                     <option>{{ $i }}</option>
                               @endfor
                             </select>
                           </div>
-                          <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to Your Cart</button>
+                          <button type="submit" class="text-white mt-2 bg-orange-400 border-0 py-2 px-6 focus:outline-none hover:bg-orange-600 rounded">Add to Your Cart</button>
                         </form>
                         @else
                         <p  class="@if ($post->quantity <= 0) text-red-500 @endif">SOLD OUT</p>
