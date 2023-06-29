@@ -36,7 +36,7 @@
                             <input type="hidden" name='seller_id' value="{{ $seller->id }}">
                             <input type="hidden" name='product_id' value="{{ $product->id }}">
                             <div class="relative">
-                              <label for="name" class="leading-7 text-sm text-gray-600">Restaurant</label>
+                              <label for="name" class="leading-7 text-lg text-gray-600">Restaurant</label>
                               {{-- <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> --}}
                               <h2>{{ $seller->name }}</h2>
                             </div>
@@ -49,61 +49,66 @@
                           </div> --}}
                           <div class="p-2 w-full">
                             <div class="relative">
-                              <label for="rating" class="mr-2">評価（味）:</label>
-                              <select name="rating_taste" id="rating">
-                                  <option value="Excellent">{{ __('Excellent') }}</option>
-                                  <option value="Very Good">{{ __('Very Good') }}</option>
-                                  <option value="Good">{{ __('Good') }}</option>
-                                  <option value="Average">{{ __('Average') }}</option>
-                                  <option value="Poor">{{ __('Poor') }}</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="p-2 w-1/2">
-                            <div class="relative">
-                              <label for="rating" class="mr-2">評価（価格）:</label>
-                              <select name="rating_price" id="rating">
-                                <option value="Excellent">{{ __('Excellent') }}</option>
-                                <option value="Very Good">{{ __('Very Good') }}</option>
-                                <option value="Good">{{ __('Good') }}</option>
-                                <option value="Average">{{ __('Average') }}</option>
-                                <option value="Poor">{{ __('Poor') }}</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="p-2 w-1/2">
-                            <div class="relative">
-                              <label for="rating" class="mr-2">評価（サービス）:</label>
-                              <select name="rating_service" id="rating">
-                                <option value="Excellent">{{ __('Excellent') }}</option>
-                                <option value="Very Good">{{ __('Very Good') }}</option>
-                                <option value="Good">{{ __('Good') }}</option>
-                                <option value="Average">{{ __('Average') }}</option>
-                                <option value="Poor">{{ __('Poor') }}</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="p-2 w-1/2">
-                            <div class="relative">
-                              <label for="rating" class="mr-2">評価（総合）:</label>
-                              <select name="rating_total" id="rating">
-                                  <option value="5">5</option>
-                                  <option value="4">4</option>
-                                  <option value="3">3</option>
-                                  <option value="2">2</option>
-                                  <option value="1">1</option>
-                              </select>
+                              <label for="comment" class="leading-7 text-lg text-gray-600">Rating</label>
+                              <div class="p-2 w-full">
+                                <div class="relative">
+                                  <label for="rating" class="mr-2">Taste :</label>
+                                  <select name="rating_taste" id="rating">
+                                      <option value="Excellent">{{ __('Excellent') }}</option>
+                                      <option value="Very Good">{{ __('Very Good') }}</option>
+                                      <option value="Good">{{ __('Good') }}</option>
+                                      <option value="Average">{{ __('Average') }}</option>
+                                      <option value="Poor">{{ __('Poor') }}</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="p-2 w-1/2">
+                                <div class="relative">
+                                  <label for="rating" class="mr-2">Price :</label>
+                                  <select name="rating_price" id="rating">
+                                    <option value="Excellent">{{ __('Excellent') }}</option>
+                                    <option value="Very Good">{{ __('Very Good') }}</option>
+                                    <option value="Good">{{ __('Good') }}</option>
+                                    <option value="Average">{{ __('Average') }}</option>
+                                    <option value="Poor">{{ __('Poor') }}</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="p-2 w-1/2">
+                                <div class="relative">
+                                  <label for="rating" class="mr-2">Service :</label>
+                                  <select name="rating_service" id="rating">
+                                    <option value="Excellent">{{ __('Excellent') }}</option>
+                                    <option value="Very Good">{{ __('Very Good') }}</option>
+                                    <option value="Good">{{ __('Good') }}</option>
+                                    <option value="Average">{{ __('Average') }}</option>
+                                    <option value="Poor">{{ __('Poor') }}</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="p-2 w-1/2">
+                                <div class="relative">
+                                  <label for="rating" class="mr-2">Total :</label>
+                                  <select name="rating_total" id="rating">
+                                      <option value="5">5</option>
+                                      <option value="4">4</option>
+                                      <option value="3">3</option>
+                                      <option value="2">2</option>
+                                      <option value="1">1</option>
+                                  </select>
+                                </div>
+                              </div>
                             </div>
                           </div>
                           <div class="p-2 w-full">
                             <div class="relative">
-                              <label for="comment" class="leading-7 text-sm text-gray-600">Comment</label>
+                              <label for="comment" class="leading-7 text-lg text-gray-600">Comment</label>
                               <textarea id="comment" name="comment" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                             </div>
                           </div>
                           <div class="p-2 w-full">
                             <div class="relative">
-                              <label for="comment" class="leading-7 text-sm text-gray-600">Title（optional）</label>
+                              <label for="comment" class="leading-7 text-lg text-gray-600">Title（optional）</label>
                               <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                           </div>
