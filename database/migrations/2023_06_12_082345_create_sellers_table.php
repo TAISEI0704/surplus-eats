@@ -20,7 +20,7 @@ class CreateSellersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('image');
             $table->string('password');
-            $table->string('content');
+            $table->string('content',3000);
             $table->string('phone');
             $table->string('address');
             $table->rememberToken();
