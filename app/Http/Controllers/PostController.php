@@ -55,7 +55,7 @@ public function store(Request $request)
         $request->validate([
             'name' => 'required|string|max:30',
             'price' => 'required|integer',
-            'content' => 'required|string|max:255',
+            'content' => 'required|string|max:3000',
             'quantity' => 'required|string',
             'category' => 'required|string|max:30',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
