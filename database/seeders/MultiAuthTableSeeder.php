@@ -18,22 +18,22 @@ class MultiAuthTableSeeder extends Seeder
     public function run()
     {
         //
-        User::create([
-            'name' => 'User',
-            'email' => 'user@user.user',
-            'password' => Hash::make('password'),
-        ]);
+        // User::create([
+        //     'name' => 'User',
+        //     'email' => 'user@user.user',
+        //     'password' => Hash::make('password'),
+        // ]);
 
 
-        Seller::create([
-            'name' => "Taisei's Kitchen",
-            'email' => 'test@test.test',
-            'image' => 'imas_0801-3.jpg',
-            'password' => Hash::make('password'),
-            'phone' => '080-0123-4567',
-            'address' => '宮崎県北諸県郡三股町稗田30-8',
-            'content' => 'レストラン',
-        ]);
+        // Seller::create([
+        //     'name' => "Taisei's Kitchen",
+        //     'email' => 'test@test.test',
+        //     'image' => 'imas_0801-3.jpg',
+        //     'password' => Hash::make('password'),
+        //     'phone' => '080-0123-4567',
+        //     'address' => '宮崎県北諸県郡三股町稗田30-8',
+        //     'content' => 'レストラン',
+        // ]);
 
         Product::create([
             'name' => 'Fried Chicken',
