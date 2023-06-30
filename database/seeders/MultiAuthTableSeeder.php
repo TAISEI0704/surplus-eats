@@ -24,7 +24,6 @@ class MultiAuthTableSeeder extends Seeder
         //     'password' => Hash::make('password'),
         // ]);
 
-
         // Seller::create([
         //     'name' => "Taisei's Kitchen",
         //     'email' => 'test@test.test',
@@ -34,6 +33,7 @@ class MultiAuthTableSeeder extends Seeder
         //     'address' => '宮崎県北諸県郡三股町稗田30-8',
         //     'content' => 'レストラン',
         // ]);
+
 
         Product::create([
             'name' => 'Fried Chicken',
@@ -45,6 +45,7 @@ class MultiAuthTableSeeder extends Seeder
             'image' => 'jollibee_chicken.jpeg',
             'category' => 'Pasta',
         ]);
+
 
         Product::create([
             'name' => 'Strawberry Pancake',
@@ -88,6 +89,7 @@ class MultiAuthTableSeeder extends Seeder
             'seller_id' => '1',
             'image' => 'jollibee_spaghetti.jpeg',
             'category' => 'Pasta',
+
         ]);
 
         // Product::create([

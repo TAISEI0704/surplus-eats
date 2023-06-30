@@ -30,7 +30,7 @@ class SellerAuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:255',
             'address' => 'required|string|max:255',
-            'content'=> 'required|string',
+            'content'=> 'required|string|max:1000',
             'password' => 'required|string|confirmed|min:8',
         ]);
     

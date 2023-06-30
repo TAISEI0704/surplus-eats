@@ -19,7 +19,7 @@
                 <input type="hidden" name="product_id[]" value="{{ $product->id }}">
                 <!-- 商品情報の表示部分 -->
               
-              <section class="text-gray-600 body-font overflow-hidden">
+              <section class="text-gray-600 body-font overflow-hidden" style="background-color: #EDEBDA">
                 <div class="container px-3 py-18 mx-auto">
                   <div class="lg:w-4/5 mx-auto flex flex-wrap">
                     <img alt="ecommerce" class="lg:w-1/2 w-5 lg:h-auto h-10 object-cover object-center rounded" src="{{ asset('storage/images/'.$product->image) }}">
@@ -129,7 +129,7 @@
                 G-cash
               </label> --}}
               <br>
-              <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onclick="confirmPurchase(event)">
+              <button type="submit" class="text-white bg-orange-300 border-0 py-2 px-6 focus:outline-none hover:bg-orange-400 rounded" onclick="confirmPurchase(event)">
                 Purchase
               </button>
               {{-- <a id="cancel-payment-button">キャンセル</a> --}}
