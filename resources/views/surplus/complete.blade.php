@@ -20,7 +20,7 @@
               <div class="flex flex-wrap -m-4">
                 @foreach($purchaseHistories as $purchaseHistory)
                   <div class="p-4 md:w-1/3">
-                    <div class="flex rounded-lg h-full w-full bg-gray-100 p-8 flex-col">
+                    <div class="flex rounded-lg h-full w-full bg-gray-100 p-8 flex-col" style="background-color: #EDEBDA">
                       <div class="flex items-center mb-3">
                         <h2 class="text-gray-900 text-lg title-font font-medium">{{ $purchaseHistory->product->seller->name }}</h2>
                       </div>

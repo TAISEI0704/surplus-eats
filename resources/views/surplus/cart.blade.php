@@ -19,7 +19,7 @@
                 <input type="hidden" name="product_id[]" value="{{ $product->id }}">
                 <!-- 商品情報の表示部分 -->
               
-              <section class="text-gray-600 body-font overflow-hidden">
+              <section class="text-gray-600 body-font overflow-hidden" style="background-color: #EDEBDA">
                 <div class="container px-3 py-18 mx-auto">
                   <div class="lg:w-4/5 mx-auto flex flex-wrap">
                     <img alt="ecommerce" class="lg:w-1/2 w-5 lg:h-auto h-10 object-cover object-center rounded" src="{{ asset('storage/images/'.$product->image) }}">
