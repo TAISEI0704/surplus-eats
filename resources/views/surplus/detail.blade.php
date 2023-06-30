@@ -9,7 +9,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <section class="text-gray-600 body-font overflow-hidden">
+                <section class="text-gray-600 body-font overflow-hidden" style="background-color: #EDEBDA">
                     <div class="container px-5 py-24 mx-auto">
                       <div class="lg:w-4/5 mx-auto flex flex-wrap">
                         <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="{{ asset('storage/images/'.$post->image) }}">
@@ -106,7 +106,7 @@
                       </div>
                     </div>
                 </section>
-                <section class="text-gray-600 body-font">
+                <section class="text-gray-600 body-font" style="background-color: #EDEBDA">
                   <div class="container px-5 py-24 mx-auto">
                     <div class="flex flex-col text-center w-full mb-20">
                       {{-- <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">ROOF PARTY POLAROID</h2> --}}
@@ -159,7 +159,7 @@
                     {{-- <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button> --}}
                   </div>
                 </section>
-                <section class="text-gray-600 body-font relative">
+                <section class="text-gray-600 body-font relative" style="background-color: #EDEBDA">
                     <div class="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
 
                       {{-- <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
