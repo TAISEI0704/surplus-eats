@@ -1,62 +1,62 @@
 <x-guest-layout class="bg-custom-edebda">
-    <x-jet-authentication-card>
+    <x-authentication-card>
         <x-slot name="logo">
             <img src="img/logo.png" style="width: 100px; height: 100px;"/>
         </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+        <x-validation-errors class="mb-4" />
             seller
         <form method="POST" action="{{ route('seller.register.post') }}"  enctype="multipart/form-data">
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-label for="name" value="{{ __('Name') }}" />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-label for="email" value="{{ __('Email') }}" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="phone" value="{{ __('TEL') }}" />
-                <x-jet-input id="phone" class="block mt-1 w-full" type="tel" name="phone" :value="old('phone')" required />
+                <x-label for="phone" value="{{ __('TEL') }}" />
+                <x-input id="phone" class="block mt-1 w-full" type="tel" name="phone" :value="old('phone')" required />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="address" value="{{ __('Address') }}" />
-                <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required />
+                <x-label for="address" value="{{ __('Address') }}" />
+                <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="content" value="{{ __('content') }}" />
-                {{-- <x-jet-input id="content" class="block mt-1 w-full" type="textarea" name="content" :value="old('content')" required /> --}}
+                <x-label for="content" value="{{ __('content') }}" />
+                {{-- <x-input id="content" class="block mt-1 w-full" type="textarea" name="content" :value="old('content')" required /> --}}
                 <textarea id="content" class="block mt-1 w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" style="background-color: white;" name="content" required>{{ old('content') }}</textarea>
 
             </div>
 
            
             <div class="mt-4">
-                <x-jet-label for="image" value="{{ __('Image') }}" />
-                <x-jet-input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/png, image/jpeg, image/jpg" required />
+                <x-label for="image" value="{{ __('Image') }}" />
+                <x-input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/png, image/jpeg, image/jpg" required />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-label for="password" value="{{ __('Password') }}" />
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
-                    <x-jet-label for="terms">
+                    <x-label for="terms">
                         <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
+                            <x-checkbox name="terms" id="terms"/>
 
                             <div class="ml-2">
                                 {!! __('I agree to the :terms_of_service and :privacy_policy', [
@@ -65,7 +65,7 @@
                                 ]) !!}
                             </div>
                         </div>
-                    </x-jet-label>
+                    </x-label>
                 </div>
             @endif
 
@@ -77,10 +77,10 @@
                 <button type="button" onclick="window.history.back()" class="ml-4 bg-gray-500 hover:bg-gray-600 text-white font-bold py-1 px-4 rounded">
                     {{ __('Return') }}
                 </button>
-                <x-jet-button class="ml-4">
+                <x-button class="ml-4">
                     {{ __('Register') }}
-                </x-jet-button>
+                </x-button>
             </div>
         </form>
-    </x-jet-authentication-card>
+    </x-authentication-card>
 </x-guest-layout>

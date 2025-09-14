@@ -48,12 +48,12 @@
                             @livewire('profile.update-password-form')
                         </div>
         
-                        <x-jet-section-border />
+                        <x-section-border />
                     @endif --}}
                       <div style="text-align: right;">
-                        <x-jet-button type="submit">
+                        <x-button type="submit">
                             {{ __('edit') }}
-                          </x-jet-button>
+                          </x-button>
                       </div>
                         {{-- <a class="text-indigo-500 inline-flex items-center">Learn More
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@
             {{-- @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                 @livewire('profile.update-profile-information-form')
 
-                <x-jet-section-border />
+                <x-section-border />
             @endif --}}
 
             {{-- @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
@@ -77,7 +77,7 @@
                     @livewire('profile.update-password-form')
                 </div>
 
-                <x-jet-section-border />
+                <x-section-border />
             @endif  --}}
 
             {{-- @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
@@ -85,7 +85,7 @@
                     @livewire('profile.two-factor-authentication-form')
                 </div>
 
-                <x-jet-section-border />
+                <x-section-border />
             @endif
 
             <div class="mt-10 sm:mt-0">
@@ -93,7 +93,7 @@
             </div> --}}
 
             {{-- @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-                <x-jet-section-border />
+                <x-section-border />
 
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.delete-user-form')
