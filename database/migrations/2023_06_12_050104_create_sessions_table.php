@@ -13,6 +13,10 @@ class CreateSessionsTable extends Migration
      */
     public function up()
     {
+        // 既に sessions テーブルがあれば作成をスキップ
+        if (Schema::hasTable('sessions')) {
+            return;
+        }
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
