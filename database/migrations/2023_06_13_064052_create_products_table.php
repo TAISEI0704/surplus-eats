@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Seller;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,9 +23,9 @@ class CreateProductsTable extends Migration
             $table->string('category');
             $table->string('image');
             $table->string('available_time');
-            $table->unsignedBigInteger('seller_id');
-            $table->foreign('seller_id')->references('id')->on('sellers');
+            $table->foreignIdFor(Seller::class)->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

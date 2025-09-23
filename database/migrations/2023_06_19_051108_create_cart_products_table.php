@@ -20,6 +20,8 @@ class CreateCartProductsTable extends Migration
             $table->foreignIdFor(Cart::class)->constrained();
             $table->foreignIdFor(Product::class)->constrained();
             $table->integer('quantity');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

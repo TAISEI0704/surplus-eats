@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\User;
+use App\Models\Seller;
+use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,19 +18,17 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('title')->nullable();
             $table->string('content');
             $table->string('rating_taste');
             $table->string('rating_price');
             $table->string('rating_service');
             $table->integer('rating_total');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('seller_id');
-            $table->foreign('seller_id')->references('id')->on('sellers');
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignIdFor(Seller::class)->constrained();
+            $table->foreignIdFor(Product::class)->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

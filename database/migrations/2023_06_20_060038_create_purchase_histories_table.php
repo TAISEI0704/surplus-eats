@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,14 +17,12 @@ class CreatePurchaseHistoriesTable extends Migration
     {
         Schema::create('purchase_histories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->integer('purchase_quantity');
-            // $table->timestamps('purchase_date');
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignIdFor(Product::class)->constrained();
+            $table->integer('quantity');
+            $table->timestamp('purchaseed_at');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
