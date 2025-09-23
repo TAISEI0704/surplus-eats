@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+// カート全体の取得ではなく、カートに入っている各商品についてのレコードを作成しているモデル
 class CartProduct extends Model
 {
     use HasFactory;
