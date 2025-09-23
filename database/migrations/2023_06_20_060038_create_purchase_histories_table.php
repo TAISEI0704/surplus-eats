@@ -20,7 +20,7 @@ class CreatePurchaseHistoriesTable extends Migration
             $table->foreignIdFor(User::class)->constrained();
             $table->foreignIdFor(Product::class)->constrained();
             $table->integer('quantity');
-            $table->timestamp('purchaseed_at');
+            $table->timestamp('purchased_at');
             $table->timestamps();
             $table->softDeletes();
         });

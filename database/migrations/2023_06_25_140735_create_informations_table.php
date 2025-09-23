@@ -20,7 +20,7 @@ class CreateInformationTable extends Migration
             $table->timestamp('date')->useCurrent();
             $table->string('content');
             $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(Seller::class)->constrained()->nullable();
+            $table->foreignIdFor(Seller::class)->constrained();
             $table->timestamps();
             $table->softDeletes();
         });
