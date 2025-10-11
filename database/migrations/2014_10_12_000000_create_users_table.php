@@ -17,15 +17,19 @@ return new class extends Migration
         if (Schema::hasTable('users')) {
             return;
         }
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table): void {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            // $table->foreignId('current_team_id')->nullable();
+            $table->text('two_factor_secret')->nullable();
+            $table->text('two_factor_recovery_codes')->nullable();
+            $table->timestamp('two_factor_confirmed_at')->nullable();
+            $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
-            $table->boolean('is_seller')->default(false); //sellerであるか判断
+            $table->boolean('is_seller')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

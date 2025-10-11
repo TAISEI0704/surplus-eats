@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Seller;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\Review;
+use App\Models\Seller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -45,41 +46,32 @@ class PostController extends Controller
     }
 
     public function create()
-{
-    return view('surplus.create');
-}
+    {
+        return view('surplus.create');
+    }
 
-public function store(Request $request)
-{
-    
-        $request->validate([
-            'name' => 'required|string|max:30',
-            'price' => 'required|integer',
-            'content' => 'required|string|max:3000',
-            'quantity' => 'required|string',
-            'category' => 'required|string|max:30',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+    public function store(StoreProductRequest $request)
+    {
+        $data = $request->validated();
+
+        $file = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/images', $file);
+
+        $product = new Product();
+        $product->fill([
+            'name' => $data['name'],
+            'price' => $data['price'],
+            'content' => $data['content'],
+            'quantity' => $data['quantity'],
+            'category' => $data['category'],
+            'image' => $file,
+            'available_time' => $request->input('available_time'),
+            'seller_id' => Auth::id(),
         ]);
 
-        $file = request()->file('image')->getClientOriginalName();
-        request()->file('image')->storeAs('public/images', $file);
-
-        $product = new Product;
-        $product-> name = $request -> name;
-        $product-> price = $request -> price;
-        $product->content = $request -> content;
-        $product->quantity  = $request -> quantity;
-        $product-> category = $request -> category;
-        $product-> image = $request->image;
-        $product->image=$file;
-        $product->available_time = $request->available_time;
-        $product->seller_id = Auth::id();
-        
-
-        $product -> save();
+        $product->save();
 
         return redirect()->route('seller.dashboard');
-   
     }
 
     // public function feedback()
@@ -94,44 +86,35 @@ public function store(Request $request)
         return view('seller.surplus.edit',compact('post'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:30',
-            'price' => 'required|integer',
-            'content' => 'required|string|max:255',
-            'quantity' => 'required|string',
-            // 'category' => 'required|string|max:30',
-            // 'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        $post = Product::findOrFail($id);
+
+        $data = $request->validated();
+
+        $post->fill([
+            'name' => $data['name'],
+            'price' => $data['price'],
+            'content' => $data['content'],
+            'quantity' => $data['quantity'],
         ]);
 
-        $post = Product::find($id);
+        if ($request->has('category')) {
+            $post->category = $request->input('category');
+        }
 
-        if ($request->hasFile('image')) { //画像がアップロードありの処理
+        if ($request->has('available_time')) {
+            $post->available_time = $request->input('available_time');
+        }
+
+        if ($request->hasFile('image')) {
             $file = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/images', $file);
-            // $post->title = $request->title;
-            $post->name = $request->name;
-            $post->price = $request->price;
-            $post->content = $request->content;
-            $post->quantity = $request->quantity;
-            $post->category = $request->category;
-            $post->available_time = $request->available_time;
             $post->image = $file;
-
-            $post->save();
-        }else{ //画像のアップロードなしの処理
-            // $post->title = $request->title;
-            $post->name = $request->name;
-            $post->price = $request->price;
-            $post->content = $request->content;
-            $post->quantity = $request->quantity;
-            $post->category = $request->category;
-            $post->available_time = $request->available_time;
-        
-            $post->save();
         }
-            
+
+        $post->save();
+
         return redirect()->route('seller.dashboard');
     }
 

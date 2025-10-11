@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Guard protected paths
+        run: |
+          git fetch --no-tags origin main
+          CHANGED=$(git diff --name-only origin/main...HEAD -- docs/** infra/** || true)
+          if [ -n "$CHANGED" ] && [[ "${GITHUB_HEAD_REF:-}" != *"[ALLOW DOCS/INFRA]"* ]]; then
+            echo "Protected paths changed without explicit allow:"
+            echo "$CHANGED"
+            exit 1
+          fi
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, intl, bcmath, pdo_sqlite, sqlite3
+          coverage: none
+          tools: composer:v2
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Prepare application key
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      - name: Cache directory for PHPStan
+        run: mkdir -p storage/framework/cache/phpstan
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Vitest
+        run: npm run test:web
+
+      - name: Laravel Pint
+        run: vendor/bin/pint --test --dirty
+
+      - name: PHPStan
+        run: vendor/bin/phpstan analyse --configuration=phpstan.neon.dist
+
+      - name: Contracts route check
+        run: php artisan contracts:routes:check
+
+      - name: PHPUnit
+        run: vendor/bin/phpunit

@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'sellers',
+        'guard' => env('AUTH_GUARD', 'sellers'),
         'passwords' => 'users',
     ],
 

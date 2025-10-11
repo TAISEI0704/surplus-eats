@@ -26,6 +26,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware([config('fortify.auth_middleware', 'auth').':'.config('fortify.guard')])
+    ->get('/verify-email', fn () => view('auth.verify-email'))
+    ->name('verification.notice.legacy');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -99,4 +103,3 @@ Route::group(['middleware' => 'web',
     // Route::get('/review/create',[ReviewController::class,'create'])->name('review.create');
     // Route::post('/review/store',[ReviewController::class,'store'])->name('review.store');
 });
-
