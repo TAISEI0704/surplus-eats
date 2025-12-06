@@ -10,26 +10,11 @@
 
     <div style="background-color:#F8F7EE" class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          {{-- <form action="{{ route('products.filter') }}" method="GET">
-            @csrf
-            <select name="category">
-              <option value="">{{ __('Select Category') }}</option>
-              <option value="all">All</option>
-              <x-category-select />
-            </select>
-            <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Search</button>
-            @if (session('error'))
-              <div class="bg-red-500 text-white p-4 mb-4">
-                  {{ session('error') }}
-              </div>
-            @elseif($category !== null && $category !== 'all')
-              <div class="p-4 mb-4">
-                Category : {{ $category }}
-              </div>
-            @else
-            <div class="p-4 mb-4"></div>
-            @endif
-          </form> --}}
+          @if(isset($category) && $category !== null)
+            <div class="p-4 mb-4 bg-blue-100 rounded">
+              Selected Category: {{ $category }}
+            </div>
+          @endif
           <x-modal />
             <div style="background-color:#EDEBDA" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               <section class="text-gray-600 body-font">

@@ -145,16 +145,18 @@ public function store(Request $request)
 
     public function filterByCategory(Request $request)
     {
-        $categories = $request->input('category');
+        $categories = $request->input('category', []);
 
-        if (empty($categories)) {
-            return redirect()->route('dashboard');
-        } elseif (in_array('all', $categories)) {
+        // カテゴリーが選択されていない場合、または'all'が含まれている場合は全商品を表示
+        if (empty($categories) || in_array('all', $categories)) {
             $posts = Product::latest('created_at')->get();
+            $category = null;
         } else {
+            // 複数カテゴリーで検索
             $posts = Product::whereIn('category', $categories)->latest('created_at')->get();
+            $category = implode(', ', $categories);
         }
     
-        return view('surplus.timeline', compact('posts', 'categories'));
+        return view('surplus.timeline', compact('posts', 'category'));
     }
 }
