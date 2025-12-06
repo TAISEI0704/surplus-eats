@@ -1,31 +1,30 @@
 services:
+  #--------------------------------------------------------------
+  # Application Service
   app:
+    container_name: surplus-eats-app
     build:
-      context: .
-      dockerfile: infra/docker/php/Dockerfile
+      context: ./infra/docker/php
+      dockerfile: Dockerfile
       args:
         - WEB_USER_ID=${WEB_USER_ID:-1000}
         - WEB_GROUP_ID=${WEB_GROUP_ID:-1000}
     user: "${WEB_USER_ID:-1000}:${WEB_GROUP_ID:-1000}"
-    container_name: surplus-eats-app
     volumes:
-      - .:/var/www/html
+      - ./:/app
     ports:
-      - "${APP_PORT:-8080}:8080"
-    depends_on:
-      - db
+      - "${APP_PORT:-8080}:8000"
 
-  db:
-    image: postgres:17
+  #--------------------------------------------------------------
+  # Database Service
+  postgres:
     container_name: surplus-eats-db
+    image: postgres:18.1
     environment:
       - POSTGRES_DB=${DB_DATABASE:-surplus_eats}
       - POSTGRES_USER=${DB_USERNAME:-root}
       - POSTGRES_PASSWORD=${DB_PASSWORD:-password}
     volumes:
-      - dbdata:/var/lib/postgresql/data
+      - ./infra/docker/postgres:/var/lib/postgresql
     ports:
       - "${DB_PORT:-5432}:5432"
-
-volumes:
-  dbdata:
