@@ -10,6 +10,7 @@
         "laravel/fortify": "^1.17",
         "laravel/framework": "^11.0",
         "laravel/jetstream": "^5.3",
+        "laravel/octane": "^2.13",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^3.6.4"

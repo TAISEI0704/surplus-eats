@@ -1,0 +1,13 @@
+{
+    auto_https off
+    admin off
+    frankenphp {
+        num_threads 16
+    }
+}
+
+:8000 {
+    root * /app/public
+    encode gzip zstd
+    php_server
+}

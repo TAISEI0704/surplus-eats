@@ -1,4 +1,4 @@
-FROM php:8.3-apache
+FROM dunglas/frankenphp:1.10.1-php8.4-bookworm
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
@@ -8,17 +8,24 @@ ARG WEB_GROUP_ID
 RUN usermod -u $WEB_USER_ID -o www-data
 RUN groupmod -g $WEB_GROUP_ID -o www-data
 
-RUN apt-get update -y && \
-    apt-get install -y libpq-dev zip unzip && \
-    docker-php-ext-install pdo pdo_pgsql && \
-    apt-get clean
+RUN mkdir -p /data/caddy \
+    && chown -R $WEB_USER_ID:$WEB_GROUP_ID /data
 
-RUN a2enmod rewrite
-
-RUN sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf
+COPY ./Caddyfile /etc/frankenphp/Caddyfile
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-COPY ./infra/docker/php/000-default.conf /etc/apache2/sites-available/000-default.conf
+RUN install-php-extensions \
+    intl \
+    mbstring \
+    pdo_pgsql \
+    zip \
+    bcmath \
+    pcntl
 
-WORKDIR /var/www/html
+WORKDIR /app
+
+COPY ./startup-script.sh /startup-script.sh
+RUN chmod +x /startup-script.sh
+
+CMD ["/startup-script.sh"]

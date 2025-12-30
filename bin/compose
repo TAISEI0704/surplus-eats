@@ -1,0 +1,63 @@
+#!/bin/bash
+
+BASE_DIR="$(dirname "$0")/.."
+cd "$BASE_DIR" || exit 1
+
+COMMAND=$1
+shift 1
+
+case $COMMAND in
+    "up" )
+        docker compose up -d ;;
+
+    "stop" )
+        docker compose stop ;;
+
+    "build" )
+        docker compose build --no-cache --force-rm ;;
+
+    "down" )
+        docker compose down ;;
+
+    "destroy" )
+        docker compose down --rmi all --volumes --remove-orphans ;;
+
+    "logs" )
+        docker compose logs -f "$@" ;;
+
+    "ps" )
+        docker compose ps "$@" ;;
+
+    "exec" )
+        docker compose exec "$@" ;;
+
+    "artisan" )
+        docker compose exec app php artisan "$@" ;;
+
+    "test" )
+        docker compose exec app php artisan test "$@" ;;
+
+    "pint" )
+        docker compose exec app composer pint "$@" ;;
+
+    "stan" )
+        docker compose exec app composer stan "$@" ;;
+
+    "format" )
+        docker compose exec app composer mago:format "$@" ;;
+    
+    "format:check" )
+        docker compose exec app composer mago:format:check "$@" ;;
+    
+    "lint" )
+        docker compose exec app composer mago:lint "$@" ;;
+
+    "lint:fix" )
+        docker compose exec app composer mago:lint:fix "$@" ;;
+
+    "analyze" )
+        docker compose exec app composer mago:analyze "$@" ;;
+
+    * )
+        printf "\e[35m${COMMAND}\e[m: invalid command\n" && exit 1 ;;
+esac
