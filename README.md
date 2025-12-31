@@ -1,64 +1,381 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Surplus Eats Back-End
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## プロジェクト概要
 
-## About Laravel
+### 技術スタック
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**バックエンド**
+- Laravel 11.46.0
+- PHP 8.4+
+- PostgreSQL 18.1
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**開発ツール**
+- Docker / Docker Compose
+- Mago (Linter/Formatter)
+- PHPStan (静的解析)
+- PHPUnit (テスト)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### アーキテクチャ
 
-## Learning Laravel
+このプロジェクトは、UseCase中心のレイヤードアーキテクチャを採用しています：
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Controller**: HTTPリクエスト受付とレスポンス返却（シングルアクション `__invoke` のみ）
+- **Request**: バリデーション（FormRequest）
+- **Resource**: APIレスポンス整形（JsonResource）
+- **UseCase**: ビジネスロジックの実装（シングルアクション `__invoke` のみ）
+- **Service**: 再利用可能なビジネスロジック（シングルアクション `__invoke` のみ）
+- **Query**: データ読み取り専用（SELECT）
+- **Repository**: データ更新専用（INSERT/UPDATE/DELETE）
+- **Infrastructure**: 外部サービス連携（S3、外部API等）
+- **Support**: ユーティリティ（純粋関数）
+- **Model**: データ構造（Eloquent）
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**CQRS パターン**: Query（読み取り）とRepository（書き込み）を明確に分離
 
-## Laravel Sponsors
+詳細なアーキテクチャとコーディング規約は [AGENTS.md](./AGENTS.md)を参照してください。
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### ドキュメント構成
 
-### Premium Partners
+本プロジェクトのドキュメントは、以下の階層構造で管理されています：
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```
+ドキュメント階層
+│
+├─ 開発ガイドライン（SSOT: 第一情報源）
+│   ├─ AGENTS.md or CLAUDE.md             - アーキテクチャ、コーディング規約の統合ドキュメント
+│   │   ├─ 5つの基本原則
+│   │   ├─ レイヤ構造
+│   │   ├─ 命名規則
+│   │   └─ 絶対禁止事項
+│   └─ .github/instructions/              - 詳細な実装ルール
+│       ├─ architecture.instructions.md   - アーキテクチャ概要
+│       ├─ backend.instructions.md        - バックエンド全般
+│       └─ backend/                       - レイヤ別の詳細ルール
+│           ├─ controller.instructions.md
+│           ├─ usecase.instructions.md
+│           ├─ query.instructions.md
+│           ├─ repository.instructions.md
+│           ├─ service.instructions.md
+│           ├─ infrastructure.instructions.md
+│           ├─ support.instructions.md
+│           ├─ resource.instructions.md
+│           ├─ request.instructions.md
+│           ├─ testing.instructions.md
+│           ├─ security.instructions.md
+│           └─ performance.instructions.md
+│
+└─ プロジェクト情報
+    └─ README.md (本ドキュメント)         - セットアップ、開発方法
+```
 
-## Contributing
+**単一情報源（SSOT）ルール**:
+- **アーキテクチャガイドライン**: `AGENTS.md` が第一情報源
+- **詳細な実装ルール**: `.github/instructions/` 配下のファイル
+- **矛盾時**: AGENTS.md → instructions → 実装コードの順で優先
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+新機能開発時の推奨読む順序: `AGENTS.md → 該当レイヤーの instructions`
+## セットアップ方法
 
-## Code of Conduct
+### 必要な環境
+- Git
+- gh CLI（GitHub公式CLIツール）
+- Docker
+- Docker Compose
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 初回セットアップ
 
-## Security Vulnerabilities
+1. リポジトリのクローン
+```bash
+git clone https://github.com/TAISEI0704/surplus-eats.git
+cd surplus-eats
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. 環境変数の設定
+```bash
+cp .env.example .env
+# infra/local/.env でWEB_USER_ID, WEB_GROUP_IDをホストのユーザID、グループIDに設定してください。
+# 例：rootユーザの場合は0:0
+WEB_USER_ID=0
+WEB_GROUP_ID=0
+# 例：一般ユーザの場合はidコマンドで確認した値を設定してください。
+WEB_USER_ID=1000
+WEB_GROUP_ID=1000
+```
 
-## License
+3. Dockerイメージのビルド
+```bash
+./bin/compose build --no-cache
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. Dockerコンテナの起動
+```bash
+./bin/compose up
+```
+
+初回起動時は、Dockerイメージがビルドされます。
+
+5. アプリケーションのセットアップ
+```bash
+./bin/compose artisan migrate
+```
+または、コンテナ内で直接実行することもできます：
+```bash
+# コンテナに入る
+./bin/compose exec web bash
+
+# コンテナ内で実行
+root@xxx:/app# php artisan migrate
+```
+
+アプリケーションは `http://localhost:8080` でアクセスできます。
+
+### 開発サーバーの起動
+
+Dockerコンテナを起動することで、自動的にLaravel開発サーバーが起動します：
+
+```bash
+./bin/compose up
+```
+
+コンテナを停止する場合：
+
+```bash
+./bin/compose stop
+```
+
+## デバッグ方法
+
+### Laravelログの確認
+
+Laravelのログファイルを確認できます：
+
+```bash
+# コンテナ内
+tail -f storage/logs/laravel.log
+```
+
+または、Dockerログを確認：
+
+```bash
+./bin/compose logs -f app
+```
+
+### データベースの確認
+
+PostgreSQLに直接接続してデータを確認できます：
+
+```bash
+./bin/compose exec db psql -U postgres -d surplus_eats
+```
+
+### デバッグコンテナの利用
+
+開発用のコンテナに入って直接デバッグできます：
+
+```bash
+./bin/compose exec app bash
+```
+
+## テスト方法
+
+### バックエンドテスト（PHPUnit）
+
+すべてのテストを実行：
+
+```bash
+./bin/compose test
+```
+
+特定のテストファイルのみ実行：
+
+```bash
+./bin/compose test tests/Feature/ExampleTest.php
+```
+
+### コード品質チェック
+
+#### コードフォーマット（Mago）
+
+チェックのみ（修正なし）：
+
+```bash
+./bin/compose format:check
+```
+
+自動修正：
+
+```bash
+./bin/compose format
+```
+
+#### コードリント（Mago）
+
+チェックのみ（修正なし）：
+
+```bash
+./bin/compose lint
+```
+
+自動修正：
+
+```bash
+./bin/compose lint:fix
+```
+
+#### 静的解析
+
+PHPStan実行：
+
+```bash
+./bin/compose stan
+```
+
+Mago静的解析実行：
+
+```bash
+./bin/compose analyze
+```
+
+### すべてのチェックを実行
+
+```bash
+# フォーマットチェック
+./bin/compose format:check
+
+# リントチェック
+./bin/compose lint
+
+# 静的解析
+./bin/compose stan
+./bin/compose analyze
+# テスト
+./bin/compose test
+```
+
+## コーディング規約
+
+このプロジェクトのコーディング規約とベストプラクティスは [AGENTS.md](./AGENTS.md) に詳細に記載されています。
+新しいコードを書く前に必ず確認してください。
+
+### クイックリファレンス
+
+- **Controller**: シングルアクション（`__invoke`のみ）、薄く保つ
+- **UseCase**: シングルアクション（`__invoke`のみ）、ビジネスロジックを実装
+- **Query**: 読み取り専用（SELECT）、N+1解消
+- **Repository**: 書き込み専用（INSERT/UPDATE/DELETE）
+- **Service**: 再利用可能なビジネスロジック、 シングルアクション（`__invoke`のみ）
+- **Infrastructure**: 外部サービス連携（S3、外部API等）
+- **Support**: 純粋関数（副作用なし）
+
+**絶対禁止事項**:
+- ✗ マジックナンバー/マジックストリング
+- ✗ 直接的なDB操作（必ずQuery/Repository経由）
+- ✗ mixed型の無闇な使用
+- ✗ エラーハンドリングの欠如
+- ✗ SQLインジェクション/XSS脆弱性
+- ✗ テストのないコード追加
+
+詳細は [AGENTS.md](./AGENTS.md) および `.github/instructions/` を参照してください。
+
+## その他
+
+### コンテナの一覧確認
+
+起動中のコンテナを確認：
+
+```bash
+./bin/compose ps
+```
+
+### コンテナのログ確認
+
+特定のコンテナのログを確認：
+
+```bash
+# Webサーバー（Laravel）のログ
+./bin/compose logs -f app
+
+# データベースのログ
+./bin/compose logs -f db
+```
+
+### コンテナの再ビルド
+
+Dockerfileを変更した場合は、再ビルドが必要です：
+
+```bash
+./bin/compose build --no-cache
+./bin/compose up -d
+```
+
+### データベースのリセット
+
+データベースをリセットして再マイグレーション：
+
+```bash
+./bin/compose artisan migrate:fresh
+```
+
+シーダーも実行する場合：
+
+```bash
+./bin/compose artisan migrate:fresh --seed
+```
+
+### Composerパッケージの管理
+
+新しいパッケージをインストール：
+
+```bash
+# コンテナ内でパッケージを追加
+./bin/compose exec web composer require <package-name>
+```
+
+開発用パッケージをインストール：
+
+```bash
+./bin/compose exec web composer require --dev <package-name>
+```
+
+### よくあるトラブルシューティング
+
+#### ポートが既に使用されている
+
+他のアプリケーションがポートを使用している場合は、`.env` でポート番号を変更してください。
+
+#### キャッシュのクリア
+
+設定やルートのキャッシュをクリア：
+
+```bash
+./bin/compose artisan config:clear
+./bin/compose artisan route:clear
+./bin/compose artisan cache:clear
+```
+
+#### Composerのautoloadを再生成
+
+クラスが見つからない場合：
+
+```bash
+./bin/compose exec app composer dump-autoload
+```
+
+#### 環境変数（.env）の変更が反映されない
+
+`.env` ファイルを変更した場合、**appコンテナの再起動が必要**です：
+
+```bash
+# コンテナを再起動
+./bin/compose stop app
+./bin/compose up app
+```
+
+**重要**: Laravel Octane (FrankenPHP) は長時間動作するプロセスのため、環境変数はコンテナ起動時に読み込まれます。`config:clear` や `cache:clear` だけでは環境変数の変更は反映されません。
+
+設定ファイル（`config/*.php`）のみを変更した場合は、以下のコマンドで反映できます：
+
+```bash
+./bin/compose artisan config:clear
+./bin/compose artisan octane:reload
+```
