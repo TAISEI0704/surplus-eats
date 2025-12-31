@@ -37,5 +37,30 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        // 認証例外のハンドリング
+        $this->renderable(function (\App\Exceptions\Auth\InvalidCredentialsException $e, $request) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'message' => $e->getMessage(),
+                ], 401);
+            }
+        });
+
+        $this->renderable(function (\App\Exceptions\Auth\UserNotFoundException $e, $request) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'message' => $e->getMessage(),
+                ], 404);
+            }
+        });
+
+        $this->renderable(function (\App\Exceptions\Auth\SellerNotFoundException $e, $request) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'message' => $e->getMessage(),
+                ], 404);
+            }
+        });
     }
 }
